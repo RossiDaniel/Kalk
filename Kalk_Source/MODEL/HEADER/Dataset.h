@@ -1,6 +1,8 @@
 #ifndef DATASET_H
 #define DATASET_H
 #include"numbers.h"
+#include"MODEL/IMPLEMENTATION/heapsort.cpp"
+#include<vector>
 
 class dataset: public numbers{
 private:

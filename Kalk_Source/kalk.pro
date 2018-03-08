@@ -20,9 +20,7 @@ SOURCES += GUI/IMPLEMENTATION/main.cpp \
     MODEL/IMPLEMENTATION/UniverseAdvanced.cpp\
     GUI/IMPLEMENTATION/qcustomplot.cpp\
     MODEL/IMPLEMENTATION/numbers.cpp \
-    MODEL/IMPLEMENTATION/universe.cpp
-
-
+    MODEL/IMPLEMENTATION/heapsort.cpp
 
 HEADERS += \
     MODEL/HEADER/advanced.h\
@@ -36,4 +34,3 @@ HEADERS += \
     MODEL/HEADER/kalk.h \
     MODEL/HEADER/UniverseAdvanced.h\
     GUI/HEADER/qcustomplot.h\
-    MODEL/HEADER/universe.h
