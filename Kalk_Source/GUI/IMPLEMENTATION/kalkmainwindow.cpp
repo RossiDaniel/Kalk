@@ -186,7 +186,6 @@
 }
     void KalkMainWindow::openExtraPanel(QString q){
         extrapanel* panel=new extrapanel(this,q);
-        uni->resetkalk();
         panel->show();
     }
 

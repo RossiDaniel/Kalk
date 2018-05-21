@@ -57,13 +57,9 @@ void dataset::add_list(const std::list<int>& l){
     }
 }
 void dataset::sub_list(const std::list<int>& l){
-    std::vector<int> A;
-    std::list<int>::const_iterator cit =l.begin();
-    for(int j=0; cit != l.end();j++, cit++){
-        A.push_back(*cit);
+    for (std::list<int>::const_iterator it =l.begin(); it != l.end(); it++){
+        this->sub_value(*it);
     }
-    Build_MaxHeap(A);
-    HeapSort(A);
 }
 
 int dataset::somme()const{
