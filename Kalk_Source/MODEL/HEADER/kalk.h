@@ -10,9 +10,11 @@
 #include "UniverseDataset.h"
 #include"UniverseAdvanced.h"
 #include "GUI/HEADER/qcustomplot.h"
+#include "GUI/HEADER/kalkmainwindow.h"
 
 class kalk{
 private:
+    KalkMainWindow* view;
     numbers* operand1;
     numbers* operand2;
     std::string* operation;

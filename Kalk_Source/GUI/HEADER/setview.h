@@ -1,6 +1,8 @@
-#ifndef KALKMAINWINDOW_H
-#define KALKMAINWINDOW_H
+#ifndef SETVIEW_H
+#define SETVIEW_H
 
+#include <QWidget>
+#include <GUI/HEADER/kalkmainwindow.h>
 #include <QWidget>
 #include <QPushButton>
 #include <QGridLayout>
@@ -13,13 +15,11 @@
 #include<QLabel>
 #include<QSignalMapper>
 
-class KalkMainWindow;
-
-#include"GUI/HEADER/extrapanel.h"
-
-class KalkMainWindow: public QWidget{
+class SetView: public KalkMainWindow{
     Q_OBJECT
+
 private:
+
     QGridLayout* right;
     QGridLayout* left;
     QHBoxLayout* all;
@@ -60,28 +60,7 @@ private:
     QListWidget* elenco;
 
 public:
-    KalkMainWindow();
-    ~KalkMainWindow();
-    void refresh();
-    void add_set(const numbers&);
-    void sub_set(const std::string);
-    void add_elements(const std::string, const std::list<int>&)const;
-    void sub_elements(const std::string, const std::list<int>&)const;
-
-    QString status()const;
-    dataset* getDataset(std::string) const;
-    std::list<std::string> getListOfSet()const;
-    std::string vuoto()const;
-public slots:
-    void openExtraPanel(QString);
-    void selectoperand(QListWidgetItem*);
-    void SetOperation(QString);
-    void clearElenco();
-    void multiOperation();
-    void singleOperation(QString);
-    void save();
-    void changeStatus(QString);
-    void setCE();
+    SetView();
 };
 
-#endif // KALKMAINWINDOW_H
+#endif // SETVIEW_H
