@@ -1,12 +1,11 @@
 #include <iostream>
-#include <GUI/HEADER/kalkmainwindow.h>
+#include <MODEL/HEADER/logic.h>
 #include <QApplication>
 using namespace std;
 
 int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
-    KalkMainWindow* win= new KalkMainWindow();
-    win->show();
+    logic* win= new logic();
     return app.exec();
 }

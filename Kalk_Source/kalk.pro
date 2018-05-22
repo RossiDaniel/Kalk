@@ -12,7 +12,6 @@ SOURCES += GUI/IMPLEMENTATION/main.cpp \
     MODEL/IMPLEMENTATION/Set.cpp \
     MODEL/IMPLEMENTATION/UniverseDataset.cpp \
     MODEL/IMPLEMENTATION/UniverseSet.cpp \
-    GUI/IMPLEMENTATION/kalkmainwindow.cpp \
     MODEL/IMPLEMENTATION/ris.cpp \
     GUI/IMPLEMENTATION/extrapanel.cpp \
     MODEL/IMPLEMENTATION/kalk.cpp\
@@ -20,7 +19,12 @@ SOURCES += GUI/IMPLEMENTATION/main.cpp \
     MODEL/IMPLEMENTATION/UniverseAdvanced.cpp\
     GUI/IMPLEMENTATION/qcustomplot.cpp\
     MODEL/IMPLEMENTATION/numbers.cpp \
-    GUI/IMPLEMENTATION/setview.cpp
+    GUI/IMPLEMENTATION/setview.cpp \
+    MODEL/IMPLEMENTATION/logic.cpp\
+    MODEL/IMPLEMENTATION/SetLogic.cpp
+
+
+
 
 HEADERS += \
     MODEL/HEADER/advanced.h\
@@ -31,7 +35,9 @@ HEADERS += \
     GUI/HEADER/kalkmainwindow.h \
     MODEL/HEADER/numbers.h \
     GUI/HEADER/extrapanel.h \
-    MODEL/HEADER/kalk.h \
     MODEL/HEADER/UniverseAdvanced.h\
     GUI/HEADER/qcustomplot.h\
-    GUI/HEADER/setview.h
+    GUI/HEADER/setview.h\
+    MODEL/HEADER/logic.h\
+    MODEL/HEADER/SetLogic.h\
+    MODEL/HEADER/abstractlogic.h

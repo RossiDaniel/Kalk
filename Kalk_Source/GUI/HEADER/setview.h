@@ -9,7 +9,7 @@
 #include <QLineEdit>
 #include<QListWidget>
 #include<QScrollBar>
-#include"MODEL/HEADER/kalk.h"
+#include"MODEL/HEADER/SetLogic.h"
 #include <QListWidgetItem>
 #include <QTextEdit>
 #include<QLabel>
@@ -61,6 +61,7 @@ private:
 
 public:
     SetView();
+    ~SetView();
 };
 
 #endif // SETVIEW_H
