@@ -40,4 +40,8 @@ HEADERS += \
     GUI/HEADER/setview.h\
     MODEL/HEADER/logic.h\
     MODEL/HEADER/SetLogic.h\
-    MODEL/HEADER/abstractlogic.h
+    MODEL/HEADER/abstractlogic.h \
+    GUI/HEADER/datasetview.h \
+    MODEL/HEADER/datasetlogic.h \
+    MODEL/HEADER/AdvancedLogic.h
+
