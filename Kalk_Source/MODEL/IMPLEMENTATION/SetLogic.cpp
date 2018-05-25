@@ -7,3 +7,7 @@ SetLogic::SetLogic(){
 SetLogic::~SetLogic(){
 
 }
+
+void SetLogic::printValue(int n){
+    std::cout<<n;
+}

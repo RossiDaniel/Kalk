@@ -1,4 +1,4 @@
-#include "MODEL/HEADER/logic.h"
+#include "MODEL/HEADER/app.h"
 #include "GUI/HEADER/setview.h"
 #include "MODEL/HEADER/SetLogic.h"
 

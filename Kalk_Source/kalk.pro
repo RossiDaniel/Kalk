@@ -23,7 +23,6 @@ SOURCES += \
     GUI/IMPLEMENTATION/setview.cpp \
     GUI/IMPLEMENTATION/datasetview.cpp \
     GUI/IMPLEMENTATION/advancedview.cpp \
-    MODEL/IMPLEMENTATION/logic.cpp\
     MODEL/IMPLEMENTATION/SetLogic.cpp \
     MODEL/IMPLEMENTATION/DatasetLogic.cpp\
     MODEL/IMPLEMENTATION/AdvancedLogic.cpp
