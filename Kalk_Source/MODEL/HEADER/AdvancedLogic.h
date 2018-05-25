@@ -1,22 +1,22 @@
-#ifndef SETLOGIN_H
-#define SETLOGIN_H
+#ifndef DATASETLOGIN_H
+#define DATASETLOGIN_H
 
 #include<iostream>
 #include<list>
 #include<string>
 #include<typeinfo>
 #include"numbers.h"
-#include "MODEL/HEADER/abstractlogic.h"
+#include"abstractlogic.h"
 
-class DatasetLogic: public AbstractLogic{
+class AdvancedLogic: public AbstractLogic{
 private:
     numbers* operand1;
     numbers* operand2;
     std::string* operation;
 
 public:
-    DatasettLogic();
-    ~DatasetLogic();
+    AdvancedLogic();
+    ~AdvancedLogic();
 };
 
-#endif // SETLOGIN_H
+#endif // DATASETLOGIN_H

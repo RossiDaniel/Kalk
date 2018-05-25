@@ -7,21 +7,26 @@ QT +=printsupport
 greaterThan(QT_MAJOR_VERSION, 4) : QT += widgets
 TARGET = kalk
 
-SOURCES += GUI/IMPLEMENTATION/main.cpp \
+SOURCES += \
+    GUI/IMPLEMENTATION/main.cpp \
     MODEL/IMPLEMENTATION/Dataset.cpp \
     MODEL/IMPLEMENTATION/Set.cpp \
     MODEL/IMPLEMENTATION/UniverseDataset.cpp \
     MODEL/IMPLEMENTATION/UniverseSet.cpp \
     MODEL/IMPLEMENTATION/ris.cpp \
     GUI/IMPLEMENTATION/extrapanel.cpp \
-    MODEL/IMPLEMENTATION/kalk.cpp\
+    MODEL/IMPLEMENTATION/app.cpp\
     MODEL/IMPLEMENTATION/advanced.cpp\
     MODEL/IMPLEMENTATION/UniverseAdvanced.cpp\
     GUI/IMPLEMENTATION/qcustomplot.cpp\
     MODEL/IMPLEMENTATION/numbers.cpp \
     GUI/IMPLEMENTATION/setview.cpp \
+    GUI/IMPLEMENTATION/datasetview.cpp \
+    GUI/IMPLEMENTATION/advancedview.cpp \
     MODEL/IMPLEMENTATION/logic.cpp\
-    MODEL/IMPLEMENTATION/SetLogic.cpp
+    MODEL/IMPLEMENTATION/SetLogic.cpp \
+    MODEL/IMPLEMENTATION/DatasetLogic.cpp\
+    MODEL/IMPLEMENTATION/AdvancedLogic.cpp
 
 
 
@@ -38,10 +43,11 @@ HEADERS += \
     MODEL/HEADER/UniverseAdvanced.h\
     GUI/HEADER/qcustomplot.h\
     GUI/HEADER/setview.h\
-    MODEL/HEADER/logic.h\
+    MODEL/HEADER/app.h\
     MODEL/HEADER/SetLogic.h\
     MODEL/HEADER/abstractlogic.h \
     GUI/HEADER/datasetview.h \
-    MODEL/HEADER/datasetlogic.h \
+    GUI/HEADER/advancedview.h \
+    MODEL/HEADER/DatasetLogic.h \
     MODEL/HEADER/AdvancedLogic.h
 
