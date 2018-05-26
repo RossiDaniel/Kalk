@@ -1,4 +1,5 @@
 #ifndef NEWSET_H
+/*
 #define NEWSET_H
 
 #include "GUI/HEADER/kalkmainwindow.h"
@@ -36,12 +37,13 @@ public:
     std::list<int> parser()const;
 
 public slots:
-    void creaset();
-    void remove();
-    void addelement();
-    void subelement();
-    void modify();
-    void update();
+    void creaset(){}
+    void remove(){}
+    void addelement(){}
+    void subelement(){}
+    void modify(){}
+    void update(){}
 
 };
 #endif // NEWSET_H
+*/

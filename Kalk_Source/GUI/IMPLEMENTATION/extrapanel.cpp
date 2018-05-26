@@ -1,4 +1,5 @@
-﻿#include "GUI/HEADER/extrapanel.h"
+﻿/*
+#include "GUI/HEADER/extrapanel.h"
 
 extrapanel::~extrapanel(){
     delete Griglia;
@@ -295,3 +296,4 @@ std::list<int> extrapanel::parser()const{
     }
     return l;
 }
+*/
