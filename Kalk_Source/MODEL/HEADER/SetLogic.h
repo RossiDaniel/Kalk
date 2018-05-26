@@ -19,7 +19,7 @@ public:
     ~SetLogic();
 
 public slots:
-    void printValue(int);
+    void printValue();
 };
 
 #endif // SETLOGIN_H

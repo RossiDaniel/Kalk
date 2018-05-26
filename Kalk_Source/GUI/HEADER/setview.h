@@ -62,12 +62,9 @@ private:
 public:
     SetView();
     ~SetView();
-
 public slots:
-    void setValue(int value);
+    void setValue();
 
-signals:
-    void valueChanged(int newValue);
 };
 
 #endif // SETVIEW_H

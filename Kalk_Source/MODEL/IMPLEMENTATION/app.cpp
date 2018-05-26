@@ -5,5 +5,9 @@ AppKalk::AppKalk(){
     uni =new SetLogic();
     Uset.push_back(new set("U"));
     view->show();
-    connect(view, SIGNAL(), uni, SLOT(setValue(n)));
+    QObject::connect(view, SIGNAL(valueChanged()), uni, SLOT(printValue()));
+}
+
+AppKalk::~AppKalk(){
+
 }

@@ -4,8 +4,7 @@ SetView::SetView(){
     setFixedSize(800,320);
 
     CE = new QPushButton("CE");
-    int n=5;
-    connect(CE, SIGNAL(clicked(bool)), this, SLOT(setValue(n)));
+    connect(CE, SIGNAL(clicked(bool)), this, SLOT(setValue()));
     QLabel* typestatus= new QLabel("Status Attuale: ");
     Status = new QLabel("SET");
     StatusSet= new QPushButton("SET");
@@ -159,8 +158,8 @@ SetView::~SetView(){
     delete elenco;
 }
 
-void SetView::setValue(int value){
-    emit valueChanged(value);
+void SetView::setValue(){
+    emit valueChanged();
 }
 /*
 void KalkMainWindow::openExtraPanel(QString q){

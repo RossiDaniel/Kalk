@@ -12,6 +12,7 @@
 #include "GUI/HEADER/setview.h"
 #include "MODEL/HEADER/Set.h"
 #include <QWidget>
+#include <QObject>
 #include <GUI/HEADER/kalkmainwindow.h>
 #include <QWidget>
 #include <QPushButton>
@@ -25,7 +26,7 @@
 #include<QLabel>
 #include<QSignalMapper>
 
-class AppKalk{
+class AppKalk: public QObject{
     Q_OBJECT
 private:
     KalkMainWindow* view;

@@ -16,6 +16,11 @@ class KalkMainWindow: public QWidget{
     Q_OBJECT
 public:
     KalkMainWindow(){}
+public slots:
+    void emitSignal();
+signals:
+    void valueChanged();
+
 };
 
 #endif // KALKMAINWINDOW_H

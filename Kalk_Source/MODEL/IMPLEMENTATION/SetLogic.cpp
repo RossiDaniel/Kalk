@@ -8,6 +8,6 @@ SetLogic::~SetLogic(){
 
 }
 
-void SetLogic::printValue(int n){
-    std::cout<<n;
+void SetLogic::printValue(){
+    std::cout<<5;
 }

@@ -25,7 +25,10 @@ SOURCES += \
     GUI/IMPLEMENTATION/advancedview.cpp \
     MODEL/IMPLEMENTATION/SetLogic.cpp \
     MODEL/IMPLEMENTATION/DatasetLogic.cpp\
-    MODEL/IMPLEMENTATION/AdvancedLogic.cpp
+    MODEL/IMPLEMENTATION/AdvancedLogic.cpp \
+    GUI/IMPLEMENTATION/kalkmainwindow.cpp \
+    MODEL/IMPLEMENTATION/abstractlogic.cpp
+
 
 
 
