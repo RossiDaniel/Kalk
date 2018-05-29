@@ -25,16 +25,12 @@ private:
     QHBoxLayout* all;
     QGridLayout* buttonLayout;
     QGridLayout* bottom;
-    QGridLayout* StatusGrid;
 
     QSignalMapper* StatussignalMapper;
     QSignalMapper* InputsignalMapper;
     QSignalMapper* SingleOperationsignalMapper;
     QSignalMapper* MultiOperationsignalMapper;
 
-    QPushButton* StatusSet;
-    QPushButton* StatusDataset;
-    QPushButton* StatusAdvanced;
     QLabel* Status;
 
     QPushButton* CE;

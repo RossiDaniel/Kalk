@@ -7,16 +7,9 @@ SetView::SetView(){
     connect(CE, SIGNAL(clicked(bool)), this, SLOT(setValue()));
     QLabel* typestatus= new QLabel("Status Attuale: ");
     Status = new QLabel("SET");
-    StatusSet= new QPushButton("SET");
-    StatusDataset =new QPushButton("DATASET");
-    StatusAdvanced= new QPushButton("ADVANCED");
 
     StatussignalMapper = new QSignalMapper (this) ;
 
-
-    StatussignalMapper -> setMapping (StatusSet, "set") ;
-    StatussignalMapper -> setMapping (StatusDataset, "dataset") ;
-    StatussignalMapper -> setMapping (StatusAdvanced, "advanced") ;
 
 
     Button1 =new QPushButton("Create Set");
@@ -65,7 +58,6 @@ SetView::SetView(){
 
 
     all=new QHBoxLayout();
-    StatusGrid =new QGridLayout();
     bottom = new QGridLayout();
     buttonLayout= new QGridLayout();
     right= new QGridLayout();
@@ -93,11 +85,8 @@ SetView::SetView(){
     buttonLayout->addWidget(typestatus,4,3);
     buttonLayout->addWidget(Status,4,4);
 
-    bottom->addWidget(StatusSet,1,1);
-    bottom->addWidget(StatusDataset,2,1);
-    bottom->addWidget(StatusAdvanced,3,1);
-
-    StatusGrid->addItem(bottom,0,0);
+    QGridLayout* StatusGrid= new QGridLayout();
+    StatusGrid->addItem(GetStatusGrid(),0,0);
     Barra->setReadOnly(true);
     errori->setReadOnly(true);
 
@@ -125,16 +114,12 @@ SetView::~SetView(){
     delete all;
     delete buttonLayout;
     delete bottom;
-    delete StatusGrid;
 
     delete StatussignalMapper;
     delete InputsignalMapper;
     delete SingleOperationsignalMapper;
     delete MultiOperationsignalMapper;
 
-    delete StatusSet;
-    delete StatusDataset;
-    delete StatusAdvanced;
     delete Status;
 
     delete Button1;

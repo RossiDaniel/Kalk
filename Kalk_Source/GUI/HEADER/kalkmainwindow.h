@@ -14,8 +14,13 @@
 
 class KalkMainWindow: public QWidget{
     Q_OBJECT
+private:
+    QPushButton* set;
+    QPushButton* dataset;
+    QPushButton* advanced;
 public:
-    KalkMainWindow(){}
+    KalkMainWindow();
+    QGridLayout* GetStatusGrid();
 public slots:
     void emitSignal();
 signals:
