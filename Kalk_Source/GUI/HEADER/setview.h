@@ -57,7 +57,7 @@ private:
 
 public:
     SetView();
-    ~SetView();
+    void RemoveLayout(QWidget* widget);
 public slots:
     void setValue();
 

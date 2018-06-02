@@ -1,7 +1,6 @@
 #include "GUI/HEADER/advancedview.h"
 
 AdvancedView::AdvancedView(){
-    setFixedSize(800,320);
 
     CE = new QPushButton("CE");
 
@@ -110,14 +109,13 @@ AdvancedView::AdvancedView(){
     left->addWidget(elenco);
 
     //layout generale
-    all->addItem(left);
-    all->addItem(right);
-    all->addItem(StatusGrid);
+    this->addItem(left);
+    this->addItem(right);
+    this->addItem(StatusGrid);
 
     buttonLayout->setAlignment(Qt::AlignTop);
     StatusGrid->setAlignment(Qt::AlignTop);
     //this->refresh();
-    this->setLayout(all);
 }
 AdvancedView::~AdvancedView(){
     delete right;

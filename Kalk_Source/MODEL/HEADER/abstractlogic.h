@@ -9,6 +9,7 @@ class AbstractLogic: public QWidget{
 public:
     AbstractLogic();
     ~AbstractLogic();
+
 public slots:
     virtual void printValue()=0;
 };

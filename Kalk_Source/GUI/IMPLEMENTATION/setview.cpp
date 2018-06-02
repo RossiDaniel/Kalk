@@ -1,8 +1,6 @@
 #include "GUI/HEADER/setview.h"
 
 SetView::SetView(){
-    setFixedSize(800,320);
-
     CE = new QPushButton("CE");
     connect(CE, SIGNAL(clicked(bool)), this, SLOT(setValue()));
     QLabel* typestatus= new QLabel("Status Attuale: ");
@@ -99,52 +97,28 @@ SetView::SetView(){
     left->addWidget(elenco);
 
     //layout generale
-    all->addItem(left);
-    all->addItem(right);
-    all->addItem(StatusGrid);
+    this->addItem(left);
+    this->addItem(right);
+    this->addItem(StatusGrid);
 
     buttonLayout->setAlignment(Qt::AlignTop);
     StatusGrid->setAlignment(Qt::AlignTop);
-    //this->refresh();
-    this->setLayout(all);
-}
-SetView::~SetView(){
-    delete right;
-    delete left;
-    delete all;
-    delete buttonLayout;
-    delete bottom;
-
-    delete StatussignalMapper;
-    delete InputsignalMapper;
-    delete SingleOperationsignalMapper;
-    delete MultiOperationsignalMapper;
-
-    delete Status;
-
-    delete Button1;
-    delete Button2;
-    delete Button3;
-    delete Button4;
-    delete Button5;
-    delete Button6;
-
-    delete Button7;
-    delete Button8;
-    delete Button9;
-    delete Button10;
-    delete Button11;
-    delete Button12;
-    delete Button13;
-    delete Button14;
-
-    delete Barra;
-    delete errori;
-    delete elenco;
 }
 
 void SetView::setValue(){
     emit valueChanged();
+}
+
+void RemoveLayout (QWidget* widget)
+{
+    QLayout* layout = widget->layout ();
+    if (layout != 0)
+    {
+    QLayoutItem *item;
+    while ((item = layout->takeAt(0)) != 0)
+        layout->removeItem (item);
+    delete layout;
+    }
 }
 /*
 void KalkMainWindow::openExtraPanel(QString q){

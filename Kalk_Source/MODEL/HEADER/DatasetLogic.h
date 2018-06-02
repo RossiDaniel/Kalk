@@ -17,6 +17,7 @@ private:
 public:
     DatasetLogic();
     ~DatasetLogic();
+public slots:
+    void printValue();
 };
-
 #endif // DATASETLOGIC_H

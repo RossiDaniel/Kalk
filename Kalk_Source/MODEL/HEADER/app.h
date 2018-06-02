@@ -11,6 +11,9 @@
 #include "MODEL/HEADER/SetLogic.h"
 #include "GUI/HEADER/setview.h"
 #include "MODEL/HEADER/Set.h"
+#include "MODEL/HEADER/DatasetLogic.h"
+#include "GUI/HEADER/datasetview.h"
+#include "MODEL/HEADER/Dataset.h"
 #include <QWidget>
 #include <QObject>
 #include <GUI/HEADER/kalkmainwindow.h>
@@ -25,10 +28,13 @@
 #include <QTextEdit>
 #include<QLabel>
 #include<QSignalMapper>
+#include<QGraphicsView>
+#include<GUI/HEADER/generalview.h>
 
 class AppKalk: public QObject{
     Q_OBJECT
 private:
+    GeneralView* view_general;
     KalkMainWindow* view;
     AbstractLogic* uni;
     std::list<const numbers*> Uset;
@@ -36,6 +42,10 @@ private:
 public:
     AppKalk();
     ~AppKalk();
+    void changeStatus(KalkMainWindow*, AbstractLogic*);
+public slots:
+    void selectStatus(QString);
+
 };
 
 #endif // APP_H

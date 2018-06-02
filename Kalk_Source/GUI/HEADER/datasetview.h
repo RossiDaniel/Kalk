@@ -1,8 +1,6 @@
+
 #ifndef DATASETVIEW_H
 #define DATASETVIEW_H
-
-#ifndef SETVIEW_H
-#define SETVIEW_H
 
 #include <QWidget>
 #include <GUI/HEADER/kalkmainwindow.h>
@@ -42,7 +40,7 @@ private:
 
     QPushButton* CE;
 
-    QPushButton* Button1;
+    QPushButton* Button;
     QPushButton* Button2;
     QPushButton* Button3;
     QPushButton* Button4;
@@ -66,8 +64,6 @@ public:
     DatasetView();
     ~DatasetView();
 };
-
-#endif // SETVIEW_H
 
 
 #endif // DATASETVIEW_H

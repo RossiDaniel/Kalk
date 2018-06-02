@@ -11,20 +11,29 @@
 #include <QTextEdit>
 #include<QLabel>
 #include<QSignalMapper>
+#include<QString>
 
-class KalkMainWindow: public QWidget{
+
+class KalkMainWindow: public QHBoxLayout{
     Q_OBJECT
 private:
-    QPushButton* set;
-    QPushButton* dataset;
-    QPushButton* advanced;
+    QPushButton* StatusSet;
+    QPushButton* StatusDataset;
+    QPushButton* StatusAdvanced;
+    const QString newStatus;
+    QSignalMapper* StatussignalMapper;
 public:
     KalkMainWindow();
     QGridLayout* GetStatusGrid();
+    std::string getNewStatus()const;
 public slots:
     void emitSignal();
+    void emitStatus(QString);
+
 signals:
     void valueChanged();
+    void StatusChange(QString);
+
 
 };
 
