@@ -29,22 +29,20 @@
 #include<QLabel>
 #include<QSignalMapper>
 #include<QGraphicsView>
-#include<GUI/HEADER/generalview.h>
+#include<GUI/HEADER/View.h>
 
 class AppKalk: public QObject{
     Q_OBJECT
 private:
-    GeneralView* view_general;
-    KalkMainWindow* view;
+    View* view;
     AbstractLogic* uni;
     std::list<const numbers*> Uset;
+
+
 
 public:
     AppKalk();
     ~AppKalk();
-    void changeStatus(KalkMainWindow*, AbstractLogic*);
-public slots:
-    void selectStatus(QString);
 
 };
 

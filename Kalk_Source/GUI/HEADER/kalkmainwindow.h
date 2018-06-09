@@ -14,18 +14,11 @@
 #include<QString>
 
 
-class KalkMainWindow: public QHBoxLayout{
+class KalkMainWindow: public QWidget{
     Q_OBJECT
-private:
-    QPushButton* StatusSet;
-    QPushButton* StatusDataset;
-    QPushButton* StatusAdvanced;
-    const QString newStatus;
-    QSignalMapper* StatussignalMapper;
 public:
     KalkMainWindow();
-    QGridLayout* GetStatusGrid();
-    std::string getNewStatus()const;
+
 public slots:
     void emitSignal();
     void emitStatus(QString);

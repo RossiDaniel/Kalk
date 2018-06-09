@@ -1,7 +1,7 @@
 #include "GUI/HEADER/advancedview.h"
 
 AdvancedView::AdvancedView(){
-
+    setFixedSize(800,320);
     CE = new QPushButton("CE");
 
     QLabel* typestatus= new QLabel("Status Attuale: ");
@@ -109,10 +109,10 @@ AdvancedView::AdvancedView(){
     left->addWidget(elenco);
 
     //layout generale
-    this->addItem(left);
-    this->addItem(right);
-    this->addItem(StatusGrid);
-
+    all->addItem(left);
+    all->addItem(right);
+    all->addItem(StatusGrid);
+    setLayout(all);
     buttonLayout->setAlignment(Qt::AlignTop);
     StatusGrid->setAlignment(Qt::AlignTop);
     //this->refresh();

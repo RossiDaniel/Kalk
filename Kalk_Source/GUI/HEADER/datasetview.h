@@ -26,21 +26,17 @@ private:
     QHBoxLayout* all;
     QGridLayout* buttonLayout;
     QGridLayout* bottom;
-    QGridLayout* StatusGrid;
 
     QSignalMapper* StatussignalMapper;
     QSignalMapper* InputsignalMapper;
     QSignalMapper* SingleOperationsignalMapper;
     QSignalMapper* MultiOperationsignalMapper;
 
-    QPushButton* StatusSet;
-    QPushButton* StatusDataset;
-    QPushButton* StatusAdvanced;
     QLabel* Status;
 
     QPushButton* CE;
 
-    QPushButton* Button;
+    QPushButton* Button1;
     QPushButton* Button2;
     QPushButton* Button3;
     QPushButton* Button4;
@@ -62,7 +58,6 @@ private:
 
 public:
     DatasetView();
-    ~DatasetView();
 };
 
 

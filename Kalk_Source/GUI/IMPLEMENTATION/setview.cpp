@@ -1,6 +1,7 @@
 #include "GUI/HEADER/setview.h"
 
 SetView::SetView(){
+    setFixedSize(800,320);
     CE = new QPushButton("CE");
     connect(CE, SIGNAL(clicked(bool)), this, SLOT(setValue()));
     QLabel* typestatus= new QLabel("Status Attuale: ");
@@ -66,7 +67,7 @@ SetView::SetView(){
     elenco->setFixedWidth(200);
 
     buttonLayout->addWidget(CE,0,1);
-    buttonLayout->addWidget(Button1,1,1);
+    buttonLayout->addWidget(Button1,0,1);
     buttonLayout->addWidget(Button2,1,2);
     buttonLayout->addWidget(Button3,1,3);
     buttonLayout->addWidget(Button4,1,4);
@@ -83,8 +84,6 @@ SetView::SetView(){
     buttonLayout->addWidget(typestatus,4,3);
     buttonLayout->addWidget(Status,4,4);
 
-    QGridLayout* StatusGrid= new QGridLayout();
-    StatusGrid->addItem(GetStatusGrid(),0,0);
     Barra->setReadOnly(true);
     errori->setReadOnly(true);
 
@@ -97,12 +96,11 @@ SetView::SetView(){
     left->addWidget(elenco);
 
     //layout generale
-    this->addItem(left);
-    this->addItem(right);
-    this->addItem(StatusGrid);
+    all->addItem(left);
+    all->addItem(right);
 
+    setLayout(all);
     buttonLayout->setAlignment(Qt::AlignTop);
-    StatusGrid->setAlignment(Qt::AlignTop);
 }
 
 void SetView::setValue(){

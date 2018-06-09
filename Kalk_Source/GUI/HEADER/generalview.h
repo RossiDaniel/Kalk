@@ -3,12 +3,11 @@
 
 #include<QWidget>
 #include<QHBoxLayout>
-
+#include<QStackedWidget>
 class GeneralView: public QWidget{
     Q_OBJECT
 public:
-    GeneralView(QHBoxLayout*);
-
+    GeneralView();
 };
 
 #endif // GENERALVIEW_H

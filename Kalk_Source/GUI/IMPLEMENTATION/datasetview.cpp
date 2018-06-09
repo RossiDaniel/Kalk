@@ -1,7 +1,7 @@
 #include "GUI/HEADER/datasetview.h"
 
 DatasetView::DatasetView(){
-
+    setFixedSize(800,320);
     CE = new QPushButton("CE");
     //connect(CE, SIGNAL(clicked(bool)), this, SLOT(setValue()));
     QLabel* typestatus= new QLabel("Status Attuale: ");
@@ -11,23 +11,25 @@ DatasetView::DatasetView(){
 
 
 
-    Button->setText("Create Dataset");
-    Button2->setText("Delete Dataset");
-    Button3->setText("Clear Kalk");
-    Button4->setText("Change Number");
-    Button5->setText("Somme");
-    Button6->setText("Size");
-    Button7->setText("Average");
-    Button8->setText("GL");
-    Button9->setText("Variance");
-    Button10->setText("DS");
-    Button11->setText("Deviance");
-    Button12->setText("Deviation");
-    Button13->setText("Deviation^2");
+    Button1 =new QPushButton("Create Set");
+    Button2 =new QPushButton("Delete Set");
+    Button3 =new QPushButton("Clear Kalk");
+    Button4 =new QPushButton("Save Result");
+    Button5 =new QPushButton("Insert Number");
+    Button6 =new QPushButton("Delete Number");
+    Button7 =new QPushButton("Union");
+    Button8= new QPushButton("Intercetion");
+    Button9 =new QPushButton("Difference");
+    Button10 =new QPushButton("Complement");
+    Button11= new QPushButton("SymmetricalDif.");
+    Button12= new QPushButton("CartesianProd");
+    Button13= new QPushButton("PowerSet()");
+    Button14=new QPushButton("=");
+
     InputsignalMapper = new QSignalMapper (this) ;
 
 
-    InputsignalMapper -> setMapping (Button, "New") ;
+    InputsignalMapper -> setMapping (Button1, "New") ;
     InputsignalMapper -> setMapping (Button2, "Remove") ;
     InputsignalMapper -> setMapping (Button5, "AddElement") ;
     InputsignalMapper -> setMapping (Button6, "SubElement") ;
@@ -65,7 +67,7 @@ DatasetView::DatasetView(){
     elenco->setFixedWidth(200);
 
     buttonLayout->addWidget(CE,0,1);
-    buttonLayout->addWidget(Button,1,1);
+    buttonLayout->addWidget(Button1,1,1);
     buttonLayout->addWidget(Button2,1,2);
     buttonLayout->addWidget(Button3,1,3);
     buttonLayout->addWidget(Button4,1,4);
@@ -80,9 +82,9 @@ DatasetView::DatasetView(){
     buttonLayout->addWidget(Button13,4,1);
     buttonLayout->addWidget(Button14,4,2);
     buttonLayout->addWidget(typestatus,4,3);
+    buttonLayout->addWidget(Status,4,4);
 
-    QGridLayout* StatusGrid= new QGridLayout();
-    StatusGrid->addItem(GetStatusGrid(),0,0);
+
     Barra->setReadOnly(true);
     errori->setReadOnly(true);
 
@@ -95,51 +97,11 @@ DatasetView::DatasetView(){
     left->addWidget(elenco);
 
     //layout generale
-    this->addItem(left);
-    this->addItem(right);
-    this->addItem(StatusGrid);
+    all->addItem(left);
+    all->addItem(right);
 
+    setLayout(all);
     buttonLayout->setAlignment(Qt::AlignTop);
-    StatusGrid->setAlignment(Qt::AlignTop);
-    //this->refresh();
-}
-DatasetView::~DatasetView(){
-    delete right;
-    delete left;
-    delete all;
-    delete buttonLayout;
-    delete bottom;
-    delete StatusGrid;
-
-    delete StatussignalMapper;
-    delete InputsignalMapper;
-    delete SingleOperationsignalMapper;
-    delete MultiOperationsignalMapper;
-
-    delete StatusSet;
-    delete StatusDataset;
-    delete StatusAdvanced;
-    delete Status;
-
-    delete Button;
-    delete Button2;
-    delete Button3;
-    delete Button4;
-    delete Button5;
-    delete Button6;
-
-    delete Button7;
-    delete Button8;
-    delete Button9;
-    delete Button10;
-    delete Button11;
-    delete Button12;
-    delete Button13;
-    delete Button14;
-
-    delete Barra;
-    delete errori;
-    delete elenco;
 }
 /*
 void KalkMainWindow::openExtraPanel(QString q){

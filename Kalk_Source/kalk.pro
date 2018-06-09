@@ -28,7 +28,7 @@ SOURCES += \
     MODEL/IMPLEMENTATION/AdvancedLogic.cpp \
     GUI/IMPLEMENTATION/kalkmainwindow.cpp \
     MODEL/IMPLEMENTATION/abstractlogic.cpp \
-    GUI/IMPLEMENTATION/generalview.cpp
+    GUI/IMPLEMENTATION/View.cpp
 
 
 
@@ -53,5 +53,5 @@ HEADERS += \
     GUI/HEADER/advancedview.h \
     MODEL/HEADER/DatasetLogic.h \
     MODEL/HEADER/AdvancedLogic.h \
-    GUI/HEADER/generalview.h
+    GUI/HEADER/View.h
 
