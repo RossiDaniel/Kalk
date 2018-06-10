@@ -10,13 +10,18 @@
 
 class AdvancedLogic: public AbstractLogic{
 private:
+    std::list<const numbers*>* elements;
     numbers* operand1;
     numbers* operand2;
-    std::string* operation;
+    QString* operation;
 
 public:
-    AdvancedLogic();
+    AdvancedLogic(std::list<const numbers*>*);
     ~AdvancedLogic();
-};
+
+public slots:
+    void SetOperation(QString);
+    void CE();
+    void singleOperation(QString);};
 
 #endif // DATASETLOGIN_H

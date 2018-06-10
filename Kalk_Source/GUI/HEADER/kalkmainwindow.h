@@ -23,7 +23,10 @@ public slots:
 
 signals:
     void input(QString);
-
+    void CE();
+    void operation(QString);
+    void singleOperation(QString);
+    void result();
 
 };
 

@@ -1,9 +1,8 @@
-﻿/*
-#include "GUI/HEADER/extrapanel.h"
+﻿#include "GUI/HEADER/extrapanel.h"
 
 extrapanel::~extrapanel(){
-    delete Griglia;
 }
+/*
 
 extrapanel::extrapanel(KalkMainWindow* p,QString q){
     d=0;

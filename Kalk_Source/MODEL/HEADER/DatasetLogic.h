@@ -10,14 +10,16 @@
 
 class DatasetLogic: public AbstractLogic{
 private:
+    std::list<const numbers*>* elements;
     numbers* operand1;
     numbers* operand2;
-    std::string* operation;
+    QString* operation;
 
 public:
-    DatasetLogic();
+    DatasetLogic(std::list<const numbers*>*);
     ~DatasetLogic();
 public slots:
-    void printValue();
-};
+    void SetOperation(QString);
+    void CE();
+    void singleOperation(QString);};
 #endif // DATASETLOGIC_H

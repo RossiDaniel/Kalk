@@ -28,10 +28,10 @@ SOURCES += \
     MODEL/IMPLEMENTATION/AdvancedLogic.cpp \
     GUI/IMPLEMENTATION/kalkmainwindow.cpp \
     MODEL/IMPLEMENTATION/abstractlogic.cpp \
-    GUI/IMPLEMENTATION/View.cpp
-
-
-
+    GUI/IMPLEMENTATION/View.cpp \
+    GUI/IMPLEMENTATION/inputSet.cpp \
+    GUI/IMPLEMENTATION/inputDataset.cpp \
+    GUI/IMPLEMENTATION/inputAdvanced.cpp
 
 
 HEADERS += \
@@ -57,4 +57,3 @@ HEADERS += \
     GUI/HEADER/inputSet.h \
     GUI/HEADER/inputDataset.h \
     GUI/HEADER/inputAdvanced.h
-

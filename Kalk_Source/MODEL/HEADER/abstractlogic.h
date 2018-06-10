@@ -11,7 +11,10 @@ public:
     ~AbstractLogic();
 
 public slots:
-    virtual void printValue()=0;
+    virtual void SetOperation(QString)=0;
+    virtual void CE()=0;
+    virtual void singleOperation(QString)=0;
+
 };
 
 #endif // ABSTRACTLOGIC_H

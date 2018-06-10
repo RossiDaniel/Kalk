@@ -39,8 +39,8 @@ private:
 public:
     View(std::vector<KalkMainWindow*>&);
 
-public slots:
-
+signals:
+    void changelogic(int);
 };
 
 #endif // VIEW_H

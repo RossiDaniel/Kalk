@@ -23,7 +23,9 @@
 #include <QLineEdit>
 #include<QListWidget>
 #include<QScrollBar>
-#include"MODEL/HEADER/SetLogic.h"
+#include"MODEL/HEADER/DatasetLogic.h"
+#include"MODEL/HEADER/AdvancedLogic.h"
+
 #include <QListWidgetItem>
 #include <QTextEdit>
 #include<QLabel>
@@ -36,14 +38,16 @@ class AppKalk: public QObject{
 private:
     View* container_view;
     AbstractLogic* uni;
-    std::list<const numbers*> Uset;
+    std::list<const numbers*>* Uset;
     std::vector<KalkMainWindow*> views;
-
-
+    std::vector<AbstractLogic*> logics;
 
 public:
     AppKalk();
     ~AppKalk();
+
+public slots:
+    void changeLogic(int);
 
 };
 

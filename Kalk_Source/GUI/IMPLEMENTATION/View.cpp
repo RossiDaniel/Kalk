@@ -23,6 +23,7 @@ View::View(std::vector<KalkMainWindow*>& views){
     StatussignalMapper -> setMapping (StatusAdvanced, 2);
 
     connect (StatussignalMapper, SIGNAL(mapped(int)), operationArea, SLOT(setCurrentIndex(int)));
+    connect (StatussignalMapper, SIGNAL(mapped(int)), this, SIGNAL(changelogic(int)));
 
     for(unsigned int i=0; i< views.size(); i++){
         operationArea->addWidget(views[i]);

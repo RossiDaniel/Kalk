@@ -1,8 +1,6 @@
-#ifndef NEWSET_H
-/*
-#define NEWSET_H
+#ifndef EXTRAPANEL_H
+#define EXTRAPANEL_H
 
-#include "GUI/HEADER/kalkmainwindow.h"
 #include "MODEL/HEADER/Set.h"
 #include "MODEL/HEADER/Dataset.h"
 #include <QWidget>
@@ -18,32 +16,20 @@
 
 class extrapanel:public QWidget{
     Q_OBJECT
-private:
-    QLabel* errore;
-    KalkMainWindow* father;
-    QGridLayout* Griglia;
-    QLabel* Name;
-    QLineEdit* InputName;
-    QLabel* Set;
-    QLineEdit* InputSet;
-    QPushButton* Invio;
-    QPushButton* up;
-    dataset* d;
-
 
 public:
-    extrapanel(KalkMainWindow*,QString);
-    ~extrapanel();
-    std::list<int> parser()const;
+    virtual ~extrapanel();
+    virtual std::list<int> parser()const =0;
+
 
 public slots:
-    void creaset(){}
-    void remove(){}
-    void addelement(){}
-    void subelement(){}
-    void modify(){}
-    void update(){}
+
+    virtual void creaset()=0;
+    virtual void remove()=0;
+    virtual void addelement()=0;
+    virtual void subelement()=0;
+    virtual void modify()=0;
+    virtual void update()=0;
 
 };
-#endif // NEWSET_H
-*/
+#endif // EXTRAPANEL_H
