@@ -17,13 +17,14 @@
 #include <QTextEdit>
 #include<QLabel>
 #include<QSignalMapper>
+#include<QStackedWidget>
 
 class View: public QWidget{
     Q_OBJECT
 
 private:
+    QStackedWidget* operationArea;
     QHBoxLayout* kalk;
-    QGridLayout* operationArea;
     QGridLayout* status;
 
     QPushButton* StatusSet;

@@ -2,7 +2,7 @@
 
 View::View(){
     status=new QGridLayout();
-    operationArea=new QGridLayout();
+    operationArea=new QStackedWidget();
     kalk=new QHBoxLayout();
 
     StatusSet= new QPushButton("SET");
@@ -25,34 +25,31 @@ View::View(){
     connect (StatussignalMapper, SIGNAL(mapped(QString)), this, SLOT(selectStatus(QString))) ;
     set=new SetView();
     dataset= new DatasetView();
-
-    dataset->hide();
-
-    operationArea->addWidget(set,0,0);
-    operationArea->addWidget(dataset,0,0);
+    currentType=set;
+    operationArea->addWidget(set);
+    operationArea->addWidget(dataset);
 
     status->setAlignment(Qt::AlignTop);
 
-    kalk->addItem(operationArea);
-    kalk->addItem(status);
+    kalk->addWidget(operationArea);
+    kalk->addLayout(status);
     setLayout(kalk);
 }
 
 void View::selectStatus(QString newStatus){
     if(newStatus == "SET"){
-        changeStatus(set);
+        operationArea->setCurrentIndex(0);
     }
     if(newStatus == "DATASET"){
-        changeStatus(dataset);
+        operationArea->setCurrentIndex(1);
     }
     if(newStatus == "ADVANCED"){
         //changeStatus(advaced);
     }
 }
 void View::changeStatus(KalkMainWindow* newStatus){
-    KalkMainWindow* oldStatus=currentType;
     currentType=newStatus;
-    currentType->setHidden(false);
-    oldStatus->hide();
+    std::cout<<"ciucia";
+    operationArea->update() ;
 }
 
