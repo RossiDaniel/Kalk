@@ -1,4 +1,4 @@
-#include "MODEL/HEADER/app.h"
+#include "MODEL/HEADER/AppKalk.h"
 #include "GUI/HEADER/datasetview.h"
 AppKalk::AppKalk(){
     Uset=new std::list<const numbers*>();
@@ -19,7 +19,9 @@ AppKalk::AppKalk(){
     for(unsigned int i=0; i<views.size(); i++){
         connect(views[i],SIGNAL(operation(QString)),uni,SLOT(SetOperation(QString)));
         connect(views[i],SIGNAL(singleOperation(QString)),uni,SLOT(singleOperation(QString)));
-        connect(views[i],SIGNAL(CE()),uni,SLOT(CE()));
+        connect(views[i],SIGNAL(cancel()),uni,SLOT(CE()));
+        connect(logics[i],SIGNAL(listOfElements(std::list<QString>)),views[i],SLOT(refresh(std::list<QString>)));
+
 
     }/*
     void input(QString);
@@ -35,5 +37,4 @@ AppKalk::~AppKalk(){
 
 void AppKalk::changeLogic(int index){
     uni=logics[index];
-    std::cout<<"iuuuu"<<std::endl;
 }

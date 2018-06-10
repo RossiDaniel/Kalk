@@ -86,6 +86,19 @@ DatasetView::DatasetView(){
     setLayout(all);
     buttonLayout->setAlignment(Qt::AlignTop);
 }
+
+void DatasetView::refresh(std::list<QString> l){
+    elenco->clear();
+    errori->clear();
+    for(std::list<QString>::const_iterator cit= l.begin(); cit!=l.end(); cit++){
+         elenco->addItem(*cit);
+     }
+}
+
+void DatasetView::setCE(){
+    emit cancel();
+    Barra->clear();
+}
 /*
 void KalkMainWindow::openExtraPanel(QString q){
     extrapanel* panel=new extrapanel(this,q);

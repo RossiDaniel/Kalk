@@ -58,6 +58,8 @@ private:
 public:
     SetView();
 public slots:
+    void refresh(std::list<QString>);
+    void setCE();
 
 };
 

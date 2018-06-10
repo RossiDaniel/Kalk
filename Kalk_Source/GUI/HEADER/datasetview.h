@@ -56,6 +56,10 @@ private:
 
 public:
     DatasetView();
+
+public slots:
+    void refresh(std::list<QString>);
+    void setCE();
 };
 
 

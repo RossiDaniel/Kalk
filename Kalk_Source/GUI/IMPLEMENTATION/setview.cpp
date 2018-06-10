@@ -97,18 +97,21 @@ void KalkMainWindow::openExtraPanel(QString q){
     panel->show();
 }
 
-
-void KalkMainWindow::refresh(){
+*/
+void SetView::refresh(std::list<QString> l){
     elenco->clear();
     errori->clear();
-     std::list<std::string> l =uni->ListNumbers();
-     for(std::list<std::string>::const_iterator cit= l.begin(); cit!=l.end(); cit++){
-         const char *c = (*cit).c_str();
-         QString q(c);
-         elenco->addItem(q);
+    for(std::list<QString>::const_iterator cit= l.begin(); cit!=l.end(); cit++){
+         elenco->addItem(*cit);
      }
 }
 
+
+void SetView::setCE(){
+    emit cancel();
+    Barra->clear();
+}
+/*
 void KalkMainWindow::add_set(const numbers& s){
     uni->add_set(s);
 }
@@ -219,247 +222,6 @@ dataset* KalkMainWindow::getDataset(std::string name) const{
     return uni->getDataset(name);
 }
 
-void KalkMainWindow::changeStatus(QString q){
-    if(uni->getStatus() == "set"){
-        disconnect (Button1, SIGNAL(clicked()), InputsignalMapper, SLOT(map())) ;
-        disconnect (Button2, SIGNAL(clicked()), InputsignalMapper, SLOT(map())) ;
-        disconnect (Button5, SIGNAL(clicked()), InputsignalMapper, SLOT(map())) ;
-        disconnect (Button6, SIGNAL(clicked()), InputsignalMapper, SLOT(map())) ;
-        disconnect (Button13, SIGNAL(clicked()), SingleOperationsignalMapper, SLOT(map())) ;
-        disconnect (Button10, SIGNAL(clicked()), SingleOperationsignalMapper, SLOT(map())) ;
-        disconnect (Button7, SIGNAL(clicked()), MultiOperationsignalMapper, SLOT(map())) ;
-        disconnect (Button8, SIGNAL(clicked()), MultiOperationsignalMapper, SLOT(map())) ;
-        disconnect (Button9, SIGNAL(clicked()), MultiOperationsignalMapper, SLOT(map())) ;
-        disconnect (Button11, SIGNAL(clicked()), MultiOperationsignalMapper, SLOT(map())) ;
-        disconnect (Button12, SIGNAL(clicked()), MultiOperationsignalMapper, SLOT(map())) ;
-
-        disconnect (Button3,SIGNAL(clicked()),this,SLOT(clearElenco()));
-        disconnect (Button4,SIGNAL(clicked()),this,SLOT(save()));
-
-        disconnect (SingleOperationsignalMapper, SIGNAL(mapped(QString)), this, SLOT(singleOperation(QString)));
-        disconnect (InputsignalMapper, SIGNAL(mapped(QString)), this, SLOT(openExtraPanel(QString))) ;
-        disconnect (MultiOperationsignalMapper, SIGNAL(mapped(QString)), this, SLOT(SetOperation(QString)));
-
-        delete SingleOperationsignalMapper;
-        delete MultiOperationsignalMapper;
-        delete InputsignalMapper;
-        uni->resetkalk();
-
-    }
-    if(uni->getStatus() == "dataset"){
-        disconnect (Button1, SIGNAL(clicked()), InputsignalMapper, SLOT(map())) ;
-        disconnect (Button2, SIGNAL(clicked()), InputsignalMapper, SLOT(map())) ;
-        disconnect (Button4,SIGNAL(clicked()),InputsignalMapper,SLOT(map()));
-        disconnect (Button5, SIGNAL(clicked()), SingleOperationsignalMapper, SLOT(map())) ;
-        disconnect (Button6, SIGNAL(clicked()), SingleOperationsignalMapper, SLOT(map())) ;
-        disconnect (Button13, SIGNAL(clicked()), SingleOperationsignalMapper, SLOT(map())) ;
-        disconnect (Button10, SIGNAL(clicked()), SingleOperationsignalMapper, SLOT(map())) ;
-        disconnect (Button7, SIGNAL(clicked()), SingleOperationsignalMapper, SLOT(map())) ;
-        disconnect (Button8, SIGNAL(clicked()), SingleOperationsignalMapper, SLOT(map())) ;
-        disconnect (Button9, SIGNAL(clicked()), SingleOperationsignalMapper, SLOT(map())) ;
-        disconnect (Button11, SIGNAL(clicked()), SingleOperationsignalMapper, SLOT(map())) ;
-        disconnect (Button12, SIGNAL(clicked()), SingleOperationsignalMapper, SLOT(map())) ;
-        disconnect (Button3,SIGNAL(clicked()),this,SLOT(clearElenco()));
-
-        disconnect (SingleOperationsignalMapper, SIGNAL(mapped(QString)), this, SLOT(singleOperation(QString)));
-        disconnect (InputsignalMapper, SIGNAL(mapped(QString)), this, SLOT(openExtraPanel(QString))) ;
-        disconnect (MultiOperationsignalMapper, SIGNAL(mapped(QString)), this, SLOT(SetOperation(QString)));
-
-        Button14->setVisible(true);
-
-        delete SingleOperationsignalMapper;
-        delete MultiOperationsignalMapper;
-        delete InputsignalMapper;
-        uni->resetkalk();
-    }
-    if(uni->getStatus() == "advanced"){
-        disconnect (Button1, SIGNAL(clicked()), InputsignalMapper, SLOT(map())) ;
-        disconnect (Button2, SIGNAL(clicked()), InputsignalMapper, SLOT(map())) ;
-        disconnect(Button4,SIGNAL(clicked()),InputsignalMapper,SLOT(map()));
-        disconnect (Button5, SIGNAL(clicked()), MultiOperationsignalMapper, SLOT(map())) ;
-        disconnect (Button6, SIGNAL(clicked()), MultiOperationsignalMapper, SLOT(map())) ;
-        disconnect (Button13, SIGNAL(clicked()), MultiOperationsignalMapper, SLOT(map())) ;
-        disconnect (Button10, SIGNAL(clicked()), MultiOperationsignalMapper, SLOT(map())) ;
-        disconnect (Button7, SIGNAL(clicked()), MultiOperationsignalMapper, SLOT(map())) ;
-        disconnect (Button8, SIGNAL(clicked()), MultiOperationsignalMapper, SLOT(map())) ;
-        disconnect (Button9, SIGNAL(clicked()), MultiOperationsignalMapper, SLOT(map())) ;
-        disconnect (Button11, SIGNAL(clicked()), MultiOperationsignalMapper, SLOT(map())) ;
-        disconnect (Button12, SIGNAL(clicked()), MultiOperationsignalMapper, SLOT(map())) ;
-        disconnect(Button3,SIGNAL(clicked()),this,SLOT(clearElenco()));
-
-        disconnect (SingleOperationsignalMapper, SIGNAL(mapped(QString)), this, SLOT(singleOperation(QString)));
-        disconnect (InputsignalMapper, SIGNAL(mapped(QString)), this, SLOT(openExtraPanel(QString))) ;
-        disconnect (MultiOperationsignalMapper, SIGNAL(mapped(QString)), this, SLOT(SetOperation(QString)));
-
-        delete SingleOperationsignalMapper;
-        delete MultiOperationsignalMapper;
-        delete InputsignalMapper;
-        uni->resetkalk();
-    }
-    if(q == "set"){
-        SingleOperationsignalMapper = new QSignalMapper();
-        MultiOperationsignalMapper = new QSignalMapper();
-        InputsignalMapper = new QSignalMapper();
-        uni->setStatus("set");
-        Status->setText("SET");
-        Button1->setText("Create Set");
-        Button2->setText("Delete Set");
-        Button3->setText("Clear Kalk");
-        Button4->setText("Save Result");
-        Button5->setText("Insert Number");
-        Button6->setText("Delete Number");
-        Button7->setText("Union");
-        Button8->setText("Intercetion");
-        Button9->setText("Difference");
-        Button10->setText("Complement");
-        Button11->setText("SymmetricalDif.");
-        Button12->setText("CartesianProd");
-        Button13->setText("PowerSet()");
-
-        connect (Button1, SIGNAL(clicked()), InputsignalMapper, SLOT(map())) ;
-        connect (Button2, SIGNAL(clicked()), InputsignalMapper, SLOT(map())) ;
-        connect (Button5, SIGNAL(clicked()), InputsignalMapper, SLOT(map())) ;
-        connect (Button6, SIGNAL(clicked()), InputsignalMapper, SLOT(map())) ;
-        connect (Button13, SIGNAL(clicked()), SingleOperationsignalMapper, SLOT(map())) ;
-        connect (Button10, SIGNAL(clicked()), SingleOperationsignalMapper, SLOT(map())) ;
-        connect (Button7, SIGNAL(clicked()), MultiOperationsignalMapper, SLOT(map())) ;
-        connect (Button8, SIGNAL(clicked()), MultiOperationsignalMapper, SLOT(map())) ;
-        connect (Button9, SIGNAL(clicked()), MultiOperationsignalMapper, SLOT(map())) ;
-        connect (Button11, SIGNAL(clicked()), MultiOperationsignalMapper, SLOT(map())) ;
-        connect (Button12, SIGNAL(clicked()), MultiOperationsignalMapper, SLOT(map())) ;
-        connect(Button3,SIGNAL(clicked()),this,SLOT(clearElenco()));
-        connect(Button4,SIGNAL(clicked()),this,SLOT(save()));
-
-        InputsignalMapper -> setMapping (Button1, "New") ;
-        InputsignalMapper -> setMapping (Button2, "Remove") ;
-        InputsignalMapper -> setMapping (Button5, "AddElement") ;
-        InputsignalMapper -> setMapping (Button6, "SubElement") ;
-        SingleOperationsignalMapper -> setMapping (Button13, "powerset") ;
-        SingleOperationsignalMapper -> setMapping (Button10, "complement") ;
-        MultiOperationsignalMapper -> setMapping (Button7, "union") ;
-        MultiOperationsignalMapper -> setMapping (Button8, "intercetion") ;
-        MultiOperationsignalMapper -> setMapping (Button9, "difference") ;
-        MultiOperationsignalMapper -> setMapping (Button11, "symmetricaldifference") ;
-        MultiOperationsignalMapper -> setMapping (Button12, "cartesianproduct") ;
-
-        connect (SingleOperationsignalMapper, SIGNAL(mapped(QString)), this, SLOT(singleOperation(QString)));
-        connect (InputsignalMapper, SIGNAL(mapped(QString)), this, SLOT(openExtraPanel(QString))) ;
-        connect (MultiOperationsignalMapper, SIGNAL(mapped(QString)), this, SLOT(SetOperation(QString)));
-        this->refresh();
-
-    }
-    if(q == "dataset"){
-        SingleOperationsignalMapper = new QSignalMapper();
-        MultiOperationsignalMapper = new QSignalMapper();
-        InputsignalMapper = new QSignalMapper();
-        uni->setStatus("dataset");
-        Status->setText("DATASET");
-        Button1->setText("Create Dataset");
-        Button2->setText("Delete Dataset");
-        Button3->setText("Clear Kalk");
-        Button4->setText("Change Number");
-        Button5->setText("Somme");
-        Button6->setText("Size");
-        Button7->setText("Average");
-        Button8->setText("GL");
-        Button9->setText("Variance");
-        Button10->setText("DS");
-        Button11->setText("Deviance");
-        Button12->setText("Deviation");
-        Button13->setText("Deviation^2");
-        Button14->hide();
-
-        connect (Button1, SIGNAL(clicked()), InputsignalMapper, SLOT(map())) ;
-        connect (Button2, SIGNAL(clicked()), InputsignalMapper, SLOT(map())) ;
-        connect(Button4,SIGNAL(clicked()),InputsignalMapper,SLOT(map()));
-        connect (Button5, SIGNAL(clicked()), SingleOperationsignalMapper, SLOT(map())) ;
-        connect (Button6, SIGNAL(clicked()), SingleOperationsignalMapper, SLOT(map())) ;
-        connect (Button13, SIGNAL(clicked()), SingleOperationsignalMapper, SLOT(map())) ;
-        connect (Button10, SIGNAL(clicked()), SingleOperationsignalMapper, SLOT(map())) ;
-        connect (Button7, SIGNAL(clicked()), SingleOperationsignalMapper, SLOT(map())) ;
-        connect (Button8, SIGNAL(clicked()), SingleOperationsignalMapper, SLOT(map())) ;
-        connect (Button9, SIGNAL(clicked()), SingleOperationsignalMapper, SLOT(map())) ;
-        connect (Button11, SIGNAL(clicked()), SingleOperationsignalMapper, SLOT(map())) ;
-        connect (Button12, SIGNAL(clicked()), SingleOperationsignalMapper, SLOT(map())) ;
-        connect(Button3,SIGNAL(clicked()),this,SLOT(clearElenco()));
-
-        InputsignalMapper -> setMapping (Button1, "New") ;
-        InputsignalMapper -> setMapping (Button2, "Remove") ;
-        InputsignalMapper -> setMapping (Button4, "Change") ;
-        SingleOperationsignalMapper -> setMapping (Button5, "somme") ;
-        SingleOperationsignalMapper -> setMapping (Button6, "size") ;
-        SingleOperationsignalMapper -> setMapping (Button7, "average") ;
-        SingleOperationsignalMapper -> setMapping (Button8, "gl") ;
-        SingleOperationsignalMapper -> setMapping (Button9, "variance") ;
-        SingleOperationsignalMapper -> setMapping (Button10, "ds") ;
-        SingleOperationsignalMapper -> setMapping (Button11, "deviance") ;
-        SingleOperationsignalMapper -> setMapping (Button12, "deviation") ;
-        SingleOperationsignalMapper -> setMapping (Button13, "deviation^2") ;
-
-        connect (SingleOperationsignalMapper, SIGNAL(mapped(QString)), this, SLOT(singleOperation(QString)));
-        connect (InputsignalMapper, SIGNAL(mapped(QString)), this, SLOT(openExtraPanel(QString))) ;
-        connect (MultiOperationsignalMapper, SIGNAL(mapped(QString)), this, SLOT(SetOperation(QString)));
-        this->refresh();
-    }
-    if(q == "advanced"){
-        SingleOperationsignalMapper = new QSignalMapper();
-        MultiOperationsignalMapper = new QSignalMapper();
-        InputsignalMapper = new QSignalMapper();
-        uni->setStatus("advanced");
-        Status->setText("ADVANCED");
-        Button1->setText("Create Advanced");
-        Button2->setText("Delete Advanced");
-        Button3->setText("Clear Kalk");
-        Button4->setText("All Info");
-        Button5->setText("Coscarto");
-        Button6->setText("Codevianza");
-        Button7->setText("Covarianza");
-        Button8->setText("Correlazione");
-        Button9->setText("C.Determinazione");
-        Button10->setText("Regressione");
-        Button11->setText("Intercetta");
-        Button12->setText("Retta");
-        Button13->setText("Grafic");
-
-        connect (Button1, SIGNAL(clicked()), InputsignalMapper, SLOT(map())) ;
-        connect (Button2, SIGNAL(clicked()), InputsignalMapper, SLOT(map())) ;
-        connect(Button4,SIGNAL(clicked()),MultiOperationsignalMapper,SLOT(map()));
-        connect (Button5, SIGNAL(clicked()), MultiOperationsignalMapper, SLOT(map())) ;
-        connect (Button6, SIGNAL(clicked()), MultiOperationsignalMapper, SLOT(map())) ;
-        connect (Button10, SIGNAL(clicked()), MultiOperationsignalMapper, SLOT(map())) ;
-        connect (Button7, SIGNAL(clicked()), MultiOperationsignalMapper, SLOT(map())) ;
-        connect (Button8, SIGNAL(clicked()), MultiOperationsignalMapper, SLOT(map())) ;
-        connect (Button9, SIGNAL(clicked()), MultiOperationsignalMapper, SLOT(map())) ;
-        connect (Button11, SIGNAL(clicked()), MultiOperationsignalMapper, SLOT(map())) ;
-        connect (Button12, SIGNAL(clicked()), MultiOperationsignalMapper, SLOT(map())) ;
-        connect (Button13, SIGNAL(clicked()), MultiOperationsignalMapper, SLOT(map())) ;
-        connect(Button3,SIGNAL(clicked()),this,SLOT(clearElenco()));
-
-        InputsignalMapper -> setMapping (Button1, "New") ;
-        InputsignalMapper -> setMapping (Button2, "Remove") ;
-        MultiOperationsignalMapper -> setMapping (Button4, "allinfo") ;
-        MultiOperationsignalMapper -> setMapping (Button5, "coscarto") ;
-        MultiOperationsignalMapper -> setMapping (Button6, "codevianza") ;
-        MultiOperationsignalMapper -> setMapping (Button7, "covarianza") ;
-        MultiOperationsignalMapper -> setMapping (Button8, "correlazione") ;
-        MultiOperationsignalMapper -> setMapping (Button9, "correllazione^2") ;
-        MultiOperationsignalMapper -> setMapping (Button10, "regressione") ;
-        MultiOperationsignalMapper -> setMapping (Button11, "intercetta") ;
-        MultiOperationsignalMapper -> setMapping (Button12, "retta") ;
-        MultiOperationsignalMapper -> setMapping (Button13, "grafic") ;
-
-        connect (SingleOperationsignalMapper, SIGNAL(mapped(QString)), this, SLOT(singleOperation(QString)));
-        connect (InputsignalMapper, SIGNAL(mapped(QString)), this, SLOT(openExtraPanel(QString))) ;
-        connect (MultiOperationsignalMapper, SIGNAL(mapped(QString)), this, SLOT(SetOperation(QString)));
-        this->refresh();
-    }
-    Barra->setText("Status Update!");
-}
-
-void KalkMainWindow::setCE(){
-    uni->resetkalk();
-    Barra->clear();
-}
 
 std::string KalkMainWindow::vuoto()const{
     return uni->getVoidNumbers();

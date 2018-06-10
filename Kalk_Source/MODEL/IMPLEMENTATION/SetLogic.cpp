@@ -14,7 +14,9 @@ void SetLogic::SetOperation(QString name){
     operation = new QString(name);
 }
 void SetLogic::CE(){
-
+    delete operand1;operand1=0;
+    delete operation;operation=0;
+    delete operand2;operand2=0;
 }
 void SetLogic::singleOperation(QString){
 

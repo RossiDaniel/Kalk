@@ -14,7 +14,8 @@ public slots:
     virtual void SetOperation(QString)=0;
     virtual void CE()=0;
     virtual void singleOperation(QString)=0;
-
+signals:
+    void listOfElements(std::list<QString>);
 };
 
 #endif // ABSTRACTLOGIC_H

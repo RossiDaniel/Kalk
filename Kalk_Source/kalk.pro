@@ -15,7 +15,6 @@ SOURCES += \
     MODEL/IMPLEMENTATION/UniverseSet.cpp \
     MODEL/IMPLEMENTATION/ris.cpp \
     GUI/IMPLEMENTATION/extrapanel.cpp \
-    MODEL/IMPLEMENTATION/app.cpp\
     MODEL/IMPLEMENTATION/advanced.cpp\
     MODEL/IMPLEMENTATION/UniverseAdvanced.cpp\
     GUI/IMPLEMENTATION/qcustomplot.cpp\
@@ -31,7 +30,8 @@ SOURCES += \
     GUI/IMPLEMENTATION/View.cpp \
     GUI/IMPLEMENTATION/inputSet.cpp \
     GUI/IMPLEMENTATION/inputDataset.cpp \
-    GUI/IMPLEMENTATION/inputAdvanced.cpp
+    GUI/IMPLEMENTATION/inputAdvanced.cpp \
+    MODEL/IMPLEMENTATION/AppKalk.cpp
 
 
 HEADERS += \
@@ -46,7 +46,6 @@ HEADERS += \
     MODEL/HEADER/UniverseAdvanced.h\
     GUI/HEADER/qcustomplot.h\
     GUI/HEADER/setview.h\
-    MODEL/HEADER/app.h\
     MODEL/HEADER/SetLogic.h\
     MODEL/HEADER/abstractlogic.h \
     GUI/HEADER/datasetview.h \
@@ -56,4 +55,5 @@ HEADERS += \
     GUI/HEADER/View.h \
     GUI/HEADER/inputSet.h \
     GUI/HEADER/inputDataset.h \
-    GUI/HEADER/inputAdvanced.h
+    GUI/HEADER/inputAdvanced.h \
+    MODEL/HEADER/AppKalk.h

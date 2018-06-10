@@ -62,6 +62,11 @@ private:
 public:
     AdvancedView();
     ~AdvancedView();
+
+public slots:
+    void refresh(std::list<QString>);
+    void setCE();
+
 };
 
 #endif // ADVANCEDVIEW_H
