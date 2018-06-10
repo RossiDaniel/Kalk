@@ -42,7 +42,6 @@ private:
     QPushButton* Button4;
     QPushButton* Button5;
     QPushButton* Button6;
-
     QPushButton* Button7;
     QPushButton* Button8;
     QPushButton* Button9;
@@ -50,7 +49,6 @@ private:
     QPushButton* Button11;
     QPushButton* Button12;
     QPushButton* Button13;
-    QPushButton* Button14;
 
     QTextEdit* Barra;
     QLineEdit* errori;

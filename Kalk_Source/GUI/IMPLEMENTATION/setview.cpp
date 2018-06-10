@@ -3,13 +3,8 @@
 SetView::SetView(){
     setFixedSize(800,320);
     CE = new QPushButton("CE");
-    connect(CE, SIGNAL(clicked(bool)), this, SLOT(setValue()));
     QLabel* typestatus= new QLabel("Status Attuale: ");
     Status = new QLabel("SET");
-
-    StatussignalMapper = new QSignalMapper (this) ;
-
-
 
     Button1 =new QPushButton("Create Set");
     Button2 =new QPushButton("Delete Set");
@@ -28,33 +23,25 @@ SetView::SetView(){
 
     InputsignalMapper = new QSignalMapper (this) ;
 
-
     InputsignalMapper -> setMapping (Button1, "New") ;
     InputsignalMapper -> setMapping (Button2, "Remove") ;
     InputsignalMapper -> setMapping (Button5, "AddElement") ;
     InputsignalMapper -> setMapping (Button6, "SubElement") ;
 
-
+    connect (InputsignalMapper, SIGNAL(mapped(QString)), this, SIGNAL(input(QString))) ;
 
     SingleOperationsignalMapper = new QSignalMapper (this) ;
 
     SingleOperationsignalMapper -> setMapping (Button13, "powerset") ;
     SingleOperationsignalMapper -> setMapping (Button10, "complement") ;
 
-
-
     MultiOperationsignalMapper = new QSignalMapper (this) ;
-
-
 
     MultiOperationsignalMapper -> setMapping (Button7, "union") ;
     MultiOperationsignalMapper -> setMapping (Button8, "intercetion") ;
     MultiOperationsignalMapper -> setMapping (Button9, "difference") ;
     MultiOperationsignalMapper -> setMapping (Button11, "symmetricaldifference") ;
     MultiOperationsignalMapper -> setMapping (Button12, "cartesianproduct") ;
-
-
-
 
     all=new QHBoxLayout();
     bottom = new QGridLayout();
@@ -67,7 +54,7 @@ SetView::SetView(){
     elenco->setFixedWidth(200);
 
     buttonLayout->addWidget(CE,0,1);
-    buttonLayout->addWidget(Button1,0,1);
+    buttonLayout->addWidget(Button1,1,1);
     buttonLayout->addWidget(Button2,1,2);
     buttonLayout->addWidget(Button3,1,3);
     buttonLayout->addWidget(Button4,1,4);
@@ -103,21 +90,7 @@ SetView::SetView(){
     buttonLayout->setAlignment(Qt::AlignTop);
 }
 
-void SetView::setValue(){
-    emit valueChanged();
-}
 
-void RemoveLayout (QWidget* widget)
-{
-    QLayout* layout = widget->layout ();
-    if (layout != 0)
-    {
-    QLayoutItem *item;
-    while ((item = layout->takeAt(0)) != 0)
-        layout->removeItem (item);
-    delete layout;
-    }
-}
 /*
 void KalkMainWindow::openExtraPanel(QString q){
     extrapanel* panel=new extrapanel(this,q);

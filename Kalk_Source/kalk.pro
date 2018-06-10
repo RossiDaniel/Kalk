@@ -53,5 +53,8 @@ HEADERS += \
     GUI/HEADER/advancedview.h \
     MODEL/HEADER/DatasetLogic.h \
     MODEL/HEADER/AdvancedLogic.h \
-    GUI/HEADER/View.h
+    GUI/HEADER/View.h \
+    GUI/HEADER/inputSet.h \
+    GUI/HEADER/inputDataset.h \
+    GUI/HEADER/inputAdvanced.h
 

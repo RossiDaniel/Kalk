@@ -3,58 +3,42 @@
 DatasetView::DatasetView(){
     setFixedSize(800,320);
     CE = new QPushButton("CE");
-    //connect(CE, SIGNAL(clicked(bool)), this, SLOT(setValue()));
     QLabel* typestatus= new QLabel("Status Attuale: ");
     Status = new QLabel("DATASET");
 
-    StatussignalMapper = new QSignalMapper (this) ;
-
-
-
-    Button1 =new QPushButton("Create Set");
-    Button2 =new QPushButton("Delete Set");
-    Button3 =new QPushButton("Clear Kalk");
-    Button4 =new QPushButton("Save Result");
-    Button5 =new QPushButton("Insert Number");
-    Button6 =new QPushButton("Delete Number");
-    Button7 =new QPushButton("Union");
-    Button8= new QPushButton("Intercetion");
-    Button9 =new QPushButton("Difference");
-    Button10 =new QPushButton("Complement");
-    Button11= new QPushButton("SymmetricalDif.");
-    Button12= new QPushButton("CartesianProd");
-    Button13= new QPushButton("PowerSet()");
-    Button14=new QPushButton("=");
+    Button1=new QPushButton("Create Dataset");
+    Button2=new QPushButton("Delete Dataset");
+    Button3=new QPushButton("Clear Kalk");
+    Button4=new QPushButton("Change Number");
+    Button5=new QPushButton("Somme");
+    Button6=new QPushButton("Size");
+    Button7=new QPushButton("Average");
+    Button8=new QPushButton("GL");
+    Button9=new QPushButton("Variance");
+    Button10=new QPushButton("DS");
+    Button11=new QPushButton("Deviance");
+    Button12=new QPushButton("Deviation");
+    Button13=new QPushButton("Deviation^2");
 
     InputsignalMapper = new QSignalMapper (this) ;
-
 
     InputsignalMapper -> setMapping (Button1, "New") ;
     InputsignalMapper -> setMapping (Button2, "Remove") ;
     InputsignalMapper -> setMapping (Button5, "AddElement") ;
     InputsignalMapper -> setMapping (Button6, "SubElement") ;
 
-
-
     SingleOperationsignalMapper = new QSignalMapper (this) ;
 
     SingleOperationsignalMapper -> setMapping (Button13, "powerset") ;
     SingleOperationsignalMapper -> setMapping (Button10, "complement") ;
 
-
-
     MultiOperationsignalMapper = new QSignalMapper (this) ;
-
-
 
     MultiOperationsignalMapper -> setMapping (Button7, "union") ;
     MultiOperationsignalMapper -> setMapping (Button8, "intercetion") ;
     MultiOperationsignalMapper -> setMapping (Button9, "difference") ;
     MultiOperationsignalMapper -> setMapping (Button11, "symmetricaldifference") ;
     MultiOperationsignalMapper -> setMapping (Button12, "cartesianproduct") ;
-
-
-
 
     all=new QHBoxLayout();
     bottom = new QGridLayout();
@@ -80,7 +64,6 @@ DatasetView::DatasetView(){
     buttonLayout->addWidget(Button11,3,3);
     buttonLayout->addWidget(Button12,3,4);
     buttonLayout->addWidget(Button13,4,1);
-    buttonLayout->addWidget(Button14,4,2);
     buttonLayout->addWidget(typestatus,4,3);
     buttonLayout->addWidget(Status,4,4);
 

@@ -31,16 +31,15 @@ private:
     QPushButton* StatusDataset;
     QPushButton* StatusAdvanced;
     QSignalMapper* StatussignalMapper;
+
     SetView* set;
     DatasetView* dataset;
-    KalkMainWindow* currentType;
+    AdvancedView* advanced;
 
 public:
-    View();
-    void changeStatus(KalkMainWindow*);
+    View(std::vector<KalkMainWindow*>&);
 
 public slots:
-    void selectStatus(QString);
 
 };
 

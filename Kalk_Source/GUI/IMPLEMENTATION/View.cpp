@@ -1,6 +1,6 @@
 #include "GUI/HEADER/View.h"
 
-View::View(){
+View::View(std::vector<KalkMainWindow*>& views){
     status=new QGridLayout();
     operationArea=new QStackedWidget();
     kalk=new QHBoxLayout();
@@ -18,16 +18,16 @@ View::View(){
     connect (StatusDataset, SIGNAL(clicked()), StatussignalMapper, SLOT(map())) ;
     connect (StatusAdvanced, SIGNAL(clicked()), StatussignalMapper, SLOT(map())) ;
 
-    StatussignalMapper -> setMapping (StatusSet, "SET");
-    StatussignalMapper -> setMapping (StatusDataset, "DATASET");
-    StatussignalMapper -> setMapping (StatusAdvanced, "ADVANCED");
+    StatussignalMapper -> setMapping (StatusSet, 0);
+    StatussignalMapper -> setMapping (StatusDataset, 1);
+    StatussignalMapper -> setMapping (StatusAdvanced, 2);
 
-    connect (StatussignalMapper, SIGNAL(mapped(QString)), this, SLOT(selectStatus(QString))) ;
-    set=new SetView();
-    dataset= new DatasetView();
-    currentType=set;
-    operationArea->addWidget(set);
-    operationArea->addWidget(dataset);
+    connect (StatussignalMapper, SIGNAL(mapped(int)), operationArea, SLOT(setCurrentIndex(int)));
+
+    for(unsigned int i=0; i< views.size(); i++){
+        operationArea->addWidget(views[i]);
+    }
+
 
     status->setAlignment(Qt::AlignTop);
 
@@ -36,20 +36,4 @@ View::View(){
     setLayout(kalk);
 }
 
-void View::selectStatus(QString newStatus){
-    if(newStatus == "SET"){
-        operationArea->setCurrentIndex(0);
-    }
-    if(newStatus == "DATASET"){
-        operationArea->setCurrentIndex(1);
-    }
-    if(newStatus == "ADVANCED"){
-        //changeStatus(advaced);
-    }
-}
-void View::changeStatus(KalkMainWindow* newStatus){
-    currentType=newStatus;
-    std::cout<<"ciucia";
-    operationArea->update() ;
-}
 

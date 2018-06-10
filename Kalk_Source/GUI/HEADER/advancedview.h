@@ -1,5 +1,5 @@
-#ifndef DATASETVIEW_H
-#define DATASETVIEW_H
+#ifndef ADVANCEDVIEW_H
+#define ADVANCEDVIEW_H
 
 #include <QWidget>
 #include <GUI/HEADER/kalkmainwindow.h>
@@ -64,4 +64,4 @@ public:
     ~AdvancedView();
 };
 
-#endif // DATASETVIEW_H
+#endif // ADVANCEDVIEW_H

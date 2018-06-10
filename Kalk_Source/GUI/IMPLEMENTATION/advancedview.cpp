@@ -3,35 +3,26 @@
 AdvancedView::AdvancedView(){
     setFixedSize(800,320);
     CE = new QPushButton("CE");
-
     QLabel* typestatus= new QLabel("Status Attuale: ");
-    Status = new QLabel("SET");
-    StatusSet= new QPushButton("SET");
-    StatusDataset =new QPushButton("DATASET");
-    StatusAdvanced= new QPushButton("ADVANCED");
+    Status = new QLabel("ADVANCED");
 
     StatussignalMapper = new QSignalMapper (this) ;
 
 
-    StatussignalMapper -> setMapping (StatusSet, "set") ;
-    StatussignalMapper -> setMapping (StatusDataset, "dataset") ;
-    StatussignalMapper -> setMapping (StatusAdvanced, "advanced") ;
 
-
-    Button1 =new QPushButton("Create Set");
-    Button2 =new QPushButton("Delete Set");
-    Button3 =new QPushButton("Clear Kalk");
-    Button4 =new QPushButton("Save Result");
-    Button5 =new QPushButton("Insert Number");
-    Button6 =new QPushButton("Delete Number");
-    Button7 =new QPushButton("Union");
-    Button8= new QPushButton("Intercetion");
-    Button9 =new QPushButton("Difference");
-    Button10 =new QPushButton("Complement");
-    Button11= new QPushButton("SymmetricalDif.");
-    Button12= new QPushButton("CartesianProd");
-    Button13= new QPushButton("PowerSet()");
-    Button14=new QPushButton("=");
+    Button1=new QPushButton("Create Advanced");
+    Button2=new QPushButton("Delete Advanced");
+    Button3=new QPushButton("Clear Kalk");
+    Button4=new QPushButton("All Info");
+    Button5=new QPushButton("Coscarto");
+    Button6=new QPushButton("Codevianza");
+    Button7=new QPushButton("Covarianza");
+    Button8=new QPushButton("Correlazione");
+    Button9=new QPushButton("C.Determinazione");
+    Button10=new QPushButton("Regressione");
+    Button11=new QPushButton("Intercetta");
+    Button12=new QPushButton("Retta");
+    Button13=new QPushButton("Grafic");
 
     InputsignalMapper = new QSignalMapper (this) ;
 
@@ -64,7 +55,6 @@ AdvancedView::AdvancedView(){
 
 
     all=new QHBoxLayout();
-    StatusGrid =new QGridLayout();
     bottom = new QGridLayout();
     buttonLayout= new QGridLayout();
     right= new QGridLayout();
@@ -88,15 +78,9 @@ AdvancedView::AdvancedView(){
     buttonLayout->addWidget(Button11,3,3);
     buttonLayout->addWidget(Button12,3,4);
     buttonLayout->addWidget(Button13,4,1);
-    buttonLayout->addWidget(Button14,4,2);
     buttonLayout->addWidget(typestatus,4,3);
     buttonLayout->addWidget(Status,4,4);
 
-    bottom->addWidget(StatusSet,1,1);
-    bottom->addWidget(StatusDataset,2,1);
-    bottom->addWidget(StatusAdvanced,3,1);
-
-    StatusGrid->addItem(bottom,0,0);
     Barra->setReadOnly(true);
     errori->setReadOnly(true);
 
@@ -111,49 +95,12 @@ AdvancedView::AdvancedView(){
     //layout generale
     all->addItem(left);
     all->addItem(right);
-    all->addItem(StatusGrid);
+
     setLayout(all);
     buttonLayout->setAlignment(Qt::AlignTop);
-    StatusGrid->setAlignment(Qt::AlignTop);
-    //this->refresh();
 }
 AdvancedView::~AdvancedView(){
-    delete right;
-    delete left;
-    delete all;
-    delete buttonLayout;
-    delete bottom;
-    delete StatusGrid;
 
-    delete StatussignalMapper;
-    delete InputsignalMapper;
-    delete SingleOperationsignalMapper;
-    delete MultiOperationsignalMapper;
-
-    delete StatusSet;
-    delete StatusDataset;
-    delete StatusAdvanced;
-    delete Status;
-
-    delete Button1;
-    delete Button2;
-    delete Button3;
-    delete Button4;
-    delete Button5;
-    delete Button6;
-
-    delete Button7;
-    delete Button8;
-    delete Button9;
-    delete Button10;
-    delete Button11;
-    delete Button12;
-    delete Button13;
-    delete Button14;
-
-    delete Barra;
-    delete errori;
-    delete elenco;
 }
 /*
 void KalkMainWindow::openExtraPanel(QString q){

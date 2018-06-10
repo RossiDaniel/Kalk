@@ -20,12 +20,9 @@ public:
     KalkMainWindow();
 
 public slots:
-    void emitSignal();
-    void emitStatus(QString);
 
 signals:
-    void valueChanged();
-    void StatusChange(QString);
+    void input(QString);
 
 
 };

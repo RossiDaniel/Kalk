@@ -34,9 +34,10 @@
 class AppKalk: public QObject{
     Q_OBJECT
 private:
-    View* view;
+    View* container_view;
     AbstractLogic* uni;
     std::list<const numbers*> Uset;
+    std::vector<KalkMainWindow*> views;
 
 
 
