@@ -21,11 +21,7 @@ class DatasetView: public KalkMainWindow{
 
 private:
 
-    QGridLayout* right;
-    QGridLayout* left;
-    QHBoxLayout* all;
     QGridLayout* buttonLayout;
-    QGridLayout* bottom;
 
     QSignalMapper* StatussignalMapper;
     QSignalMapper* InputsignalMapper;
@@ -33,8 +29,7 @@ private:
     QSignalMapper* MultiOperationsignalMapper;
 
     QLabel* Status;
-
-    QPushButton* CE;
+    QLabel* typestatus;
 
     QPushButton* Button1;
     QPushButton* Button2;
@@ -50,16 +45,9 @@ private:
     QPushButton* Button12;
     QPushButton* Button13;
 
-    QTextEdit* Barra;
-    QLineEdit* errori;
-    QListWidget* elenco;
-
 public:
     DatasetView();
-
-public slots:
-    void refresh(std::list<QString>);
-    void setCE();
+    ~DatasetView();
 };
 
 

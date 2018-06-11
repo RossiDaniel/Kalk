@@ -1,9 +1,7 @@
 #include "GUI/HEADER/setview.h"
 
 SetView::SetView(){
-    setFixedSize(800,320);
-    CE = new QPushButton("CE");
-    QLabel* typestatus= new QLabel("Status Attuale: ");
+    typestatus= new QLabel("Status Attuale: ");
     Status = new QLabel("SET");
 
     Button1 =new QPushButton("Create Set");
@@ -13,13 +11,13 @@ SetView::SetView(){
     Button5 =new QPushButton("Insert Number");
     Button6 =new QPushButton("Delete Number");
     Button7 =new QPushButton("Union");
-    Button8= new QPushButton("Intercetion");
+    Button8 =new QPushButton("Intercetion");
     Button9 =new QPushButton("Difference");
     Button10 =new QPushButton("Complement");
-    Button11= new QPushButton("SymmetricalDif.");
-    Button12= new QPushButton("CartesianProd");
-    Button13= new QPushButton("PowerSet()");
-    Button14=new QPushButton("=");
+    Button11 =new QPushButton("SymmetricalDif.");
+    Button12 =new QPushButton("CartesianProd");
+    Button13 =new QPushButton("PowerSet()");
+    Button14 =new QPushButton("=");
 
     InputsignalMapper = new QSignalMapper (this) ;
 
@@ -28,7 +26,7 @@ SetView::SetView(){
     InputsignalMapper -> setMapping (Button5, "AddElement") ;
     InputsignalMapper -> setMapping (Button6, "SubElement") ;
 
-    connect (InputsignalMapper, SIGNAL(mapped(QString)), this, SIGNAL(input(QString))) ;
+    connect(InputsignalMapper, SIGNAL(mapped(QString)), this, SIGNAL(input(QString))) ;
 
     SingleOperationsignalMapper = new QSignalMapper (this) ;
 
@@ -43,17 +41,8 @@ SetView::SetView(){
     MultiOperationsignalMapper -> setMapping (Button11, "symmetricaldifference") ;
     MultiOperationsignalMapper -> setMapping (Button12, "cartesianproduct") ;
 
-    all=new QHBoxLayout();
-    bottom = new QGridLayout();
     buttonLayout= new QGridLayout();
-    right= new QGridLayout();
-    left= new QGridLayout();
-    Barra= new QTextEdit("Welcome user!");
-    errori= new QLineEdit("Errors will be shown here.");
-    elenco= new QListWidget();
-    elenco->setFixedWidth(200);
 
-    buttonLayout->addWidget(CE,0,1);
     buttonLayout->addWidget(Button1,1,1);
     buttonLayout->addWidget(Button2,1,2);
     buttonLayout->addWidget(Button3,1,3);
@@ -71,25 +60,10 @@ SetView::SetView(){
     buttonLayout->addWidget(typestatus,4,3);
     buttonLayout->addWidget(Status,4,4);
 
-    Barra->setReadOnly(true);
-    errori->setReadOnly(true);
-
-    //barra sulla destra
-    right->addWidget(Barra,0,0);
-    right->addLayout(buttonLayout,1,0);
-    right->addWidget(errori, 2,0);
-
-    //barra sulla sinistra
-    left->addWidget(elenco);
-
-    //layout generale
-    all->addItem(left);
-    all->addItem(right);
-
-    setLayout(all);
     buttonLayout->setAlignment(Qt::AlignTop);
+    setLayout(buttonLayout);
 }
-
+SetView::~SetView(){}
 
 /*
 void KalkMainWindow::openExtraPanel(QString q){
@@ -97,21 +71,6 @@ void KalkMainWindow::openExtraPanel(QString q){
     panel->show();
 }
 
-*/
-void SetView::refresh(std::list<QString> l){
-    elenco->clear();
-    errori->clear();
-    for(std::list<QString>::const_iterator cit= l.begin(); cit!=l.end(); cit++){
-         elenco->addItem(*cit);
-     }
-}
-
-
-void SetView::setCE(){
-    emit cancel();
-    Barra->clear();
-}
-/*
 void KalkMainWindow::add_set(const numbers& s){
     uni->add_set(s);
 }

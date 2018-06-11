@@ -20,24 +20,15 @@ class AdvancedView: public KalkMainWindow{
 
 private:
 
-    QGridLayout* right;
-    QGridLayout* left;
-    QHBoxLayout* all;
     QGridLayout* buttonLayout;
-    QGridLayout* bottom;
-    QGridLayout* StatusGrid;
 
     QSignalMapper* StatussignalMapper;
     QSignalMapper* InputsignalMapper;
     QSignalMapper* SingleOperationsignalMapper;
     QSignalMapper* MultiOperationsignalMapper;
 
-    QPushButton* StatusSet;
-    QPushButton* StatusDataset;
-    QPushButton* StatusAdvanced;
     QLabel* Status;
-
-    QPushButton* CE;
+    QLabel* typestatus;
 
     QPushButton* Button1;
     QPushButton* Button2;
@@ -45,7 +36,6 @@ private:
     QPushButton* Button4;
     QPushButton* Button5;
     QPushButton* Button6;
-
     QPushButton* Button7;
     QPushButton* Button8;
     QPushButton* Button9;
@@ -55,17 +45,9 @@ private:
     QPushButton* Button13;
     QPushButton* Button14;
 
-    QTextEdit* Barra;
-    QLineEdit* errori;
-    QListWidget* elenco;
-
 public:
     AdvancedView();
     ~AdvancedView();
-
-public slots:
-    void refresh(std::list<QString>);
-    void setCE();
 
 };
 

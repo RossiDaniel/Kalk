@@ -19,12 +19,7 @@ class SetView: public KalkMainWindow{
     Q_OBJECT
 
 private:
-
-    QGridLayout* right;
-    QGridLayout* left;
-    QHBoxLayout* all;
     QGridLayout* buttonLayout;
-    QGridLayout* bottom;
 
     QSignalMapper* StatussignalMapper;
     QSignalMapper* InputsignalMapper;
@@ -32,8 +27,7 @@ private:
     QSignalMapper* MultiOperationsignalMapper;
 
     QLabel* Status;
-
-    QPushButton* CE;
+    QLabel* typestatus;
 
     QPushButton* Button1;
     QPushButton* Button2;
@@ -41,7 +35,6 @@ private:
     QPushButton* Button4;
     QPushButton* Button5;
     QPushButton* Button6;
-
     QPushButton* Button7;
     QPushButton* Button8;
     QPushButton* Button9;
@@ -51,15 +44,9 @@ private:
     QPushButton* Button13;
     QPushButton* Button14;
 
-    QTextEdit* Barra;
-    QLineEdit* errori;
-    QListWidget* elenco;
-
 public:
     SetView();
-public slots:
-    void refresh(std::list<QString>);
-    void setCE();
+    ~SetView();
 
 };
 

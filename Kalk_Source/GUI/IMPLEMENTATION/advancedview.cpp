@@ -1,14 +1,10 @@
 #include "GUI/HEADER/advancedview.h"
 
 AdvancedView::AdvancedView(){
-    setFixedSize(800,320);
-    CE = new QPushButton("CE");
-    QLabel* typestatus= new QLabel("Status Attuale: ");
+    typestatus= new QLabel("Status Attuale: ");
     Status = new QLabel("ADVANCED");
 
     StatussignalMapper = new QSignalMapper (this) ;
-
-
 
     Button1=new QPushButton("Create Advanced");
     Button2=new QPushButton("Delete Advanced");
@@ -26,24 +22,16 @@ AdvancedView::AdvancedView(){
 
     InputsignalMapper = new QSignalMapper (this) ;
 
-
     InputsignalMapper -> setMapping (Button1, "New") ;
     InputsignalMapper -> setMapping (Button2, "Remove") ;
     InputsignalMapper -> setMapping (Button5, "AddElement") ;
     InputsignalMapper -> setMapping (Button6, "SubElement") ;
 
-
-
     SingleOperationsignalMapper = new QSignalMapper (this) ;
-
     SingleOperationsignalMapper -> setMapping (Button13, "powerset") ;
     SingleOperationsignalMapper -> setMapping (Button10, "complement") ;
 
-
-
     MultiOperationsignalMapper = new QSignalMapper (this) ;
-
-
 
     MultiOperationsignalMapper -> setMapping (Button7, "union") ;
     MultiOperationsignalMapper -> setMapping (Button8, "intercetion") ;
@@ -51,20 +39,8 @@ AdvancedView::AdvancedView(){
     MultiOperationsignalMapper -> setMapping (Button11, "symmetricaldifference") ;
     MultiOperationsignalMapper -> setMapping (Button12, "cartesianproduct") ;
 
-
-
-
-    all=new QHBoxLayout();
-    bottom = new QGridLayout();
     buttonLayout= new QGridLayout();
-    right= new QGridLayout();
-    left= new QGridLayout();
-    Barra= new QTextEdit("Welcome user!");
-    errori= new QLineEdit("Errors will be shown here.");
-    elenco= new QListWidget();
-    elenco->setFixedWidth(200);
 
-    buttonLayout->addWidget(CE,0,1);
     buttonLayout->addWidget(Button1,1,1);
     buttonLayout->addWidget(Button2,1,2);
     buttonLayout->addWidget(Button3,1,3);
@@ -81,40 +57,13 @@ AdvancedView::AdvancedView(){
     buttonLayout->addWidget(typestatus,4,3);
     buttonLayout->addWidget(Status,4,4);
 
-    Barra->setReadOnly(true);
-    errori->setReadOnly(true);
-
-    //barra sulla destra
-    right->addWidget(Barra,0,0);
-    right->addLayout(buttonLayout,1,0);
-    right->addWidget(errori, 2,0);
-
-    //barra sulla sinistra
-    left->addWidget(elenco);
-
-    //layout generale
-    all->addItem(left);
-    all->addItem(right);
-
-    setLayout(all);
     buttonLayout->setAlignment(Qt::AlignTop);
+    setLayout(buttonLayout);
 }
 AdvancedView::~AdvancedView(){
 
 }
 
-void AdvancedView::refresh(std::list<QString> l){
-    elenco->clear();
-    errori->clear();
-    for(std::list<QString>::const_iterator cit= l.begin(); cit!=l.end(); cit++){
-         elenco->addItem(*cit);
-     }
-}
-
-void AdvancedView::setCE(){
-    emit cancel();
-    Barra->clear();
-}
 /*
 void KalkMainWindow::openExtraPanel(QString q){
     extrapanel* panel=new extrapanel(this,q);

@@ -25,7 +25,7 @@
 #include<QScrollBar>
 #include"MODEL/HEADER/DatasetLogic.h"
 #include"MODEL/HEADER/AdvancedLogic.h"
-
+#include "MODEL/HEADER/Set.h"
 #include <QListWidgetItem>
 #include <QTextEdit>
 #include<QLabel>

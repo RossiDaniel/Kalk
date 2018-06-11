@@ -1,9 +1,21 @@
 #include "GUI/HEADER/View.h"
 
 View::View(std::vector<KalkMainWindow*>& views){
+    setFixedSize(800,320);
+    CE = new QPushButton("CE");
+    all=new QHBoxLayout();
+    bottom = new QGridLayout();
+    right= new QGridLayout();
+    left= new QGridLayout();
+    Barra= new QTextEdit("Welcome user!");
+    errori= new QLineEdit("Errors will be shown here.");
+    elenco= new QListWidget();
+    elenco->setFixedWidth(200);
     status=new QGridLayout();
     operationArea=new QStackedWidget();
     kalk=new QHBoxLayout();
+    Barra->setReadOnly(true);
+    errori->setReadOnly(true);
 
     StatusSet= new QPushButton("SET");
     StatusDataset =new QPushButton("DATASET");
@@ -29,12 +41,36 @@ View::View(std::vector<KalkMainWindow*>& views){
         operationArea->addWidget(views[i]);
     }
 
+    //barra sulla destra
+    right->addWidget(Barra,0,0);
+    right->addWidget(CE,1,0);
+    right->addWidget(operationArea,2,0);
+    right->addWidget(errori, 3,0);
 
+    //barra sulla sinistra
+    left->addWidget(elenco);
+
+    //layout generale
+    all->addItem(left);
+    all->addItem(right);
+
+    kalk->addLayout(all);
+    kalk->addLayout(status);
     status->setAlignment(Qt::AlignTop);
 
-    kalk->addWidget(operationArea);
-    kalk->addLayout(status);
     setLayout(kalk);
 }
 
+void View::refresh(std::list<QString> l){
+    elenco->clear();
+    errori->clear();
+    for(std::list<QString>::const_iterator cit= l.begin(); cit!=l.end(); cit++){
+         elenco->addItem(*cit);
+     }
+}
 
+
+void View::setCE(){
+    //emit cancel();
+    Barra->clear();
+}

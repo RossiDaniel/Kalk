@@ -17,11 +17,7 @@
 class KalkMainWindow: public QWidget{
     Q_OBJECT
 public:
-    KalkMainWindow();
-
-public slots:
-    virtual void refresh(std::list<QString>)=0;
-    virtual void setCE()=0;
+    virtual ~KalkMainWindow()=0;
 
 signals:
     void input(QString);

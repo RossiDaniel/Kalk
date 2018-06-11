@@ -23,6 +23,15 @@ class View: public QWidget{
     Q_OBJECT
 
 private:
+    QPushButton* CE;
+    QTextEdit* Barra;
+    QLineEdit* errori;
+    QListWidget* elenco;
+    QGridLayout* bottom;
+    QGridLayout* right;
+    QGridLayout* left;
+    QHBoxLayout* all;
+
     QStackedWidget* operationArea;
     QHBoxLayout* kalk;
     QGridLayout* status;
@@ -38,6 +47,10 @@ private:
 
 public:
     View(std::vector<KalkMainWindow*>&);
+
+public slots:
+    void refresh(std::list<QString>);
+    void setCE();
 
 signals:
     void changelogic(int);
