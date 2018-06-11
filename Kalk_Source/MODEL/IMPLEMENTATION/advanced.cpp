@@ -1,4 +1,4 @@
-#include "MODEL/HEADER/advanced.h"
+#include "MODEL/HEADER/Advanced.h"
 
 advanced::advanced(const std::string& name, const std::list<int>& l):dataset(name,l){
     update();

@@ -35,7 +35,6 @@ SOURCES += \
 
 
 HEADERS += \
-    MODEL/HEADER/advanced.h\
     MODEL/HEADER/Dataset.h \
     MODEL/HEADER/Set.h \
     MODEL/HEADER/UniverseDataset.h \
@@ -56,4 +55,5 @@ HEADERS += \
     GUI/HEADER/inputSet.h \
     GUI/HEADER/inputDataset.h \
     GUI/HEADER/inputAdvanced.h \
-    MODEL/HEADER/AppKalk.h
+    MODEL/HEADER/AppKalk.h \
+    MODEL/HEADER/Advanced.h

@@ -7,6 +7,7 @@
 #include<typeinfo>
 #include"numbers.h"
 #include "MODEL/HEADER/abstractlogic.h"
+#include "MODEL/HEADER/Set.h"
 
 class SetLogic: public AbstractLogic{
 private:
@@ -23,6 +24,7 @@ public slots:
     void SetOperation(QString);
     void CE();
     void singleOperation(QString);
+    void getElements();
 };
 
 #endif // SETLOGIN_H

@@ -30,7 +30,7 @@
 #include <QTextEdit>
 #include<QLabel>
 #include<QSignalMapper>
-#include<QGraphicsView>
+
 #include<GUI/HEADER/View.h>
 
 class AppKalk: public QObject{

@@ -6,7 +6,8 @@
 #include<string>
 #include<typeinfo>
 #include"numbers.h"
-#include "abstractlogic.h"
+#include"MODEL/HEADER/abstractlogic.h"
+#include"MODEL/HEADER/Dataset.h"
 
 class DatasetLogic: public AbstractLogic{
 private:
@@ -21,5 +22,7 @@ public:
 public slots:
     void SetOperation(QString);
     void CE();
-    void singleOperation(QString);};
+    void singleOperation(QString);
+    void getElements();
+
 #endif // DATASETLOGIC_H

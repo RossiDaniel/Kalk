@@ -21,3 +21,12 @@ void SetLogic::CE(){
 void SetLogic::singleOperation(QString){
 
 }
+
+void SetLogic::getElements(){
+    std::list<QString> l;
+    for(std::list<const numbers*>::const_iterator cit= elements->begin(); cit!=elements->end(); cit++){
+        if(dynamic_cast<const set*>(*cit)){
+            l.push_back(QString::fromUtf8((*cit)->get_name().c_str()));
+        }
+    }
+}

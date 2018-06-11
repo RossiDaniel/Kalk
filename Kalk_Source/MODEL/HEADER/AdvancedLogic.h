@@ -1,12 +1,14 @@
-#ifndef DATASETLOGIN_H
-#define DATASETLOGIN_H
+#ifndef ADVANCED_LOGIC_H
+#define ADVANCED_LOGIC_H
 
 #include<iostream>
 #include<list>
 #include<string>
 #include<typeinfo>
 #include"numbers.h"
-#include"abstractlogic.h"
+#include"MODEL/HEADER/abstractlogic.h"
+#include"MODEL/HEADER/Advanced.h"
+
 
 class AdvancedLogic: public AbstractLogic{
 private:
@@ -22,6 +24,7 @@ public:
 public slots:
     void SetOperation(QString);
     void CE();
-    void singleOperation(QString);};
+    void singleOperation(QString);
+    void getElements();
 
-#endif // DATASETLOGIN_H
+#endif // ADVANCED_LOGIC_H
