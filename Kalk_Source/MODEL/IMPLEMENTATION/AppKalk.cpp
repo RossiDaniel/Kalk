@@ -22,13 +22,7 @@ AppKalk::AppKalk(){
         connect(views[i],SIGNAL(cancel()),uni,SLOT(CE()));
         connect(logics[i],SIGNAL(listOfElements(std::list<QString>)),views[i],SLOT(refresh(std::list<QString>)));
 
-
-    }/*
-    void input(QString);
-    void CE();
-    void singleOperation(QString);
-    void multiOperation(QString);
-    void result();*/
+    }
 }
 
 AppKalk::~AppKalk(){

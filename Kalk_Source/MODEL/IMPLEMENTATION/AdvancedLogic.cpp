@@ -29,4 +29,6 @@ void AdvancedLogic::getElements(){
             l.push_back(QString::fromUtf8((*cit)->get_name().c_str()));
         }
     }
+    emit listOfElements(l);
+
 }

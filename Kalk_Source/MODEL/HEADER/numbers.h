@@ -26,7 +26,7 @@ protected:
     };
 public:
     numbers(const std::string& nm);
-    virtual ~numbers()=0;
+    virtual ~numbers();
 
     virtual ris* in_const(const int) const=0;
     virtual ris* in(const int) =0;

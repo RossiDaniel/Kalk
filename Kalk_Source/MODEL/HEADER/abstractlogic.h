@@ -7,7 +7,6 @@ class AbstractLogic: public QObject{
     Q_OBJECT
 
 public:
-    AbstractLogic();
     virtual ~AbstractLogic()=0;
 
 public slots:
