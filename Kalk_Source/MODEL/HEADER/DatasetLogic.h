@@ -24,5 +24,5 @@ public slots:
     void CE();
     void singleOperation(QString);
     void getElements();
-
+};
 #endif // DATASETLOGIC_H

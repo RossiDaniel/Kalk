@@ -7,6 +7,7 @@ class AbstractLogic: public QObject{
     Q_OBJECT
 
 public:
+    AbstractLogic();
     virtual ~AbstractLogic()=0;
 
 public slots:
@@ -16,7 +17,7 @@ public slots:
     virtual void getElements()=0;
 
 signals:
-    //void listOfElements(std::list<QString>);
+    void listOfElements(std::list<QString>);
 };
 
 #endif // ABSTRACTLOGIC_H

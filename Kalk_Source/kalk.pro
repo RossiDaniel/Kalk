@@ -26,7 +26,6 @@ SOURCES += \
     MODEL/IMPLEMENTATION/DatasetLogic.cpp\
     MODEL/IMPLEMENTATION/AdvancedLogic.cpp \
     GUI/IMPLEMENTATION/kalkmainwindow.cpp \
-    MODEL/IMPLEMENTATION/abstractlogic.cpp \
     GUI/IMPLEMENTATION/View.cpp \
     GUI/IMPLEMENTATION/inputSet.cpp \
     GUI/IMPLEMENTATION/inputDataset.cpp \

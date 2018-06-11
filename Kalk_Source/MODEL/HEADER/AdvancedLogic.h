@@ -26,5 +26,5 @@ public slots:
     void CE();
     void singleOperation(QString);
     void getElements();
-
+};
 #endif // ADVANCED_LOGIC_H
