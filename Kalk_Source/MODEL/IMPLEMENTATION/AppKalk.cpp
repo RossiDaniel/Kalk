@@ -18,9 +18,8 @@ AppKalk::AppKalk(){
     for(unsigned int i=0; i<views.size(); i++){
         connect(views[i],SIGNAL(operation(QString)),uni,SLOT(SetOperation(QString)));
         connect(views[i],SIGNAL(singleOperation(QString)),uni,SLOT(singleOperation(QString)));
-        connect(views[i],SIGNAL(cancel()),uni,SLOT(CE()));
+        connect(views[i],SIGNAL(cancel()),this,SLOT(CE()));
         connect(logics[i],SIGNAL(listOfElements(std::list<QString>)),container_view,SLOT(refresh(std::list<QString>)));
-
     }
     container_view->show();
 
@@ -33,4 +32,8 @@ AppKalk::~AppKalk(){
 
 void AppKalk::changeLogic(int index){
     uni=logics[index];
+}
+
+void AppKalk::CE(){
+    uni->CE();
 }

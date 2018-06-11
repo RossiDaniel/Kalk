@@ -20,10 +20,10 @@ private:
 public:
     AdvancedLogic(std::list<const numbers*>*);
     ~AdvancedLogic();
+    void CE();
 
 public slots:
     void SetOperation(QString);
-    void CE();
     void singleOperation(QString);
     void getElements();
 };

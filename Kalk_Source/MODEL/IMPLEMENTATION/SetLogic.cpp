@@ -13,11 +13,14 @@ void SetLogic::SetOperation(QString name){
     if(operation){delete operation;operation=0;delete operand2;operand2=0;}
     operation = new QString(name);
 }
+
 void SetLogic::CE(){
     delete operand1;operand1=0;
     delete operation;operation=0;
     delete operand2;operand2=0;
+    std::cout<<"ciucia";
 }
+
 void SetLogic::singleOperation(QString){
 
 }

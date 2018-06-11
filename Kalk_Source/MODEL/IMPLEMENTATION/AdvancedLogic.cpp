@@ -16,6 +16,7 @@ void AdvancedLogic::CE(){
     delete operand1;operand1=0;
     delete operation;operation=0;
     delete operand2;operand2=0;
+    std::cout<<"ciucia";
 
 }
 void AdvancedLogic::singleOperation(QString){

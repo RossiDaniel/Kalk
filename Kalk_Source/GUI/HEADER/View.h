@@ -54,6 +54,7 @@ public slots:
 
 signals:
     void changelogic(int);
+    void cancel();
 };
 
 #endif // VIEW_H

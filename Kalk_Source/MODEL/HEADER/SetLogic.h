@@ -19,10 +19,10 @@ private:
 public:
     SetLogic(std::list<const numbers*>*);
     ~SetLogic();
+    void CE();
 
 public slots:
     void SetOperation(QString);
-    void CE();
     void singleOperation(QString);
     void getElements();
 };

@@ -3,6 +3,9 @@
 View::View(std::vector<KalkMainWindow*>& views){
     setFixedSize(800,320);
     CE = new QPushButton("CE");
+
+    connect (CE, SIGNAL(clicked()), this, SLOT(setCE())) ;
+
     all=new QHBoxLayout();
     bottom = new QGridLayout();
     right= new QGridLayout();
@@ -71,6 +74,6 @@ void View::refresh(std::list<QString> l){
 
 
 void View::setCE(){
-    //emit cancel();
+    emit cancel();
     Barra->clear();
 }

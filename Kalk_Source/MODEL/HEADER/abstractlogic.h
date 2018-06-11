@@ -8,10 +8,10 @@ class AbstractLogic: public QObject{
 
 public:
     virtual ~AbstractLogic()=0;
+    virtual void CE()=0;
 
 public slots:
     virtual void SetOperation(QString)=0;
-    virtual void CE()=0;
     virtual void singleOperation(QString)=0;
     virtual void getElements()=0;
 

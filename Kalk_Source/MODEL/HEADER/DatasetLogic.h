@@ -19,9 +19,10 @@ private:
 public:
     DatasetLogic(std::list<const numbers*>*);
     ~DatasetLogic();
+    void CE();
+
 public slots:
     void SetOperation(QString);
-    void CE();
     void singleOperation(QString);
     void getElements();
 };
