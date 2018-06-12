@@ -14,6 +14,9 @@ View::View(std::vector<KalkMainWindow*>& views){
     errori= new QLineEdit("Errors will be shown here.");
     elenco= new QListWidget();
     elenco->setFixedWidth(200);
+
+    connect (elenco, SIGNAL(itemClicked(QListWidgetItem*)), this, SIGNAL(selectOperand(QListWidgetItem*)));
+
     status=new QGridLayout();
     operationArea=new QStackedWidget();
     kalk=new QHBoxLayout();
@@ -42,6 +45,8 @@ View::View(std::vector<KalkMainWindow*>& views){
 
     for(unsigned int i=0; i< views.size(); i++){
         operationArea->addWidget(views[i]);
+        connect(views[i],SIGNAL(operation(QString)),this,SIGNAL(operation(QString)));
+        connect(views[i],SIGNAL(singleOperation(QString)),this,SIGNAL(singleOperation(QString)));
     }
 
     //barra sulla destra

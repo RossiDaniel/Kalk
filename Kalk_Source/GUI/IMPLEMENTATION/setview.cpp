@@ -21,6 +21,11 @@ SetView::SetView(){
 
     InputsignalMapper = new QSignalMapper (this) ;
 
+    connect (Button1, SIGNAL(clicked()), InputsignalMapper, SLOT(map())) ;
+    connect (Button2, SIGNAL(clicked()), InputsignalMapper, SLOT(map())) ;
+    connect (Button5, SIGNAL(clicked()), InputsignalMapper, SLOT(map())) ;
+    connect (Button6, SIGNAL(clicked()), InputsignalMapper, SLOT(map())) ;
+
     InputsignalMapper -> setMapping (Button1, "New") ;
     InputsignalMapper -> setMapping (Button2, "Remove") ;
     InputsignalMapper -> setMapping (Button5, "AddElement") ;
@@ -30,16 +35,29 @@ SetView::SetView(){
 
     SingleOperationsignalMapper = new QSignalMapper (this) ;
 
+    connect (Button13, SIGNAL(clicked()), SingleOperationsignalMapper, SLOT(map())) ;
+    connect (Button10, SIGNAL(clicked()), SingleOperationsignalMapper, SLOT(map())) ;
+
     SingleOperationsignalMapper -> setMapping (Button13, "powerset") ;
     SingleOperationsignalMapper -> setMapping (Button10, "complement") ;
 
+    connect(InputsignalMapper, SIGNAL(mapped(QString)), this, SIGNAL(singleOperation(QString))) ;
+
     MultiOperationsignalMapper = new QSignalMapper (this) ;
+
+    connect (Button7, SIGNAL(clicked()), MultiOperationsignalMapper, SLOT(map())) ;
+    connect (Button8, SIGNAL(clicked()), MultiOperationsignalMapper, SLOT(map())) ;
+    connect (Button9, SIGNAL(clicked()), MultiOperationsignalMapper, SLOT(map())) ;
+    connect (Button11, SIGNAL(clicked()), MultiOperationsignalMapper, SLOT(map())) ;
+    connect (Button12, SIGNAL(clicked()), MultiOperationsignalMapper, SLOT(map())) ;
 
     MultiOperationsignalMapper -> setMapping (Button7, "union") ;
     MultiOperationsignalMapper -> setMapping (Button8, "intercetion") ;
     MultiOperationsignalMapper -> setMapping (Button9, "difference") ;
     MultiOperationsignalMapper -> setMapping (Button11, "symmetricaldifference") ;
     MultiOperationsignalMapper -> setMapping (Button12, "cartesianproduct") ;
+
+    connect(InputsignalMapper, SIGNAL(mapped(QString)), this, SIGNAL(operation(QString))) ;
 
     buttonLayout= new QGridLayout();
 
