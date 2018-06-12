@@ -31,7 +31,8 @@ SOURCES += \
     GUI/IMPLEMENTATION/inputDataset.cpp \
     GUI/IMPLEMENTATION/inputAdvanced.cpp \
     MODEL/IMPLEMENTATION/AppKalk.cpp \
-    MODEL/IMPLEMENTATION/abstractlogic.cpp
+    MODEL/IMPLEMENTATION/abstractlogic.cpp \
+    MODEL/IMPLEMENTATION/Logic.cpp
 
 
 HEADERS += \
@@ -56,4 +57,5 @@ HEADERS += \
     GUI/HEADER/inputDataset.h \
     GUI/HEADER/inputAdvanced.h \
     MODEL/HEADER/AppKalk.h \
-    MODEL/HEADER/Advanced.h
+    MODEL/HEADER/Advanced.h \
+    MODEL/HEADER/Logic.h

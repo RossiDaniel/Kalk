@@ -7,7 +7,7 @@
 #include<typeinfo>
 #include"numbers.h"
 #include "GUI/HEADER/kalkmainwindow.h"
-#include "MODEL/HEADER/abstractlogic.h"
+#include "MODEL/HEADER/Logic.h"
 #include "MODEL/HEADER/SetLogic.h"
 #include "GUI/HEADER/setview.h"
 #include "MODEL/HEADER/Set.h"
@@ -37,17 +37,11 @@ class AppKalk: public QObject{
     Q_OBJECT
 private:
     View* container_view;
-    AbstractLogic* uni;
-    std::list<const numbers*>* Uset;
-    std::vector<KalkMainWindow*> views;
-    std::vector<AbstractLogic*> logics;
+    Logic* logic;
 
 public:
     AppKalk();
     ~AppKalk();
-
-public slots:
-    void changeLogic(int);
 
 };
 

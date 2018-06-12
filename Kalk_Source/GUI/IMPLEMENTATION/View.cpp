@@ -1,6 +1,7 @@
 #include "GUI/HEADER/View.h"
 
-View::View(std::vector<KalkMainWindow*>& views){
+View::View(){
+
     setFixedSize(800,320);
     CE = new QPushButton("CE");
 
@@ -43,6 +44,7 @@ View::View(std::vector<KalkMainWindow*>& views){
     connect (StatussignalMapper, SIGNAL(mapped(int)), operationArea, SLOT(setCurrentIndex(int)));
     connect (StatussignalMapper, SIGNAL(mapped(int)), this, SIGNAL(changelogic(int)));
 
+    setViews();
     for(unsigned int i=0; i< views.size(); i++){
         operationArea->addWidget(views[i]);
         connect(views[i],SIGNAL(operation(QString)),this,SIGNAL(operation(QString)));
@@ -69,6 +71,10 @@ View::View(std::vector<KalkMainWindow*>& views){
     setLayout(kalk);
 }
 
+View::~View(){
+
+}
+
 void View::refresh(std::list<QString> l){
     elenco->clear();
     errori->clear();
@@ -84,7 +90,13 @@ void View::setCE(){
 }
 
 void View::setBarra(QString text){
-    std::cout<<text.toStdString();
     Barra->clear();
     Barra->setText(text);
+}
+
+void View::setViews(){
+    views.push_back(new SetView());
+    views.push_back(new DatasetView());
+    views.push_back(new AdvancedView());
+
 }

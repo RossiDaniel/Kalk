@@ -19,8 +19,6 @@ private:
 public:
     DatasetLogic(std::list<const numbers*>*);
     ~DatasetLogic();
-
-public slots:
     void SetOperation(QString);
     void singleOperation(QString);
     void getElements();

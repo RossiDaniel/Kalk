@@ -19,8 +19,6 @@ private:
 public:
     SetLogic(std::list<const numbers*>*);
     ~SetLogic();
-
-public slots:
     void SetOperation(QString);
     void singleOperation(QString);
     void getElements();

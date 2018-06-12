@@ -44,10 +44,11 @@ private:
     SetView* set;
     DatasetView* dataset;
     AdvancedView* advanced;
-
+    std::vector<KalkMainWindow*> views;
 public:
-    View(std::vector<KalkMainWindow*>&);
-
+    View();
+    ~View();
+    void setViews();
 public slots:
     void refresh(std::list<QString>);
     void setCE();

@@ -11,8 +11,7 @@ private:
 public:
     AbstractLogic(QString);
     virtual ~AbstractLogic()=0;
-    virtual void getNameType();
-public slots:
+    void getNameType();
     virtual void CE()=0;
     virtual void SetOperand(std::string, std::string )=0;
     virtual void SetOperation(QString)=0;
