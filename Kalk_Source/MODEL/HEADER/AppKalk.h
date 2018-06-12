@@ -48,7 +48,7 @@ public:
 
 public slots:
     void changeLogic(int);
-    void CE();
+
 };
 
 #endif // APP_H

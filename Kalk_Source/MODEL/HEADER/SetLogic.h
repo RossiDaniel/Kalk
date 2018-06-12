@@ -19,12 +19,15 @@ private:
 public:
     SetLogic(std::list<const numbers*>*);
     ~SetLogic();
-    void CE();
 
 public slots:
     void SetOperation(QString);
     void singleOperation(QString);
     void getElements();
+    void selectOperand(QListWidgetItem*);
+    void CE();
+    void SetOperand(std::string, std::string);
+
 };
 
 #endif // SETLOGIN_H

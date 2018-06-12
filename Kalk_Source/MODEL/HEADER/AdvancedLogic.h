@@ -20,11 +20,14 @@ private:
 public:
     AdvancedLogic(std::list<const numbers*>*);
     ~AdvancedLogic();
-    void CE();
 
 public slots:
     void SetOperation(QString);
     void singleOperation(QString);
     void getElements();
+    void selectOperand(QListWidgetItem*);
+    void CE();
+    void SetOperand(std::string, std::string);
+
 };
 #endif // ADVANCED_LOGIC_H

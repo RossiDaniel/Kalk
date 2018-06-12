@@ -10,7 +10,7 @@ View::View(std::vector<KalkMainWindow*>& views){
     bottom = new QGridLayout();
     right= new QGridLayout();
     left= new QGridLayout();
-    Barra= new QTextEdit("Welcome user!");
+    Barra= new QTextEdit();
     errori= new QLineEdit("Errors will be shown here.");
     elenco= new QListWidget();
     elenco->setFixedWidth(200);
@@ -81,4 +81,10 @@ void View::refresh(std::list<QString> l){
 void View::setCE(){
     emit cancel();
     Barra->clear();
+}
+
+void View::setBarra(QString text){
+    std::cout<<text.toStdString();
+    Barra->clear();
+    Barra->setText(text);
 }

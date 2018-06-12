@@ -13,17 +13,18 @@ AppKalk::AppKalk(){
 
     container_view= new View(views);
     uni=logics[0];
+
     connect(container_view,SIGNAL(changelogic(int)),this,SLOT(changeLogic(int)));
+    connect(container_view,SIGNAL(cancel()),uni,SLOT(CE()));
+    connect(container_view,SIGNAL(selectOperand(QListWidgetItem*)),uni,SLOT(selectOperand(QListWidgetItem*)));
+    connect(container_view,SIGNAL(operation(QString)),uni,SLOT(SetOperation(QString)));
+    connect(container_view,SIGNAL(singleOperation(QString)),uni,SLOT(singleOperation(QString)));
 
-    for(unsigned int i=0; i<views.size(); i++){
-        connect(views[i],SIGNAL(operation(QString)),uni,SLOT(SetOperation(QString)));
-        connect(views[i],SIGNAL(singleOperation(QString)),uni,SLOT(singleOperation(QString)));
-        connect(views[i],SIGNAL(cancel()),this,SLOT(CE()));
-        connect(logics[i],SIGNAL(listOfElements(std::list<QString>)),container_view,SLOT(refresh(std::list<QString>)));
-    }
+    connect(uni,SIGNAL(listOfElements(std::list<QString>)),container_view,SLOT(refresh(std::list<QString>)));
+    connect(uni,SIGNAL(setBarra(QString)),container_view,SLOT(setBarra(QString)));
+
+    changeLogic(0);
     container_view->show();
-
-
 }
 
 AppKalk::~AppKalk(){
@@ -32,8 +33,8 @@ AppKalk::~AppKalk(){
 
 void AppKalk::changeLogic(int index){
     uni=logics[index];
+    uni->getElements();
+    uni->getNameType();
 }
 
-void AppKalk::CE(){
-    uni->CE();
-}
+

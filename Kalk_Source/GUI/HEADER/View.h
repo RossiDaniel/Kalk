@@ -51,10 +51,14 @@ public:
 public slots:
     void refresh(std::list<QString>);
     void setCE();
+    void setBarra(QString);
 
 signals:
+    void selectOperand(QListWidgetItem*);
     void changelogic(int);
     void cancel();
+    void operation(QString);
+    void singleOperation(QString);
 };
 
 #endif // VIEW_H

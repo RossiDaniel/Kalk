@@ -31,7 +31,7 @@ SOURCES += \
     GUI/IMPLEMENTATION/inputDataset.cpp \
     GUI/IMPLEMENTATION/inputAdvanced.cpp \
     MODEL/IMPLEMENTATION/AppKalk.cpp \
-    GUI/IMPLEMENTATION/abstractlogic.cpp
+    MODEL/IMPLEMENTATION/abstractlogic.cpp
 
 
 HEADERS += \
