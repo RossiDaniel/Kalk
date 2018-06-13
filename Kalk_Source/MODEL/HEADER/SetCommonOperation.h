@@ -1,8 +1,8 @@
-#ifndef SETUNIVERSE_H
-#define SETUNIVERSE_H
+#ifndef SETCOMMONOPERATION_h
+#define SETCOMMONOPERATION_h
 #include"Set.h"
 
-class SetUniverse{
+class SetCommonOperation{
 public:
     set& Union(const set&,const set&)const;
     set& Intersection(const set&, const set&)const;
@@ -13,4 +13,4 @@ public:
 
 };
 
-#endif //SETUNIVERSE_H
+#endif //SETCOMMONOPERATION_h

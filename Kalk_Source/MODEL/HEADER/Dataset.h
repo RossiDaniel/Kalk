@@ -16,6 +16,7 @@ public:
 
     dataset* clone() const;
     operator std::string();
+    std::string name() const;
 
     void add_value(const int);
     void sub_value(const int);

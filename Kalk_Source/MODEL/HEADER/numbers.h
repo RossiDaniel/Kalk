@@ -7,7 +7,7 @@
 
 class numbers{
 private:
-	std::string name;
+    std::string Name;
 protected:
     class ris{
     public:
@@ -35,6 +35,7 @@ public:
     void change_name(std::string nm);
 
     virtual numbers* clone() const =0;
+    virtual std::string name() const =0;
     virtual operator std::string()=0;
     virtual void clear()=0;
 

@@ -15,6 +15,11 @@ void advanced::add_list(const std::list<int>& l){
     this->dataset::add_list(l);
     this->update();
 }
+
+std::string advanced::name() const{
+    return std::string("advanced");
+}
+
 void advanced::update(){
     size=this->dataset::size();
     average=this->dataset::average();

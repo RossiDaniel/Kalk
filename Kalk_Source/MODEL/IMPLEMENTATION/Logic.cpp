@@ -9,7 +9,7 @@ Logic::Logic(){
         connect(logics[i],SIGNAL(setError(QString)),this,SIGNAL(setError(QString)));
         connect(logics[i],SIGNAL(setErrorInput(QString)),this,SIGNAL(setErrorInput(QString)));
     }
-    uni=logics[0];
+    changeLogic(0);
 }
 
 Logic::~Logic(){

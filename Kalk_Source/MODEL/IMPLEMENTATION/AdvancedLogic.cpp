@@ -1,6 +1,6 @@
 #include "MODEL/HEADER/AdvancedLogic.h"
 
-AdvancedLogic::AdvancedLogic(std::list<const numbers*>* l): BasicLogic(QString("ADVANCED"),typeid(const advanced*).name(),l){
+AdvancedLogic::AdvancedLogic(std::list<const numbers*>* l): BasicLogic(QString("ADVANCED"),"advanced",l){
     operand1=0;
     operand2=0;
     operation=0;
@@ -42,5 +42,5 @@ void AdvancedLogic::sub_elements(QString name,QString data){
 }
 
 bool AdvancedLogic::condition()const{
-
+    return (n*10+k) > 50 && somma>INT_MAX;
 }

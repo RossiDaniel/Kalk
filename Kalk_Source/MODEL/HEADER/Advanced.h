@@ -19,6 +19,8 @@ public:
     advanced* clone() const;
     void add_list(const std::list<int>&);
     void update();
+    std::string name() const;
+
 
     std::list<double> coscarto(const advanced&)const;
     double codevianza(const advanced&)const;

@@ -169,6 +169,10 @@ dataset::operator std::string(){
     return dset;
 }
 
+std::string dataset::name() const{
+    return std::string("dataset");
+}
+
 void dataset::checkpoint(const dataset& s)const{
     bool sent=false;
     std::list<int>::const_iterator cit1=element.begin();

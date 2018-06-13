@@ -20,6 +20,7 @@ public:
 
     virtual set* clone() const;
     operator std::string();
+    std::string name() const;
 
 	void add_value(const int);
 	void add_list(const std::list<int>&);

@@ -1,8 +1,8 @@
-#ifndef DATASETUNIVERSE_H
-#define DATASETUNIVERSE_H
+#ifndef DATASETCOMMONOPERATION_H
+#define DATASETCOMMONOPERATION_H
 #include"Dataset.h"
 
-class DatasetUniverse{
+class DatasetCommonOperation{
 public:
     std::string somme(const dataset&)const;
     std::string size(const dataset&)const;
@@ -17,4 +17,4 @@ public:
 
 };
 
-#endif //SETUNIVERSE_H
+#endif //DATASETCOMMONOPERATION_H

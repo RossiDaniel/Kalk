@@ -13,7 +13,8 @@ void BasicLogic::sub_elements(QString,QString){}
 void BasicLogic::getElements(){
     std::list<QString> l;
     for(std::list<const numbers*>::const_iterator cit= elements->begin(); cit!=elements->end(); cit++){
-        if(type == typeid(*cit).name()){
+        std::cout<<type<<" "<<(*cit)->name()<<std::endl;
+        if(type == (*cit)->name()){
             l.push_back(QString::fromUtf8((*cit)->get_name().c_str()));
         }
     }
@@ -50,7 +51,7 @@ void BasicLogic::selectOperand(QListWidgetItem* element){
 void BasicLogic::SetOperand(std::string name, std::string op){
     std::string str;
     for(std::list<const numbers*>::const_iterator cit=elements->begin(); cit!=elements->end(); cit++){
-        if(type == typeid(*cit).name() && (*cit)->get_name() == name){
+        if(type == (*cit)->name() && (*cit)->get_name() == name){
             if(op == "Operand1"){
                 if(operand1){delete operand1;operand1=0;}
                 operand1 = (*cit)->clone();

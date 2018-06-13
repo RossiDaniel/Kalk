@@ -1,9 +1,9 @@
-#ifndef ADVANCEDUNIVERSE_H
-#define ADVANCEDUNIVERSE_H
+#ifndef ADVANCEDCOMMONOPERATION_H
+#define ADVANCEDCOMMONOPERATION_H
 #include"Advanced.h"
 #include<list>
 #include<string>
-class AdvancedUniverse{
+class AdvancedCommonOperation{
 public:
     std::string coscarto(const advanced&,const advanced&)const;
     std::string codevianza(const advanced&,const advanced&)const;
@@ -15,4 +15,4 @@ public:
 
 };
 
-#endif //ADVANCEDUNIVERSE_H
+#endif //ADVANCEDCOMMONOPERATION_H

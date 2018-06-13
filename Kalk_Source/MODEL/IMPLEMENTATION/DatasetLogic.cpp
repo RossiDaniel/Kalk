@@ -1,6 +1,6 @@
 #include "MODEL/HEADER/DatasetLogic.h"
 
-DatasetLogic::DatasetLogic(std::list<const numbers*>* l): BasicLogic(QString("DATASET"),typeid(const dataset*).name(),l){
+DatasetLogic::DatasetLogic(std::list<const numbers*>* l): BasicLogic(QString("DATASET"),"dataset",l){
     operand1=0;
     operand2=0;
     operation=0;
@@ -43,5 +43,5 @@ void DatasetLogic::sub_elements(QString name,QString data){
 }
 
 bool DatasetLogic::condition()const{
-
+    return dimensione >=num-1 && somma>INT_MAX;
 }

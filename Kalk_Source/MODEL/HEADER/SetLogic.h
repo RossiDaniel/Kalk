@@ -9,9 +9,11 @@
 #include "MODEL/HEADER/basiclogic.h"
 #include "MODEL/HEADER/parser.h"
 #include "MODEL/HEADER/Set.h"
+#include "MODEL/HEADER/SetCommonOperation.h"
 
 class SetLogic: public BasicLogic,Parser{
-
+private:
+    SetCommonOperation* Suni;
 public:
     SetLogic(std::list<const numbers*>*);
     ~SetLogic();

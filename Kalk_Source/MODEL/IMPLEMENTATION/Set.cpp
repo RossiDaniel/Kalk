@@ -188,6 +188,9 @@ std::string set::operator*(const set& s) const{
     str = str + " }";
     return str;
 }
+std::string set::name() const{
+    return std::string("set");
+}
 
 set::operator std::string(){
     std::string set;

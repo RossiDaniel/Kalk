@@ -11,12 +11,9 @@ SOURCES += \
     GUI/IMPLEMENTATION/main.cpp \
     MODEL/IMPLEMENTATION/Dataset.cpp \
     MODEL/IMPLEMENTATION/Set.cpp \
-    MODEL/IMPLEMENTATION/UniverseDataset.cpp \
-    MODEL/IMPLEMENTATION/UniverseSet.cpp \
     MODEL/IMPLEMENTATION/ris.cpp \
     GUI/IMPLEMENTATION/extrapanel.cpp \
     MODEL/IMPLEMENTATION/advanced.cpp\
-    MODEL/IMPLEMENTATION/UniverseAdvanced.cpp\
     GUI/IMPLEMENTATION/qcustomplot.cpp\
     MODEL/IMPLEMENTATION/numbers.cpp \
     GUI/IMPLEMENTATION/setview.cpp \
@@ -31,18 +28,18 @@ SOURCES += \
     MODEL/IMPLEMENTATION/Logic.cpp \
     GUI/IMPLEMENTATION/Input.cpp \
     MODEL/IMPLEMENTATION/parser.cpp \
-    MODEL/IMPLEMENTATION/basiclogic.cpp
+    MODEL/IMPLEMENTATION/basiclogic.cpp \
+    MODEL/IMPLEMENTATION/SetCommonOperation.cpp \
+    MODEL/IMPLEMENTATION/AdvancedCommonOperation.cpp \
+    MODEL/IMPLEMENTATION/DatasetCommonOperation.cpp
 
 
 HEADERS += \
     MODEL/HEADER/Dataset.h \
     MODEL/HEADER/Set.h \
-    MODEL/HEADER/UniverseDataset.h \
-    MODEL/HEADER/UniverseSet.h \
     GUI/HEADER/kalkmainwindow.h \
     MODEL/HEADER/numbers.h \
     GUI/HEADER/extrapanel.h \
-    MODEL/HEADER/UniverseAdvanced.h\
     GUI/HEADER/qcustomplot.h\
     GUI/HEADER/setview.h\
     MODEL/HEADER/SetLogic.h\
@@ -56,4 +53,7 @@ HEADERS += \
     MODEL/HEADER/Logic.h \
     GUI/HEADER/Input.h \
     MODEL/HEADER/parser.h \
-    MODEL/HEADER/basiclogic.h
+    MODEL/HEADER/basiclogic.h \
+    MODEL/HEADER/SetCommonOperation.h \
+    MODEL/HEADER/DatasetCommonOperation.h \
+    MODEL/HEADER/AdvancedCommonOperation.h
