@@ -12,24 +12,32 @@
 #include <QLabel>
 #include <QString>
 #include <climits>
-
+#include <QMessageBox>
+#include <QCloseEvent>
 
 class extrapanel:public QWidget{
     Q_OBJECT
-
+private:
+    int operation;
+    QGridLayout* griglia;
+    QLabel* nameLabel;
+    QLineEdit* inputName;
+    QLabel* insertLabel;
+    QLineEdit* inputNumbers;
+    QPushButton* invio;
+    QPushButton* up;
 public:
-    virtual ~extrapanel();
-    virtual std::list<int> parser()const =0;
-
-
+    extrapanel();
+    ~extrapanel();
+    void configureExtrapanel();
+    void creaset();
+    void remove();
+    void addelement();
+    void subelement();
+    void closeEvent( QCloseEvent* event );
 public slots:
-
-    virtual void creaset()=0;
-    virtual void remove()=0;
-    virtual void addelement()=0;
-    virtual void subelement()=0;
-    virtual void modify()=0;
-    virtual void update()=0;
-
+    void INVIO();
+signals:
+    void DataInput(QString,QString);
 };
 #endif // EXTRAPANEL_H

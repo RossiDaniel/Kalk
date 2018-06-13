@@ -27,12 +27,11 @@ SOURCES += \
     MODEL/IMPLEMENTATION/AdvancedLogic.cpp \
     GUI/IMPLEMENTATION/kalkmainwindow.cpp \
     GUI/IMPLEMENTATION/View.cpp \
-    GUI/IMPLEMENTATION/inputSet.cpp \
-    GUI/IMPLEMENTATION/inputDataset.cpp \
-    GUI/IMPLEMENTATION/inputAdvanced.cpp \
     MODEL/IMPLEMENTATION/AppKalk.cpp \
-    MODEL/IMPLEMENTATION/abstractlogic.cpp \
-    MODEL/IMPLEMENTATION/Logic.cpp
+    MODEL/IMPLEMENTATION/Logic.cpp \
+    GUI/IMPLEMENTATION/Input.cpp \
+    MODEL/IMPLEMENTATION/parser.cpp \
+    MODEL/IMPLEMENTATION/basiclogic.cpp
 
 
 HEADERS += \
@@ -47,15 +46,14 @@ HEADERS += \
     GUI/HEADER/qcustomplot.h\
     GUI/HEADER/setview.h\
     MODEL/HEADER/SetLogic.h\
-    MODEL/HEADER/abstractlogic.h \
     GUI/HEADER/datasetview.h \
     GUI/HEADER/advancedview.h \
     MODEL/HEADER/DatasetLogic.h \
     MODEL/HEADER/AdvancedLogic.h \
     GUI/HEADER/View.h \
-    GUI/HEADER/inputSet.h \
-    GUI/HEADER/inputDataset.h \
-    GUI/HEADER/inputAdvanced.h \
     MODEL/HEADER/AppKalk.h \
     MODEL/HEADER/Advanced.h \
-    MODEL/HEADER/Logic.h
+    MODEL/HEADER/Logic.h \
+    GUI/HEADER/Input.h \
+    MODEL/HEADER/parser.h \
+    MODEL/HEADER/basiclogic.h

@@ -49,6 +49,7 @@ View::View(){
         operationArea->addWidget(views[i]);
         connect(views[i],SIGNAL(operation(QString)),this,SIGNAL(operation(QString)));
         connect(views[i],SIGNAL(singleOperation(QString)),this,SIGNAL(singleOperation(QString)));
+        connect(views[i],SIGNAL(input(int)),this,SIGNAL(input(int)));
     }
 
     //barra sulla destra
@@ -92,6 +93,11 @@ void View::setCE(){
 void View::setBarra(QString text){
     Barra->clear();
     Barra->setText(text);
+}
+
+void View::setError(QString text){
+    errori->clear();
+    errori->setText(text);
 }
 
 void View::setViews(){

@@ -32,13 +32,14 @@
 #include<QSignalMapper>
 
 #include<GUI/HEADER/View.h>
+#include"GUI/HEADER/Input.h"
 
 class AppKalk: public QObject{
     Q_OBJECT
 private:
     View* container_view;
     Logic* logic;
-
+    Input* input_manage;
 public:
     AppKalk();
     ~AppKalk();

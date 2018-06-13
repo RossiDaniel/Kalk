@@ -6,26 +6,26 @@
 #include<string>
 #include<typeinfo>
 #include"numbers.h"
-#include"MODEL/HEADER/abstractlogic.h"
+#include"MODEL/HEADER/basiclogic.h"
+#include"MODEL/HEADER/parser.h"
+
 #include"MODEL/HEADER/Advanced.h"
 
 
-class AdvancedLogic: public AbstractLogic{
-private:
-    std::list<const numbers*>* elements;
-    numbers* operand1;
-    numbers* operand2;
-    QString* operation;
+class AdvancedLogic: public BasicLogic,Parser{
 
 public:
     AdvancedLogic(std::list<const numbers*>*);
     ~AdvancedLogic();
-    void SetOperation(QString);
     void singleOperation(QString);
-    void getElements();
-    void selectOperand(QListWidgetItem*);
-    void CE();
-    void SetOperand(std::string, std::string);
+
+    void add_set(QString,QString);
+    void sub_set(QString,QString);
+    void add_elements(QString,QString);
+    void sub_elements(QString,QString);
+
+    bool condition()const;
+
 
 };
 #endif // ADVANCED_LOGIC_H

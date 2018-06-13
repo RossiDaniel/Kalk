@@ -1,7 +1,6 @@
 #include "MODEL/HEADER/SetLogic.h"
 
-SetLogic::SetLogic(std::list<const numbers*>* l): AbstractLogic(QString("SET")){
-    elements=l;
+SetLogic::SetLogic(std::list<const numbers*>* l): BasicLogic(QString("SET"),typeid(const set*).name(),l){
     elements->push_back(new set("U"));
     operand1=0;
     operand2=0;
@@ -11,70 +10,48 @@ SetLogic::SetLogic(std::list<const numbers*>* l): AbstractLogic(QString("SET")){
 SetLogic::~SetLogic(){
 
 }
-
-void SetLogic::SetOperation(QString name){
-    if(!operand1){throw QString("Exception : an operand must be chosen before an operation is selected.");}
-    if(operation){delete operation;operation=0;delete operand2;operand2=0;}
-    operation = new QString(name);
-}
-
-void SetLogic::CE(){
-    if(operand1){
-        delete operand1;operand1=0;
+void SetLogic::selectOperand(QListWidgetItem* name){
+    if(name->text() == "U"){
+        emit setError(QString("Remember you cannot do operation with Set U"));
     }
-    if(operand2){
-        delete operand2;operand2=0;
-    }
-    if(operation){
-        delete operation;operation=0;
+    else{
+        BasicLogic::selectOperand(name);
     }
 }
+
 
 void SetLogic::singleOperation(QString){
 
 }
 
-void SetLogic::getElements(){
-    std::list<QString> l;
-    for(std::list<const numbers*>::const_iterator cit= elements->begin(); cit!=elements->end(); cit++){
-        if(dynamic_cast<const set*>(*cit)){
-            l.push_back(QString::fromUtf8((*cit)->get_name().c_str()));
+void SetLogic::add_set(QString name,QString data){
+    bool sent=false;
+    emit setErrorInput("ciucia");
+    /*
+    for(std::list<const numbers*>::iterator it= elements->begin(); it!=elements->end() && !sent; it++){
+        if((*it)->get_name() == name.toStdString() && dynamic_cast<const set*>(*it)){
+            sent =true;
+            emit setError(QString("Exception: a SET named '"+ name +"' already exists in the universe."));
         }
     }
-    emit listOfElements(l);
+    if(!sent){
+        set* s=new set();
+        elements->push_back(const_cast<numbers*>((s->clone())));
+        set* n=const_cast<set*>(static_cast<const set*>(*(elements->begin())));
+        *n =Suni->Union(*n,*const_cast<set*>(dynamic_cast<const set*>(&s)));
+        ((const_cast<numbers*>(*elements->begin())))->change_name("U");
+    }*/
+}
+void SetLogic::sub_set(QString name,QString data){
+
+}
+void SetLogic::add_elements(QString name,QString data){
+
+}
+void SetLogic::sub_elements(QString name,QString data){
+
 }
 
-void SetLogic::selectOperand(QListWidgetItem* element){
-    std::string name=element->text().toStdString();
-    if(name == "U"){}
-    if(!operand1){
-        return SetOperand(name,"Operand1");
-    }
-    else{
-        if(!operation){
-            return SetOperand(name,"Operand1");
-        }
-        else{
-            return SetOperand(name,"Operand2");
-        }
-    }
-}
+bool SetLogic::condition()const{
 
-void SetLogic::SetOperand(std::string name, std::string op){
-    std::string str;
-        for(std::list<const numbers*>::const_iterator cit=elements->begin(); cit!=elements->end(); cit++){
-            if((*cit)->get_name() == name && dynamic_cast<const set*>(*cit)){
-                if(op == "Operand1"){
-                    if(operand1){delete operand1;operand1=0;}
-                    operand1 = (*cit)->clone();
-                    str=*operand1;
-                }
-                else{
-                    if(operand2){delete operand2;operand2=0;}
-                    operand2 = (*cit)->clone();
-                    str=*operand1;
-                }
-            }
-        }
-        emit setBarra(QString::fromUtf8(str.c_str()));
-    }
+}

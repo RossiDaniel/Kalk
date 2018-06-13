@@ -18,12 +18,19 @@ DatasetView::DatasetView(){
     Button12=new QPushButton("Deviation");
     Button13=new QPushButton("Deviation^2");
 
-    InputsignalMapper = new QSignalMapper (this) ;
+    InputsignalMapper = new QSignalMapper (this);
 
-    InputsignalMapper -> setMapping (Button1, "New") ;
-    InputsignalMapper -> setMapping (Button2, "Remove") ;
-    InputsignalMapper -> setMapping (Button5, "AddElement") ;
-    InputsignalMapper -> setMapping (Button6, "SubElement") ;
+    connect (Button1, SIGNAL(clicked()), InputsignalMapper, SLOT(map()));
+    connect (Button2, SIGNAL(clicked()), InputsignalMapper, SLOT(map()));
+    //connect (Button5, SIGNAL(clicked()), InputsignalMapper, SLOT(map()));
+    //connect (Button6, SIGNAL(clicked()), InputsignalMapper, SLOT(map()));
+
+    InputsignalMapper -> setMapping (Button1, 0);
+    InputsignalMapper -> setMapping (Button2, 1);
+    InputsignalMapper -> setMapping (Button5, 2);
+    InputsignalMapper -> setMapping (Button6, 3);
+
+    connect(InputsignalMapper, SIGNAL(mapped(int)), this, SIGNAL(input(int))) ;
 
     SingleOperationsignalMapper = new QSignalMapper (this) ;
 

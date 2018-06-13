@@ -53,8 +53,10 @@ public slots:
     void refresh(std::list<QString>);
     void setCE();
     void setBarra(QString);
+    void setError(QString);
 
 signals:
+    void input(int);
     void selectOperand(QListWidgetItem*);
     void changelogic(int);
     void cancel();

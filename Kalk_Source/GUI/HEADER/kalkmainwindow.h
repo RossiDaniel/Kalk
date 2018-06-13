@@ -20,7 +20,7 @@ public:
     virtual ~KalkMainWindow()=0;
 
 signals:
-    void input(QString);
+    void input(int);
     void operation(QString);
     void singleOperation(QString);
     void result();
