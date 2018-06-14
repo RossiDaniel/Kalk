@@ -28,12 +28,13 @@ public:
     virtual void selectOperand(QListWidgetItem*);
     virtual void singleOperation(QString)=0;
 
-    virtual void add_set(QString,QString);
+    virtual void add_set(QString,QString)=0;
     virtual void sub_set(QString,QString);
-    virtual void add_elements(QString,QString);
-    virtual void sub_elements(QString,QString);
+    virtual void add_elements(QString,QString)=0;
+    virtual void sub_elements(QString,QString)=0;
 
     void getElements();
+    void update();
 
 signals:
     void listOfElements(std::list<QString>);

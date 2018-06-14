@@ -14,9 +14,7 @@ void SetLogic::selectOperand(QListWidgetItem* name){
     if(name->text() == "U"){
         emit setError(QString("Remember you cannot do operation with Set U"));
     }
-    else{
-        BasicLogic::selectOperand(name);
-    }
+    BasicLogic::selectOperand(name);
 }
 
 
@@ -39,10 +37,29 @@ void SetLogic::add_set(QString name,QString data){
         *n =Suni->Union(*n,*s);
         ((const_cast<numbers*>(*elements->begin())))->change_name("U");
     }
-    getElements();
-    emit closeInputWindow();
+    update();
 }
+
 void SetLogic::sub_set(QString name,QString data){
+    if(name.toStdString() == "U"){throw QString("Exception: the 'U' Set cannot be deleted.");}
+    bool sent =false;
+    std::list<const numbers*>::iterator it= elements->begin();
+    for(; it!=elements->end() && !sent; it++){
+        if((*it)->get_name() == name.toStdString()  && dynamic_cast<const set*>(*it)){
+            sent =true;
+            std::list<int> l= (static_cast<const set*>(*it))->get_element();
+            std::list<int>::const_iterator cit= l.begin();
+            bool found =false;
+            for(; cit!=l.end(); cit++){
+                found =this->in(*cit,name.toStdString());
+                if(!found){const_cast<set*>(static_cast<const set*>(*elements->begin()))->sub_value(*cit);}
+            }
+            delete *it;
+            it=elements->erase(it);
+        }
+    }
+    if(!sent){throw QString("The element you want to delete doesn't exist.");}
+    update();
 
 }
 void SetLogic::add_elements(QString name,QString data){
@@ -54,4 +71,16 @@ void SetLogic::sub_elements(QString name,QString data){
 
 bool SetLogic::condition()const{
     return dimensione >= num-1;
+}
+
+bool SetLogic::in(const int n,std::string name)const{
+    bool sent=false;
+    std::list<const numbers*>::const_iterator cit= elements->begin();
+        cit++;
+        for(; cit!=elements->end() && !sent; cit++){
+            if(dynamic_cast<const set*>(*cit) && (*cit)->get_name()!=name){
+                sent=static_cast<const set*>(*cit)->search(n);
+            }
+        }
+    return sent;
 }

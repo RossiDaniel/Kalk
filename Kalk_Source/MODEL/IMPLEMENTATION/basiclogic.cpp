@@ -5,11 +5,6 @@ void BasicLogic::getNameType(){
     emit setBarra(QString("Kalk is set on "+nameType+" type."));
 }
 
-void BasicLogic::add_set(QString,QString){}
-void BasicLogic::sub_set(QString,QString){}
-void BasicLogic::add_elements(QString,QString){}
-void BasicLogic::sub_elements(QString,QString){}
-
 void BasicLogic::getElements(){
     std::list<QString> l;
     for(std::list<const numbers*>::const_iterator cit= elements->begin(); cit!=elements->end(); cit++){
@@ -71,4 +66,22 @@ void BasicLogic::SetOperation(QString name){
     if(!operand1){throw QString("Exception : an operand must be chosen before an operation is selected.");}
     if(operation){delete operation;operation=0;delete operand2;operand2=0;}
     operation = new QString(name);
+}
+
+void BasicLogic::sub_set(QString name, QString data){
+    bool sent=false;
+    for(std::list<const numbers*>::const_iterator cit=elements->begin(); !sent && cit!=elements->end(); cit++){
+        if(type == (*cit)->name() && (*cit)->get_name() == name.toStdString()){
+            sent =true;
+            delete *cit;
+            cit=elements->erase(cit);
+        }
+    }
+    if(!sent){throw QString("The element you want to delete doesn't exist.");}
+}
+
+void BasicLogic::update(){
+    getElements();
+    emit closeInputWindow();
+    emit setBarra(QString("Operation done."));
 }

@@ -24,7 +24,7 @@ public:
     void add_elements(QString,QString);
     void sub_elements(QString,QString);
     bool condition()const;
-
+    bool in(const int,std::string)const;
 
 };
 
