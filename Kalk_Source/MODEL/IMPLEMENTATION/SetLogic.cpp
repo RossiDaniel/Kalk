@@ -25,12 +25,11 @@ void SetLogic::singleOperation(QString){
 }
 
 void SetLogic::add_set(QString name,QString data){
-    std::cout<<"ciucia";
     bool sent=false;
     for(std::list<const numbers*>::iterator it= elements->begin(); it!=elements->end() && !sent; it++){
         if((*it)->get_name() == name.toStdString() && dynamic_cast<const set*>(*it)){
             sent =true;
-            emit setErrorInput(QString("Exception: a SET named '"+ name +"' already exists in the universe."));
+            throw QString("Exception: a SET named '"+ name +"' already exists in the universe.");
         }
     }
     if(!sent){
@@ -41,6 +40,7 @@ void SetLogic::add_set(QString name,QString data){
         ((const_cast<numbers*>(*elements->begin())))->change_name("U");
     }
     getElements();
+    emit closeInputWindow();
 }
 void SetLogic::sub_set(QString name,QString data){
 

@@ -11,7 +11,7 @@ Input::~Input(){
 
 void Input::manageInput(int index){
     operation=index;
-    ifExist();
+    ifExistClose();
     configureExtrapanel();
     switch (index) {
         case 0:
@@ -39,12 +39,14 @@ void Input::configureExtrapanel(){
     isUsed=true;
 
 }
-void Input::ifExist(){
+void Input::ifExistClose(){
     if(isUsed){
         Disconnect();
         input_view->close();
         delete input_view;
-        input_view=0;}
+        input_view=0;
+        isUsed=false;
+    }
 }
 void Input::unlock(){
     Disconnect();
@@ -62,5 +64,8 @@ void Input::SendDataInput(QString name, QString elements){
 }
 
 void Input::setErrorInput(QString text){
-    std::cout<<text.toStdString();
+    std::cout<<"iuppi";
+    QMessageBox* ciucia= new QMessageBox();
+    ciucia->setText(text);
+    ciucia->show();
 }

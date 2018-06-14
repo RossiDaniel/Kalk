@@ -29,4 +29,5 @@ signals:
     void setBarra(QString);
     void setError(QString);
     void setErrorInput(QString);
+    void closeInputWindow();
 };

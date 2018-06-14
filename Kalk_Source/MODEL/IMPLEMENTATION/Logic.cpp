@@ -8,8 +8,8 @@ Logic::Logic(){
         connect(logics[i],SIGNAL(setBarra(QString)),this,SIGNAL(setBarra(QString)));
         connect(logics[i],SIGNAL(setError(QString)),this,SIGNAL(setError(QString)));
         connect(logics[i],SIGNAL(setErrorInput(QString)),this,SIGNAL(setErrorInput(QString)));
+        connect(logics[i],SIGNAL(closeInputWindow()),this,SIGNAL(closeInputWindow()));
     }
-    changeLogic(0);
 }
 
 Logic::~Logic(){
@@ -45,6 +45,7 @@ void Logic::changeLogic(int index){
 }
 
 void Logic::executeOperation(int index,QString name,QString elements){
+    try{
     switch (index) {
         case 0:
             uni->add_set(name,elements);
@@ -60,5 +61,8 @@ void Logic::executeOperation(int index,QString name,QString elements){
             break;
         default:
             std::cout<<index;
+    }
+    }catch(QString q){
+        emit setErrorInput(q);
     }
 }

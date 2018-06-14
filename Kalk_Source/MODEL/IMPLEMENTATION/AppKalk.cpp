@@ -18,8 +18,10 @@ AppKalk::AppKalk(){
     connect(logic,SIGNAL(setBarra(QString)),container_view,SLOT(setBarra(QString)));
     connect(logic,SIGNAL(setError(QString)),container_view,SLOT(setError(QString)));
     connect(logic,SIGNAL(setErrorInput(QString)),input_manage,SLOT(setErrorInput(QString)));
+    connect(logic, SIGNAL(closeInputWindow()),input_manage,SLOT(ifExistClose()));
 
     container_view->show();
+    logic->changeLogic(0);
 }
 
 AppKalk::~AppKalk(){
