@@ -68,20 +68,61 @@ void BasicLogic::SetOperation(QString name){
     operation = new QString(name);
 }
 
-void BasicLogic::sub_set(QString name, QString data){
+void BasicLogic::add_set(QString name,QString data){
+    for(std::list<const numbers*>::iterator it= elements->begin(); it!=elements->end(); it++){
+        if((*it)->get_name() == name.toStdString() && checkType((*it)->name())){
+            throw QString("ERROR: an element named '"+ name +"' already exists in the universe.");
+        }
+    }
+    elements->push_back(getObjectLogicClass(name.toStdString(),parser(data)));
+    update();
+}
+
+void BasicLogic::sub_elements(QString name,QString data){
+    bool sent =false;
+    std::list<const numbers*>::const_iterator cit= elements->begin();
+    for(; cit!=elements->end() && !sent; cit++){
+        if(checkType((*cit)->name()) && (*cit)->get_name() == name.toStdString()){
+            sent =true;
+            (const_cast<numbers*>(*cit))->sub_list(parser(data));
+        }
+    }
+    if(!sent){throw QString("ERROR: The element you want to add doesn't exist.");}
+    update();
+}
+
+void BasicLogic::sub_set(QString name){
     bool sent=false;
     for(std::list<const numbers*>::const_iterator cit=elements->begin(); !sent && cit!=elements->end(); cit++){
-        if(type == (*cit)->name() && (*cit)->get_name() == name.toStdString()){
+        if(checkType((*cit)->name()) && (*cit)->get_name() == name.toStdString()){
             sent =true;
             delete *cit;
             cit=elements->erase(cit);
         }
     }
-    if(!sent){throw QString("The element you want to delete doesn't exist.");}
+    if(!sent){throw QString("ERROR: The element you want to delete doesn't exist.");}
+    update();
+}
+
+void BasicLogic::add_elements(QString name, QString data){
+    bool sent =false;
+    std::list<const numbers*>::const_iterator cit= elements->begin();
+    for(; cit!=elements->end() && !sent; cit++){
+        if(checkType((*cit)->name()) && (*cit)->get_name() == name.toStdString()){
+            sent =true;
+            (const_cast<numbers*>(*cit))->add_list(parser(data));
+        }
+    }
+    if(!sent){throw QString("ERROR: The element you want to add doesn't exist.");}
+    update();
 }
 
 void BasicLogic::update(){
     getElements();
     emit closeInputWindow();
     emit setBarra(QString("Operation done."));
+}
+
+bool BasicLogic::checkType(std::string otherType)const{
+    return type == otherType;
 }

@@ -23,18 +23,19 @@ public:
     BasicLogic(QString,std::string,std::list<const numbers*>*);
     virtual ~BasicLogic()=0;
     void getNameType();
-
+    bool checkType(std::string)const;
     void CE();
     virtual void SetOperand(std::string, std::string );
     virtual void SetOperation(QString);
     virtual void selectOperand(QListWidgetItem*);
     virtual void singleOperation(QString)=0;
 
-    virtual void add_set(QString,QString)=0;
-    virtual void sub_set(QString,QString);
-    virtual void add_elements(QString,QString)=0;
-    virtual void sub_elements(QString,QString)=0;
+    virtual void add_set(QString,QString);
+    virtual void sub_set(QString);
+    virtual void add_elements(QString,QString);
+    virtual void sub_elements(QString,QString);
 
+    virtual numbers* getObjectLogicClass(std::string,std::list<int>)=0;
     void getElements();
     void update();
 

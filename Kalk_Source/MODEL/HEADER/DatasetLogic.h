@@ -7,7 +7,6 @@
 #include<typeinfo>
 #include"numbers.h"
 #include"MODEL/HEADER/basiclogic.h"
-#include"MODEL/HEADER/parser.h"
 #include"MODEL/HEADER/Dataset.h"
 
 class DatasetLogic: public BasicLogic{
@@ -15,13 +14,12 @@ class DatasetLogic: public BasicLogic{
 public:
     DatasetLogic(std::list<const numbers*>*);
     ~DatasetLogic();
+
+    //Override BasicLogic
     void singleOperation(QString);
+    numbers* getObjectLogicClass(std::string,std::list<int>);
 
-    void add_set(QString,QString);
-    void sub_set(QString,QString);
-    void add_elements(QString,QString);
-    void sub_elements(QString,QString);
-
+    //Overidde Parser
     bool condition()const;
 
 

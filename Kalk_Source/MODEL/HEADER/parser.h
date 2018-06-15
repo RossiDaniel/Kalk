@@ -21,7 +21,7 @@ public:
     virtual ~Parser()=0;
     std::list<int> parser(QString);
     virtual bool condition()const=0;
-
+    void restoreDefault();
 };
 
 

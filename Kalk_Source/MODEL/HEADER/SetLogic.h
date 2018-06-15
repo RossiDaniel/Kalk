@@ -20,11 +20,12 @@ public:
     void singleOperation(QString);
     void selectOperand(QListWidgetItem*);
     void add_set(QString,QString);
-    void sub_set(QString,QString);
+    void sub_set(QString);
     void add_elements(QString,QString);
     void sub_elements(QString,QString);
     bool condition()const;
     bool in(const int,std::string)const;
+    numbers* getObjectLogicClass(std::string,std::list<int>);
 
 };
 

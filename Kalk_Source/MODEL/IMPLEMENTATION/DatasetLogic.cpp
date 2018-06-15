@@ -10,35 +10,11 @@ DatasetLogic::~DatasetLogic(){
 
 }
 
+numbers* DatasetLogic::getObjectLogicClass(std::string name,std::list<int> data){
+    return new dataset(name,data);
+}
 
 void DatasetLogic::singleOperation(QString){
-
-}
-
-void DatasetLogic::add_set(QString name,QString data){
-    bool sent=false;/*
-    for(std::list<const numbers*>::iterator it= elements->begin(); it!=elements->end() && !sent; it++){
-        if((*it)->get_name() == name.toStdString() && dynamic_cast<const set*>(*it)){
-            sent =true;
-            emit setError(QString("Exception: a SET named '"+ name +"' already exists in the universe."));
-        }
-    }
-    if(!sent){
-        set* s=new set();
-        elements->push_back(const_cast<numbers*>((s->clone())));
-        set* n=const_cast<set*>(static_cast<const set*>(*(elements->begin())));
-        *n =Suni->Union(*n,*const_cast<set*>(dynamic_cast<const set*>(&s)));
-        ((const_cast<numbers*>(*elements->begin())))->change_name("U");
-    }*/
-}
-
-void DatasetLogic::sub_set(QString name,QString data){
-
-}
-void DatasetLogic::add_elements(QString name,QString data){
-
-}
-void DatasetLogic::sub_elements(QString name,QString data){
 
 }
 

@@ -1,16 +1,19 @@
 #include "MODEL/HEADER/parser.h"
 Parser::Parser(){
+    restoreDefault();
+}
+
+Parser::~Parser(){}
+
+void Parser::restoreDefault(){
     dimensione=0;
     num=(std::to_string(INT_MAX)).size();
     n=0;
     k=0;
     segno=1;
 }
-
-Parser::~Parser(){}
-
-
 std::list<int> Parser::parser(QString data){
+    restoreDefault();
     QChar blank=QChar(' ');
     QChar virgola=QChar(',');
     QChar meno=QChar('-');
@@ -50,6 +53,12 @@ std::list<int> Parser::parser(QString data){
         if((i+1) == data.size() && data[i] != blank && data[i] != virgola && sent){
             l.push_back(n*segno);
         }
+    }
+    std::cout<<*l.begin();
+    std::list<int>::iterator it= l.begin();
+    std::cout<<"ciucia";
+    for(; it!=l.end(); it++){
+std::cout<<*it<<std::endl;
     }
     return l;
 }
