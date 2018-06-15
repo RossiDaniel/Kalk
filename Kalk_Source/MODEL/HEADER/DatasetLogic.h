@@ -18,7 +18,6 @@ public:
     void singleOperation(QString);
 
     void add_set(QString,QString);
-    void sub_set(QString,QString);
     void add_elements(QString,QString);
     void sub_elements(QString,QString);
 

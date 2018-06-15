@@ -63,7 +63,21 @@ void SetLogic::sub_set(QString name,QString data){
 
 }
 void SetLogic::add_elements(QString name,QString data){
-
+    if(name.toStdString() == "U"){throw QString("Error: the 'U' Set cannot be deleted.");}
+    bool sent =false;
+    std::list<const numbers*>::const_iterator cit= elements->begin();
+    for(; cit!=elements->end() && !sent; cit++){
+        if((*cit)->get_name() == name.toStdString() && dynamic_cast<const set*>(*cit)){
+            sent =true;
+            if(name.toStdString() == "U"){throw QString("Error: you cannot add numbers to element U.");}
+            else{
+                std::list<int> l=parser(data);
+                (const_cast<numbers*>(*cit))->add_list(l);
+                (const_cast<numbers*>(*elements->begin()))->add_list(l);
+            }
+        }
+    }
+    if(!sent){throw QString("Error: the element inserted doesn't exist.");}
 }
 void SetLogic::sub_elements(QString name,QString data){
 
@@ -84,3 +98,4 @@ bool SetLogic::in(const int n,std::string name)const{
         }
     return sent;
 }
+

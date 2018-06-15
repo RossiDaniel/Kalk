@@ -80,6 +80,7 @@ void BasicLogic::sub_set(QString name, QString data){
     if(!sent){throw QString("The element you want to delete doesn't exist.");}
 }
 
+
 void BasicLogic::update(){
     getElements();
     emit closeInputWindow();
