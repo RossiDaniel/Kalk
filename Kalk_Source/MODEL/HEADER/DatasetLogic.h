@@ -10,7 +10,7 @@
 #include"MODEL/HEADER/parser.h"
 #include"MODEL/HEADER/Dataset.h"
 
-class DatasetLogic: public BasicLogic,Parser{
+class DatasetLogic: public BasicLogic{
 
 public:
     DatasetLogic(std::list<const numbers*>*);

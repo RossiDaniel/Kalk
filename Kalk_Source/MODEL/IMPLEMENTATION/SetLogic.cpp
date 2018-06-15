@@ -31,7 +31,7 @@ void SetLogic::add_set(QString name,QString data){
         }
     }
     if(!sent){
-        set* s=new set(name.toStdString(),parser(data));
+        set* s=new set(name.toStdString(),std::list<int>());
         elements->push_back(s->clone());
         set* n=const_cast<set*>(static_cast<const set*>(*(elements->begin())));
         *n =Suni->Union(*n,*s);

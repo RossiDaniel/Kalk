@@ -4,9 +4,11 @@
 #include<QWidget>
 #include<QListWidgetItem>
 #include "MODEL/HEADER/numbers.h"
+#include "MODEL/HEADER/parser.h"
+
 #include<typeinfo>
 
-class BasicLogic: public QObject{
+class BasicLogic: public Parser{
     Q_OBJECT
 private:
     QString nameType;

@@ -5,8 +5,9 @@
 #include <QString>
 #include <list>
 #include <climits>
+#include <QObject>
 
-class Parser{
+class Parser:public QObject{
 protected:
     int dimensione;
     int num;

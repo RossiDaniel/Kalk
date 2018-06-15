@@ -11,7 +11,7 @@
 #include "MODEL/HEADER/Set.h"
 #include "MODEL/HEADER/SetCommonOperation.h"
 
-class SetLogic: public BasicLogic,Parser{
+class SetLogic: public BasicLogic{
 private:
     SetCommonOperation* Suni;
 public:

@@ -12,7 +12,7 @@
 #include"MODEL/HEADER/Advanced.h"
 
 
-class AdvancedLogic: public BasicLogic,Parser{
+class AdvancedLogic: public BasicLogic{
 
 public:
     AdvancedLogic(std::list<const numbers*>*);
