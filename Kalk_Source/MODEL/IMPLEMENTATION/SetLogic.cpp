@@ -10,6 +10,12 @@ SetLogic::SetLogic(std::list<const numbers*>* l): BasicLogic(QString("SET"),"set
 SetLogic::~SetLogic(){
 
 }
+
+numbers* SetLogic::getObjectLogicClass(std::string name,std::list<int> data){
+    return new set(name,data);
+}
+
+
 void SetLogic::selectOperand(QListWidgetItem* name){
     if(name->text() == "U"){
         emit setError(QString("Remember you cannot do operation with Set U"));
@@ -40,7 +46,7 @@ void SetLogic::add_set(QString name,QString data){
     update();
 }
 
-void SetLogic::sub_set(QString name,QString data){
+void SetLogic::sub_set(QString name){
     if(name.toStdString() == "U"){throw QString("Exception: the 'U' Set cannot be deleted.");}
     bool sent =false;
     std::list<const numbers*>::iterator it= elements->begin();
@@ -58,29 +64,52 @@ void SetLogic::sub_set(QString name,QString data){
             it=elements->erase(it);
         }
     }
-    if(!sent){throw QString("The element you want to delete doesn't exist.");}
+    if(!sent){throw QString("ERROR: The element you want to delete doesn't exist.");}
     update();
+}
 
+void SetLogic::sub_elements(QString name,QString data){
+    bool sent =false;
+    if(name.toStdString() == "U"){
+        sent=true;
+        std::list<const numbers*>::const_iterator cit= elements->begin();
+        for(; cit!=elements->end(); cit++){
+            if(dynamic_cast<const set*>(*cit)){
+                (const_cast<numbers*>(*cit))->sub_list(parser(data));
+            }
+        }
+    }
+    else{
+        std::list<const numbers*>::const_iterator cit= elements->begin();
+        for(; cit!=elements->end() && !sent; cit++){
+            if((*cit)->get_name() == name.toStdString() && dynamic_cast<const set*>(*cit)){
+                sent =true;
+                std::list<int> l=parser(data);
+                std::list<int>::const_iterator lcit= l.begin();
+                for(;lcit!=l.end(); lcit++){
+                    bool found=this->in(*lcit,name.toStdString());
+                    (const_cast<numbers*>(*cit))->sub_value(*lcit);
+                    if(!found){(const_cast<numbers*>(*elements->begin()))->sub_value(*lcit);}
+                }
+            }
+        }
+    }
+    if(!sent){throw QString("ERROR: l'elemento a cui vuoi sottrarre dei numeri non esiste");}
+    update();
 }
 void SetLogic::add_elements(QString name,QString data){
-    if(name.toStdString() == "U"){throw QString("Error: the 'U' Set cannot be deleted.");}
     bool sent =false;
     std::list<const numbers*>::const_iterator cit= elements->begin();
     for(; cit!=elements->end() && !sent; cit++){
         if((*cit)->get_name() == name.toStdString() && dynamic_cast<const set*>(*cit)){
             sent =true;
-            if(name.toStdString() == "U"){throw QString("Error: you cannot add numbers to element U.");}
-            else{
-                std::list<int> l=parser(data);
-                (const_cast<numbers*>(*cit))->add_list(l);
-                (const_cast<numbers*>(*elements->begin()))->add_list(l);
-            }
+            std::list<int> number=parser(data);
+            if(name.toStdString() != "U"){(const_cast<numbers*>(*cit))->add_list(number);}
+            (const_cast<numbers*>(*elements->begin()))->add_list(number);
         }
     }
-    if(!sent){throw QString("Error: the element inserted doesn't exist.");}
-}
-void SetLogic::sub_elements(QString name,QString data){
-
+    if(!sent){throw std::string("ERROR: The element you want to add doesn't exist.");}
+    update();
 }
 
 bool SetLogic::condition()const{

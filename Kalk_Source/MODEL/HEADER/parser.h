@@ -5,8 +5,9 @@
 #include <QString>
 #include <list>
 #include <climits>
+#include <QObject>
 
-class Parser{
+class Parser:public QObject{
 protected:
     int dimensione;
     int num;
@@ -20,7 +21,7 @@ public:
     virtual ~Parser()=0;
     std::list<int> parser(QString);
     virtual bool condition()const=0;
-
+    void restoreDefault();
 };
 
 

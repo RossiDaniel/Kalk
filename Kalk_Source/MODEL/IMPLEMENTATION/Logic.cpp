@@ -51,7 +51,7 @@ void Logic::executeOperation(int index,QString name,QString elements){
             uni->add_set(name,elements);
             break;
         case 1:
-            uni->sub_set(name,elements);
+            uni->sub_set(name);
             break;
         case 2:
             uni->add_elements(name,elements);

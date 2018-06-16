@@ -11,7 +11,7 @@
 #include "MODEL/HEADER/Set.h"
 #include "MODEL/HEADER/SetCommonOperation.h"
 
-class SetLogic: public BasicLogic,Parser{
+class SetLogic: public BasicLogic{
 private:
     SetCommonOperation* Suni;
 public:
@@ -20,11 +20,12 @@ public:
     void singleOperation(QString);
     void selectOperand(QListWidgetItem*);
     void add_set(QString,QString);
-    void sub_set(QString,QString);
+    void sub_set(QString);
     void add_elements(QString,QString);
     void sub_elements(QString,QString);
     bool condition()const;
     bool in(const int,std::string)const;
+    numbers* getObjectLogicClass(std::string,std::list<int>);
 
 };
 
