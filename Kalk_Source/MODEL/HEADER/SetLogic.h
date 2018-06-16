@@ -7,7 +7,6 @@
 #include<typeinfo>
 #include"numbers.h"
 #include "MODEL/HEADER/basiclogic.h"
-#include "MODEL/HEADER/parser.h"
 #include "MODEL/HEADER/Set.h"
 #include "MODEL/HEADER/SetCommonOperation.h"
 
