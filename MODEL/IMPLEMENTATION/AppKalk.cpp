@@ -9,7 +9,7 @@ AppKalk::AppKalk(){
     connect(container_view,SIGNAL(cancel()),logic,SLOT(CE()));
     connect(container_view,SIGNAL(selectOperand(QListWidgetItem*)),logic,SLOT(selectOperand(QListWidgetItem*)));
     connect(container_view,SIGNAL(operation(QString)),logic,SLOT(SetOperation(QString)));
-    connect(container_view,SIGNAL(singleOperation(QString)),logic,SLOT(singleOperation(QString)));
+    connect(container_view,SIGNAL(singleOperation(int)),logic,SLOT(singleOperation(int)));
     connect(container_view,SIGNAL(input(int)),input_manage,SLOT(manageInput(int)));
 
     connect(input_manage,SIGNAL(executeOperation(int,QString,QString)),logic,SLOT(executeOperation(int,QString,QString)));

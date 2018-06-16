@@ -30,8 +30,8 @@ void Logic::SetOperation(QString q){
     uni->SetOperation(q);
 }
 
-void Logic::singleOperation(QString q){
-    uni->singleOperation(q);
+void Logic::singleOperation(int index){
+    uni->singleOperation(index);
 }
 
 void Logic::selectOperand(QListWidgetItem* item){

@@ -14,7 +14,7 @@ numbers* AdvancedLogic::getObjectLogicClass(std::string name,std::list<int> data
     return new advanced(name,data);
 }
 
-void AdvancedLogic::singleOperation(QString){
+void AdvancedLogic::singleOperation(int index){
 
 }
 

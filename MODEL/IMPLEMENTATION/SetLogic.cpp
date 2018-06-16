@@ -5,6 +5,8 @@ SetLogic::SetLogic(std::list<const numbers*>* l): BasicLogic(QString("SET"),"set
     operand1=0;
     operand2=0;
     operation=0;
+    result=0;
+    Suni=new SetCommonOperation();
 }
 
 SetLogic::~SetLogic(){
@@ -24,8 +26,26 @@ void SetLogic::selectOperand(QListWidgetItem* name){
 }
 
 
-void SetLogic::singleOperation(QString){
-
+void SetLogic::singleOperation(int index){
+    std::string str;
+    if(result==0){delete result; result=0;}
+    try{
+    switch (index) {
+        case 0:
+            result=&Suni->Difference(*(dynamic_cast<const set*>(*elements->begin())),*(dynamic_cast<const set*>(operand1)));
+            result->change_name("not"+operand1->get_name());
+            str=*result;
+            emit setBarra(str.c_str());
+            break;
+        case 1:
+            emit setBarra(QString(Suni->PowerSet(*(dynamic_cast<const set*>(operand1))).c_str()));
+            break;
+        default:
+            std::cout<<index;
+    }
+    }catch(QString q){
+        emit setErrorInput(q);
+    }
 }
 
 void SetLogic::add_set(QString name,QString data){
