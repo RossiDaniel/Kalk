@@ -117,6 +117,7 @@ void BasicLogic::add_elements(QString name, QString data){
     update();
 }
 
+
 void BasicLogic::update(){
     getElements();
     emit closeInputWindow();

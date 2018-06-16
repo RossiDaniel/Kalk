@@ -127,3 +127,4 @@ bool SetLogic::in(const int n,std::string name)const{
         }
     return sent;
 }
+
