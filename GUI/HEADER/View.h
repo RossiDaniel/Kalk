@@ -23,7 +23,12 @@ class View: public QWidget{
     Q_OBJECT
 
 private:
+    int currentStatus;
+    QPalette* pal;
     QPushButton* CE;
+    QPushButton* clearKalk;
+    QGridLayout* inputButtonGrid;
+
     QTextEdit* Barra;
     QLineEdit* errori;
     QListWidget* elenco;
@@ -36,32 +41,37 @@ private:
     QHBoxLayout* kalk;
     QGridLayout* status;
 
-    QPushButton* StatusSet;
-    QPushButton* StatusDataset;
-    QPushButton* StatusAdvanced;
-    QSignalMapper* StatussignalMapper;
+    std::vector<QPushButton*> statusButton;
+    std::vector<QPushButton*> inputButton;
+
+    QSignalMapper* StatusSignalMapper;
+    QSignalMapper* InputSignalMapper;
 
     SetView* set;
     DatasetView* dataset;
     AdvancedView* advanced;
     std::vector<KalkMainWindow*> views;
 public:
-    View();
+    View(std::vector<QString>);
     ~View();
     void setViews();
+    void clear();
 public slots:
     void refresh(std::list<QString>);
     void setCE();
     void setBarra(QString);
     void setError(QString);
+    void changePallet(int);
 
 signals:
     void input(int);
     void selectOperand(QListWidgetItem*);
     void changelogic(int);
     void cancel();
-    void operation(QString);
-    void singleOperation(QString);
+    void operation(int);
+    void singleOperation(int);
+    void result();
+    void clearKalkElements();
 };
 
 #endif // VIEW_H

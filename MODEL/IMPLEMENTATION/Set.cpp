@@ -91,8 +91,8 @@ set& set::operator=(const set* s){
 	return *this;	
 }
 set& set::operator+(const set& s) const{
-	set* result =new set("( "+this->get_name()+" + "+s.get_name()+" )");
-	result->add_list_without_control(element);
+    set* result =new set("( "+this->get_name()+" + "+s.get_name()+" )");
+    result->add_list_without_control(element);
     result->add_list(s.element);
 	return *result;
 }

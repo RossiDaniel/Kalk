@@ -8,15 +8,18 @@
 #include"numbers.h"
 #include"MODEL/HEADER/basiclogic.h"
 #include"MODEL/HEADER/Dataset.h"
+#include "MODEL/HEADER/DatasetCommonOperation.h"
 
 class DatasetLogic: public BasicLogic{
+private:
+    DatasetCommonOperation* commonOperation;
 
 public:
     DatasetLogic(std::list<const numbers*>*);
     ~DatasetLogic();
 
     //Override BasicLogic
-    void singleOperation(QString);
+    void singleOperation(int);
     numbers* getObjectLogicClass(std::string,std::list<int>);
 
     //Overidde Parser

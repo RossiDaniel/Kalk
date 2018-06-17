@@ -6,7 +6,7 @@ SetLogic::SetLogic(std::list<const numbers*>* l): BasicLogic(QString("SET"),"set
     operand2=0;
     operation=0;
     result=0;
-    Suni=new SetCommonOperation();
+    commonOperation=new SetCommonOperation();
 }
 
 SetLogic::~SetLogic(){
@@ -20,32 +20,38 @@ numbers* SetLogic::getObjectLogicClass(std::string name,std::list<int> data){
 
 void SetLogic::selectOperand(QListWidgetItem* name){
     if(name->text() == "U"){
-        emit setError(QString("Remember you cannot do operation with Set U"));
+        std::string str =*const_cast<numbers*>(*(elements->begin()));
+        emit setBarra(QString(str.c_str()));
     }
-    BasicLogic::selectOperand(name);
+    else{
+        BasicLogic::selectOperand(name);
+    }
 }
 
 
 void SetLogic::singleOperation(int index){
+    if(!operand1){throw QString("ERROR: a operand must be chosen before operation.");}
     std::string str;
-    if(result==0){delete result; result=0;}
+    if(result!=0){delete result; result=0;}
     try{
     switch (index) {
         case 0:
-            result=&Suni->Difference(*(dynamic_cast<const set*>(*elements->begin())),*(dynamic_cast<const set*>(operand1)));
+            result=&commonOperation->Difference(*(dynamic_cast<const set*>(*elements->begin())),*(dynamic_cast<const set*>(operand1)));
             result->change_name("not"+operand1->get_name());
             str=*result;
             emit setBarra(str.c_str());
             break;
         case 1:
-            emit setBarra(QString(Suni->PowerSet(*(dynamic_cast<const set*>(operand1))).c_str()));
+            emit setBarra(QString(commonOperation->PowerSet(*(dynamic_cast<const set*>(operand1))).c_str()));
             break;
         default:
-            std::cout<<index;
+        BasicLogic::singleOperation(index);
+
     }
     }catch(QString q){
         emit setErrorInput(q);
     }
+    CE();
 }
 
 void SetLogic::add_set(QString name,QString data){
@@ -60,7 +66,7 @@ void SetLogic::add_set(QString name,QString data){
         set* s=new set(name.toStdString(),parser(data));
         elements->push_back(s->clone());
         set* n=const_cast<set*>(static_cast<const set*>(*(elements->begin())));
-        *n =Suni->Union(*n,*s);
+        *n =commonOperation->Union(*n,*s);
         ((const_cast<numbers*>(*elements->begin())))->change_name("U");
     }
     update();
@@ -128,7 +134,7 @@ void SetLogic::add_elements(QString name,QString data){
             (const_cast<numbers*>(*elements->begin()))->add_list(number);
         }
     }
-    if(!sent){throw std::string("ERROR: The element you want to add doesn't exist.");}
+    if(!sent){throw QString("ERROR: The element you want to add doesn't exist.");}
     update();
 }
 
@@ -146,5 +152,57 @@ bool SetLogic::in(const int n,std::string name)const{
             }
         }
     return sent;
+}
+
+void SetLogic::results(){
+    if(!operand1 || !operand2 || operation ==-1){throw QString("ERROR: a operand must be chosen before operation.");}
+    std::string str;
+    try{
+    switch (operation) {
+        case 0:
+            result=&commonOperation->Union(*(dynamic_cast<const set*>(operand1)),*(dynamic_cast<const set*>(operand2)));
+            str=*result;
+            emit setBarra(str.c_str());
+            break;
+        case 1:
+            result=&commonOperation->Intersection(*(dynamic_cast<const set*>(operand1)),*(dynamic_cast<const set*>(operand2)));
+            str=*result;
+            emit setBarra(str.c_str());
+            break;
+        case 2:
+            result=&commonOperation->Difference(*(dynamic_cast<const set*>(operand1)),*(dynamic_cast<const set*>(operand2)));
+            str=*result;
+            emit setBarra(str.c_str());
+            break;
+        case 3:
+            result=&commonOperation->SymmetricDifference(*(dynamic_cast<const set*>(operand1)),*(dynamic_cast<const set*>(operand2)));
+            str=*result;
+            emit setBarra(str.c_str());
+            break;
+        case 4:
+            str=commonOperation->CartesianProduct(*(dynamic_cast<const set*>(operand1)),*(dynamic_cast<const set*>(operand2)));
+            emit setBarra(str.c_str());
+            break;
+        default:
+            emit setError(QString("ERROR: operation not available."));
+    }
+    }catch(QString q){
+        emit setErrorInput(q);
+    }
+    CE();
+}
+
+void SetLogic::clearKalkElements(){
+    std::list<const numbers*>::const_iterator cit= elements->begin();
+    (const_cast<numbers*>(*cit))->clear();
+    cit++;
+    for(; cit!=elements->end(); cit++){
+        if("set" == (*cit)->name()){
+            delete *cit;
+            cit=elements->erase(cit);
+            cit--;
+        }
+    }
+    getElements();
 }
 

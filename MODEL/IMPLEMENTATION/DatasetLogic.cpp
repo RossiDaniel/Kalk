@@ -4,7 +4,7 @@ DatasetLogic::DatasetLogic(std::list<const numbers*>* l): BasicLogic(QString("DA
     operand1=0;
     operand2=0;
     operation=0;
-    Duni= new DatasetCommonOperation();
+    commonOperation= new DatasetCommonOperation();
 }
 
 DatasetLogic::~DatasetLogic(){
@@ -16,44 +16,47 @@ numbers* DatasetLogic::getObjectLogicClass(std::string name,std::list<int> data)
 }
 
 void DatasetLogic::singleOperation(int index){
+    if(!operand1){throw QString("ERROR: a operand must be chosen before operation.");}
     std::string str;
     try{
     switch (index) {
         case 0:
-            emit setBarra(QString(Duni->somme(*(dynamic_cast<const dataset*>(operand1))).c_str()));
+            emit setBarra(QString(commonOperation->somme(*(dynamic_cast<const dataset*>(operand1))).c_str()));
             break;
         case 1:
-            emit setBarra(QString(Duni->size(*(dynamic_cast<const dataset*>(operand1))).c_str()));
+            emit setBarra(QString(commonOperation->size(*(dynamic_cast<const dataset*>(operand1))).c_str()));
             break;
         case 2:
-            emit setBarra(QString(Duni->average(*(dynamic_cast<const dataset*>(operand1))).c_str()));
+            emit setBarra(QString(commonOperation->average(*(dynamic_cast<const dataset*>(operand1))).c_str()));
             break;
         case 3:
-            emit setBarra(QString(Duni->gl(*(dynamic_cast<const dataset*>(operand1))).c_str()));
+            emit setBarra(QString(commonOperation->gl(*(dynamic_cast<const dataset*>(operand1))).c_str()));
             break;
         case 4:
-            emit setBarra(QString(Duni->variance(*(dynamic_cast<const dataset*>(operand1))).c_str()));
+            emit setBarra(QString(commonOperation->variance(*(dynamic_cast<const dataset*>(operand1))).c_str()));
             break;
         case 5:
-            emit setBarra(QString(Duni->ds(*(dynamic_cast<const dataset*>(operand1))).c_str()));
+            emit setBarra(QString(commonOperation->ds(*(dynamic_cast<const dataset*>(operand1))).c_str()));
             break;
         case 6:
-            emit setBarra(QString(Duni->deviance(*(dynamic_cast<const dataset*>(operand1))).c_str()));
+            emit setBarra(QString(commonOperation->deviance(*(dynamic_cast<const dataset*>(operand1))).c_str()));
             break;
         case 7:
-            emit setBarra(QString(Duni->deviation(*(dynamic_cast<const dataset*>(operand1))).c_str()));
+            emit setBarra(QString(commonOperation->deviation(*(dynamic_cast<const dataset*>(operand1))).c_str()));
             break;
         case 8:
-            emit setBarra(QString(Duni->deviation2(*(dynamic_cast<const dataset*>(operand1))).c_str()));
+            emit setBarra(QString(commonOperation->deviation2(*(dynamic_cast<const dataset*>(operand1))).c_str()));
             break;
         default:
-            std::cout<<index;
+            BasicLogic::singleOperation(index);
     }
     }catch(QString q){
         emit setErrorInput(q);
     }
+    CE();
 }
 
 bool DatasetLogic::condition()const{
     return dimensione >=num-1 && somma>INT_MAX;
 }
+

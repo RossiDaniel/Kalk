@@ -26,12 +26,18 @@ void Logic::CE(){
     uni->CE();
 }
 
-void Logic::SetOperation(QString q){
-    uni->SetOperation(q);
+void Logic::SetOperation(int index){
+    std::cout<<index;
+    uni->SetOperation(index);
 }
 
 void Logic::singleOperation(int index){
-    uni->singleOperation(index);
+    try{
+        uni->singleOperation(index);
+    }
+    catch(QString q){
+        emit setError(q);
+    }
 }
 
 void Logic::selectOperand(QListWidgetItem* item){
@@ -65,4 +71,25 @@ void Logic::executeOperation(int index,QString name,QString elements){
     }catch(QString q){
         emit setErrorInput(q);
     }
+}
+
+void Logic::result(){
+    try{
+        uni->results();
+    }
+    catch(QString q){
+        emit setError(q);
+    }
+}
+
+std::vector<QString> Logic::nameType()const{
+    std::vector<QString> v;
+    for(unsigned int i=0; i<logics.size();i++){
+        v.push_back(logics[i]->getNameType());
+    }
+    return v;
+}
+
+void Logic::clearKalkElements(){
+    uni->clearKalkElements();
 }

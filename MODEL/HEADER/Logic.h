@@ -15,14 +15,16 @@ public:
     Logic();
     ~Logic();
     void setLogics();
-
+    std::vector<QString> nameType()const;
 public slots:
     void CE();
-    void SetOperation(QString);
-    void singleOperation(QString);
+    void SetOperation(int);
+    void singleOperation(int);
     void selectOperand(QListWidgetItem*);
     void changeLogic(int);
     void executeOperation(int,QString,QString);
+    void result();
+    void clearKalkElements();
 
 signals:
     void listOfElements(std::list<QString>);

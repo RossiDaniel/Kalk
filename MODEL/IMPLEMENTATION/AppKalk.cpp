@@ -1,16 +1,18 @@
 #include "MODEL/HEADER/AppKalk.h"
 
 AppKalk::AppKalk(){
-    container_view= new View();
     logic= new Logic();
+    container_view= new View(logic->nameType());
     input_manage= new Input();
 
     connect(container_view,SIGNAL(changelogic(int)),logic,SLOT(changeLogic(int)));
     connect(container_view,SIGNAL(cancel()),logic,SLOT(CE()));
     connect(container_view,SIGNAL(selectOperand(QListWidgetItem*)),logic,SLOT(selectOperand(QListWidgetItem*)));
-    connect(container_view,SIGNAL(operation(QString)),logic,SLOT(SetOperation(QString)));
+    connect(container_view,SIGNAL(operation(int)),logic,SLOT(SetOperation(int)));
     connect(container_view,SIGNAL(singleOperation(int)),logic,SLOT(singleOperation(int)));
     connect(container_view,SIGNAL(input(int)),input_manage,SLOT(manageInput(int)));
+    connect(container_view,SIGNAL(result()),logic,SLOT(result()));
+    connect(container_view,SIGNAL(clearKalkElements()),logic,SLOT(clearKalkElements()));
 
     connect(input_manage,SIGNAL(executeOperation(int,QString,QString)),logic,SLOT(executeOperation(int,QString,QString)));
 
@@ -22,6 +24,7 @@ AppKalk::AppKalk(){
 
     container_view->show();
     logic->changeLogic(0);
+    container_view->changePallet(0);
 }
 
 AppKalk::~AppKalk(){

@@ -20,34 +20,18 @@ class DatasetView: public KalkMainWindow{
     Q_OBJECT
 
 private:
-
     QGridLayout* buttonLayout;
-
-    QSignalMapper* StatussignalMapper;
-    QSignalMapper* InputsignalMapper;
     QSignalMapper* SingleOperationsignalMapper;
     QSignalMapper* MultiOperationsignalMapper;
+    QSignalMapper* ExtraOperationsignalMapper;
 
-    QLabel* Status;
-    QLabel* typestatus;
-
-    QPushButton* Button1;
-    QPushButton* Button2;
-    QPushButton* Button3;
-    QPushButton* Button4;
-    QPushButton* Button5;
-    QPushButton* Button6;
-    QPushButton* Button7;
-    QPushButton* Button8;
-    QPushButton* Button9;
-    QPushButton* Button10;
-    QPushButton* Button11;
-    QPushButton* Button12;
-    QPushButton* Button13;
-
+    std::vector<QPushButton*> Operationkeyboard;
 public:
     DatasetView();
     ~DatasetView();
+    std::vector<QString> getSingleOperationkeyboard();
+    std::vector<QString> getMultiOperationkeyboard();
+    std::vector<QString> getExtraOperationkeyboard();
 };
 
 

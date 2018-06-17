@@ -16,7 +16,7 @@ public:
     bool search(const int n)const;
 
 	std::list<int> get_element() const{return element;}
-	void clear(){element.clear();}
+    void clear(){element.clear();}
 
     virtual set* clone() const;
     operator std::string();

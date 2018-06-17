@@ -1,5 +1,5 @@
-#ifndef SETLOGIN_H
-#define SETLOGIN_H
+#ifndef SETLOGIC_H
+#define SETLOGIC_H
 
 #include<iostream>
 #include<list>
@@ -12,11 +12,11 @@
 
 class SetLogic: public BasicLogic{
 private:
-    SetCommonOperation* Suni;
+    SetCommonOperation* commonOperation;
 public:
     SetLogic(std::list<const numbers*>*);
     ~SetLogic();
-    void singleOperation(QString);
+    void singleOperation(int);
     void selectOperand(QListWidgetItem*);
     void add_set(QString,QString);
     void sub_set(QString);
@@ -25,7 +25,8 @@ public:
     bool condition()const;
     bool in(const int,std::string)const;
     numbers* getObjectLogicClass(std::string,std::list<int>);
-
+    void results();
+    void clearKalkElements();
 };
 
-#endif // SETLOGIN_H
+#endif // SETLOGIC_H

@@ -21,8 +21,9 @@ public:
 
 signals:
     void input(int);
-    void operation(QString);
-    void singleOperation(QString);
+    void operation(int);
+    void singleOperation(int);
+    void extraoperation(int);
     void result();
     void cancel();
 

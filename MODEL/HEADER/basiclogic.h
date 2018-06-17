@@ -17,18 +17,20 @@ protected:
     std::list<const numbers*>* elements;
     numbers* operand1;
     numbers* operand2;
-    QString* operation;
+    int operation;
+    numbers* result;
 
 public:
     BasicLogic(QString,std::string,std::list<const numbers*>*);
     virtual ~BasicLogic()=0;
-    void getNameType();
+    QString getNameType();
     bool checkType(std::string)const;
     void CE();
+    virtual void clearKalkElements();
     virtual void SetOperand(std::string, std::string );
-    virtual void SetOperation(QString);
+    virtual void SetOperation(int);
     virtual void selectOperand(QListWidgetItem*);
-    virtual void singleOperation(QString)=0;
+    virtual void singleOperation(int);
 
     virtual void add_set(QString,QString);
     virtual void sub_set(QString);
@@ -38,6 +40,8 @@ public:
     virtual numbers* getObjectLogicClass(std::string,std::list<int>)=0;
     void getElements();
     void update();
+    virtual void results();
+
 
 signals:
     void listOfElements(std::list<QString>);
