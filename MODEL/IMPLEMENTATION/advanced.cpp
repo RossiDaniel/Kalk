@@ -15,6 +15,10 @@ void advanced::add_list(const std::list<int>& l){
     this->dataset::add_list(l);
     this->update();
 }
+void advanced::sub_list(const std::list<int>& l){
+    this->dataset::sub_list(l);
+    this->update();
+}
 
 std::string advanced::name() const{
     return std::string("advanced");
@@ -33,6 +37,7 @@ void advanced::update(){
 
 std::list<double> advanced::coscarto(const advanced& s2)const{
     std::list<double> coscarto;
+    std::cout<<size<<" "<<s2.size;
     if(size != s2.size){throw std::string("Exception : Advanced dataset incompatible, size is different");}
     this->checkpoint(s2);
         std::list<double>::const_iterator it1= deviation.begin();

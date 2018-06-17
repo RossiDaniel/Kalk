@@ -11,6 +11,7 @@ void Parser::restoreDefault(){
     n=0;
     k=0;
     segno=1;
+    somma=0;
 }
 std::list<int> Parser::parser(QString data){
     restoreDefault();
@@ -53,12 +54,6 @@ std::list<int> Parser::parser(QString data){
         if((i+1) == data.size() && data[i] != blank && data[i] != virgola && sent){
             l.push_back(n*segno);
         }
-    }
-    std::cout<<*l.begin();
-    std::list<int>::iterator it= l.begin();
-    std::cout<<"ciucia";
-    for(; it!=l.end(); it++){
-std::cout<<*it<<std::endl;
     }
     return l;
 }

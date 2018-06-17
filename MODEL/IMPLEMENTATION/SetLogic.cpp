@@ -10,7 +10,9 @@ SetLogic::SetLogic(std::list<const numbers*>* l): BasicLogic(QString("SET"),"set
 }
 
 SetLogic::~SetLogic(){
-
+    if(result){delete result;result=0;}
+    CE();
+    delete commonOperation;
 }
 
 numbers* SetLogic::getObjectLogicClass(std::string name,std::list<int> data){
@@ -156,6 +158,8 @@ bool SetLogic::in(const int n,std::string name)const{
 
 void SetLogic::results(){
     if(!operand1 || !operand2 || operation ==-1){throw QString("ERROR: a operand must be chosen before operation.");}
+    if(result){delete result;result=0;}
+
     std::string str;
     try{
     switch (operation) {

@@ -8,7 +8,8 @@ DatasetLogic::DatasetLogic(std::list<const numbers*>* l): BasicLogic(QString("DA
 }
 
 DatasetLogic::~DatasetLogic(){
-
+    CE();
+    delete commonOperation;
 }
 
 numbers* DatasetLogic::getObjectLogicClass(std::string name,std::list<int> data){
@@ -57,6 +58,10 @@ void DatasetLogic::singleOperation(int index){
 }
 
 bool DatasetLogic::condition()const{
-    return dimensione >=num-1 && somma>INT_MAX;
+    std::cout<<somma<<" "<<INT_MAX<<std::endl;
+    if(somma>INT_MAX){
+        throw QString("The inserted value si too big, insert a smaller number");
+    }
+    return dimensione >=num-1;
 }
 

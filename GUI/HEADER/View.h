@@ -55,13 +55,14 @@ public:
     View(std::vector<QString>);
     ~View();
     void setViews();
-    void clear();
+    std::vector<QString> getBasicOperation()const;
 public slots:
     void refresh(std::list<QString>);
     void setCE();
     void setBarra(QString);
     void setError(QString);
     void changePallet(int);
+    void clear();
 
 signals:
     void input(int);
@@ -72,6 +73,9 @@ signals:
     void singleOperation(int);
     void result();
     void clearKalkElements();
+    void CloseIfExist();
+    void extraoperation(int);
+
 };
 
 #endif // VIEW_H

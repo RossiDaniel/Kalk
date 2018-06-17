@@ -34,7 +34,7 @@
 #include<GUI/HEADER/View.h>
 #include"GUI/HEADER/Input.h"
 
-class AppKalk: public QObject{
+class AppKalk: public QWidget{
     Q_OBJECT
 private:
     View* container_view;
@@ -43,7 +43,7 @@ private:
 public:
     AppKalk();
     ~AppKalk();
-
+    void configure();
 };
 
 #endif // APP_H

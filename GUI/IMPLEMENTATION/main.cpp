@@ -6,6 +6,7 @@ using namespace std;
 int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
-    AppKalk* kalk= new AppKalk();
+    AppKalk kalk;
+    kalk.configure();
     return app.exec();
 }

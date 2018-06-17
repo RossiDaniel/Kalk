@@ -49,16 +49,28 @@ void dataset::sub_value(const int n){
 }
 
 void dataset::add_list(const std::list<int>& l){
-    element =l;
-    if(l.size()<2){
-        for(unsigned int i=0; i<2-l.size();i++){
-            element.push_back(0);
+    if(element.empty()){
+        element =l;
+        if(l.size()<2){
+            for(unsigned int i=0; i<2-l.size();i++){
+                element.push_back(0);
+            }
+        }
+    }
+    else{
+        for(std::list<int>::const_iterator cit=l.begin(); cit!=l.end(); cit++){
+            element.push_back(*cit);
         }
     }
 }
 void dataset::sub_list(const std::list<int>& l){
     for (std::list<int>::const_iterator it =l.begin(); it != l.end(); it++){
         this->sub_value(*it);
+    }
+    if(element.size()<2){
+        for(unsigned int i=0; i<2-element.size();i++){
+            element.push_back(0);
+        }
     }
 }
 

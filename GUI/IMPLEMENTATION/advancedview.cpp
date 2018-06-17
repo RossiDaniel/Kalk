@@ -7,8 +7,8 @@ AdvancedView::AdvancedView(){
 
     for(unsigned int i=0; i<multiName.size();i++){
         Operationkeyboard.push_back(new QPushButton(multiName[i]));
-        connect (Operationkeyboard[i], SIGNAL(clicked()), MultiOperationsignalMapper, SLOT(map())) ;
-        MultiOperationsignalMapper -> setMapping (Operationkeyboard[i], i) ;
+        connect (Operationkeyboard.back(), SIGNAL(clicked()), MultiOperationsignalMapper, SLOT(map())) ;
+        MultiOperationsignalMapper -> setMapping (Operationkeyboard.back(), i) ;
     }
 
     connect(MultiOperationsignalMapper, SIGNAL(mapped(int)), this, SIGNAL(operation(int))) ;
@@ -18,8 +18,8 @@ AdvancedView::AdvancedView(){
 
     for(unsigned int i=0; i<singleName.size();i++){
         Operationkeyboard.push_back(new QPushButton(singleName[i]));
-        connect (Operationkeyboard[i], SIGNAL(clicked()), SingleOperationsignalMapper, SLOT(map())) ;
-        SingleOperationsignalMapper -> setMapping (Operationkeyboard[i], i) ;
+        connect (Operationkeyboard.back(), SIGNAL(clicked()), SingleOperationsignalMapper, SLOT(map())) ;
+        SingleOperationsignalMapper -> setMapping (Operationkeyboard.back(), i) ;
     }
 
     connect(SingleOperationsignalMapper, SIGNAL(mapped(int)), this, SIGNAL(singleOperation(int)));
@@ -29,8 +29,8 @@ AdvancedView::AdvancedView(){
 
     for(unsigned int i=0; i<extraName.size();i++){
         Operationkeyboard.push_back(new QPushButton(extraName[i]));
-        connect (Operationkeyboard[i], SIGNAL(clicked()), ExtraOperationsignalMapper, SLOT(map())) ;
-        ExtraOperationsignalMapper -> setMapping (Operationkeyboard[i], i) ;
+        connect (Operationkeyboard.back(), SIGNAL(clicked()), ExtraOperationsignalMapper, SLOT(map())) ;
+        ExtraOperationsignalMapper -> setMapping (Operationkeyboard.back(), i) ;
     }
 
     connect(ExtraOperationsignalMapper, SIGNAL(mapped(int)), this, SIGNAL(extraoperation(int))) ;

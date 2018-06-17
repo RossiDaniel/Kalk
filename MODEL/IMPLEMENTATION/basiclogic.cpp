@@ -128,7 +128,14 @@ bool BasicLogic::checkType(std::string otherType)const{
 }
 
 void BasicLogic::results(){
-    elements->push_back(result);
+    if(!result){
+        throw  QString("ERROR: not result is avalilable.");
+    }
+    elements->push_back(result->clone());
+    delete result;
+    result=0;
+    CE();
+    getElements();
 }
 
 void BasicLogic::singleOperation(int index){

@@ -7,29 +7,33 @@ View::View(std::vector<QString> v){
 
     CE = new QPushButton("CE");
     clearKalk = new QPushButton("ClearKalk");
-
-    connect (CE, SIGNAL(clicked()), this, SLOT(setCE())) ;
-    connect (clearKalk, SIGNAL(clicked()), this, SIGNAL(clearKalkElements())) ;
-
     all=new QHBoxLayout();
     inputButtonGrid=new QGridLayout();
     bottom = new QGridLayout();
     right= new QGridLayout();
     left= new QGridLayout();
     Barra= new QTextEdit();
-    errori= new QLineEdit("Errors will be shown here.");
+    errori= new QLineEdit();
     elenco= new QListWidget();
-    elenco->setFixedWidth(200);
-
-    connect (elenco, SIGNAL(itemClicked(QListWidgetItem*)), this, SIGNAL(selectOperand(QListWidgetItem*)));
-
     operationArea=new QStackedWidget();
     status=new QGridLayout();
     StatusSignalMapper = new QSignalMapper();
     InputSignalMapper = new QSignalMapper();
+    std::vector<QString> inputButtonName=getBasicOperation();
+    pal = new QPalette();
+    kalk=new QHBoxLayout();
+
+    elenco->setFixedWidth(200);
+
+    connect (CE, SIGNAL(clicked()), this, SLOT(setCE())) ;
+    connect (clearKalk, SIGNAL(clicked()), this, SIGNAL(clearKalkElements())) ;
+    connect (clearKalk, SIGNAL(clicked()), this, SLOT(clear())) ;
+    connect (elenco, SIGNAL(itemClicked(QListWidgetItem*)), this, SIGNAL(selectOperand(QListWidgetItem*)));
+
     for(unsigned int i=0; i<v.size(); i++){
         statusButton.push_back(new QPushButton(v[i]));
         status->addWidget(statusButton[i],i,1);
+        connect(statusButton[i],SIGNAL(clicked()),this,SIGNAL(CloseIfExist()));
         connect (statusButton[i], SIGNAL(clicked()), StatusSignalMapper, SLOT(map())) ;
         StatusSignalMapper -> setMapping (statusButton[i], i);
     }
@@ -37,12 +41,6 @@ View::View(std::vector<QString> v){
     connect (StatusSignalMapper, SIGNAL(mapped(int)), operationArea, SLOT(setCurrentIndex(int)));
     connect (StatusSignalMapper, SIGNAL(mapped(int)), this, SIGNAL(changelogic(int)));
     connect (StatusSignalMapper, SIGNAL(mapped(int)), this, SLOT(changePallet(int)));
-
-    std::vector<QString> inputButtonName;
-    inputButtonName.push_back("Create");
-    inputButtonName.push_back("Delete");
-    inputButtonName.push_back("Add");
-    inputButtonName.push_back("Sub");
 
     for(unsigned int i=0; i<inputButtonName.size(); i++){
         inputButton.push_back(new QPushButton(inputButtonName[i]));
@@ -57,10 +55,8 @@ View::View(std::vector<QString> v){
 
     connect(InputSignalMapper,SIGNAL(mapped(int)),this,SIGNAL(input(int)));
 
-    pal = new QPalette();
     pal->setColor(QPalette::Button, QColor(Qt::gray));
 
-    kalk=new QHBoxLayout();
     Barra->setReadOnly(true);
     errori->setReadOnly(true);
 
@@ -71,6 +67,7 @@ View::View(std::vector<QString> v){
         connect(views[i],SIGNAL(singleOperation(int)),this,SIGNAL(singleOperation(int)));
         connect(views[i],SIGNAL(input(int)),this,SIGNAL(input(int)));
         connect(views[i],SIGNAL(result()),this,SIGNAL(result()));
+        connect(views[i],SIGNAL(extraoperation(int)),this,SIGNAL(extraoperation(int)));
     }
 
     //barra sulla destra
@@ -96,7 +93,7 @@ View::View(std::vector<QString> v){
 }
 
 View::~View(){
-
+    delete kalk;
 }
 
 void View::refresh(std::list<QString> l){
@@ -142,4 +139,15 @@ void View::changePallet(int index){
     statusButton[index]->update();
     statusButton[index]->setAutoFillBackground(false);
     currentStatus=index;
+    clear();
+    Barra->setText(QString("Change type done."));
+}
+
+std::vector<QString> View::getBasicOperation()const{
+    std::vector<QString> inputButtonName;
+    inputButtonName.push_back("Create");
+    inputButtonName.push_back("Delete");
+    inputButtonName.push_back("Add");
+    inputButtonName.push_back("Sub");
+    return inputButtonName;
 }

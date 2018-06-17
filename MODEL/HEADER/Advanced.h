@@ -18,6 +18,7 @@ public:
     void clear();
     advanced* clone() const;
     void add_list(const std::list<int>&);
+    void sub_list(const std::list<int>&);
     void update();
     std::string name() const;
 

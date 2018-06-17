@@ -6,7 +6,7 @@ Input::Input(){
 }
 
 Input::~Input(){
-
+    ifExistClose();
 }
 
 void Input::manageInput(int index){
@@ -64,7 +64,9 @@ void Input::SendDataInput(QString name, QString elements){
 }
 
 void Input::setErrorInput(QString text){
-    QMessageBox* ciucia= new QMessageBox();
-    ciucia->setText(text);
-    ciucia->show();
+    MessageError= new QMessageBox();
+    MessageError->setAttribute(Qt::WA_DeleteOnClose, true);
+    MessageError->setWindowTitle("non ti sei comportato bene");
+    MessageError->setText(text);
+    MessageError->show();
 }

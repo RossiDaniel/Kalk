@@ -9,6 +9,7 @@ private:
     int operation;
     bool isUsed;
     extrapanel* input_view;
+    QMessageBox* MessageError;
 public:
     Input();
     ~Input();

@@ -8,7 +8,8 @@ AdvancedLogic::AdvancedLogic(std::list<const numbers*>* l): BasicLogic(QString("
 }
 
 AdvancedLogic::~AdvancedLogic(){
-
+    CE();
+    delete commonOperation;
 }
 
 numbers* AdvancedLogic::getObjectLogicClass(std::string name,std::list<int> data){
@@ -16,7 +17,10 @@ numbers* AdvancedLogic::getObjectLogicClass(std::string name,std::list<int> data
 }
 
 bool AdvancedLogic::condition()const{
-    return (n*10+k) > 50 && somma>INT_MAX;
+    if(somma>INT_MAX){
+        throw QString("The inserted value si too big, insert a smaller number");
+    }
+    return (n*10+k) > 50;
 }
 
 void AdvancedLogic::results(){
@@ -24,25 +28,40 @@ void AdvancedLogic::results(){
     try{
     switch (operation) {
         case 0:
-            emit setBarra((commonOperation->codevianza(*(dynamic_cast<const advanced*>(operand1)),*(dynamic_cast<const advanced*>(operand2)))).c_str());
+            emit setBarra((commonOperation->Allinfo(*(dynamic_cast<const advanced*>(operand1)),*(dynamic_cast<const advanced*>(operand2)))).c_str());
             break;
         case 1:
-        emit setBarra((commonOperation->codevianza(*(dynamic_cast<const advanced*>(operand1)),*(dynamic_cast<const advanced*>(operand2)))).c_str());
+            emit setBarra((commonOperation->coscarto(*(dynamic_cast<const advanced*>(operand1)),*(dynamic_cast<const advanced*>(operand2)))).c_str());
             break;
         case 2:
-        emit setBarra((commonOperation->codevianza(*(dynamic_cast<const advanced*>(operand1)),*(dynamic_cast<const advanced*>(operand2)))).c_str());
+            emit setBarra((commonOperation->codevianza(*(dynamic_cast<const advanced*>(operand1)),*(dynamic_cast<const advanced*>(operand2)))).c_str());
             break;
         case 3:
-        emit setBarra((commonOperation->codevianza(*(dynamic_cast<const advanced*>(operand1)),*(dynamic_cast<const advanced*>(operand2)))).c_str());
+            emit setBarra((commonOperation->covarianza(*(dynamic_cast<const advanced*>(operand1)),*(dynamic_cast<const advanced*>(operand2)))).c_str());
             break;
         case 4:
-        emit setBarra((commonOperation->codevianza(*(dynamic_cast<const advanced*>(operand1)),*(dynamic_cast<const advanced*>(operand2)))).c_str());
+            emit setBarra((commonOperation->correlazione(*(dynamic_cast<const advanced*>(operand1)),*(dynamic_cast<const advanced*>(operand2)))).c_str());
+            break;
+        case 5:
+            emit setBarra((commonOperation->coeff_determinazione(*(dynamic_cast<const advanced*>(operand1)),*(dynamic_cast<const advanced*>(operand2)))).c_str());
+            break;
+        case 6:
+            emit setBarra((commonOperation->regressione(*(dynamic_cast<const advanced*>(operand1)),*(dynamic_cast<const advanced*>(operand2)))).c_str());
+            break;
+        case 7:
+            emit setBarra((commonOperation->intercetta(*(dynamic_cast<const advanced*>(operand1)),*(dynamic_cast<const advanced*>(operand2)))).c_str());
+            break;
+        case 8:
+            emit setBarra((commonOperation->retta(*(dynamic_cast<const advanced*>(operand1)),*(dynamic_cast<const advanced*>(operand2)))).c_str());
+            break;
+        case 9:
+            emit setBarra((commonOperation->Grafic(*(dynamic_cast<const advanced*>(operand1)),*(dynamic_cast<const advanced*>(operand2)))).c_str());
             break;
         default:
             emit setError(QString("ERROR: operation is not available."));
     }
-    }catch(QString q){
-        emit setErrorInput(q);
+    }catch(std::string q){
+        emit setError(QString(q.c_str()));
     }
     CE();
 }

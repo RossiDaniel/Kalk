@@ -25,6 +25,7 @@ public slots:
     void executeOperation(int,QString,QString);
     void result();
     void clearKalkElements();
+    void extraoperation(int);
 
 signals:
     void listOfElements(std::list<QString>);
