@@ -64,7 +64,6 @@ void Input::SendDataInput(QString name, QString elements){
 }
 
 void Input::setErrorInput(QString text){
-    std::cout<<"iuppi";
     QMessageBox* ciucia= new QMessageBox();
     ciucia->setText(text);
     ciucia->show();

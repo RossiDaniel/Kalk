@@ -1,207 +1,76 @@
 #include "GUI/HEADER/setview.h"
 
 SetView::SetView(){
-    typestatus= new QLabel("Status Attuale: ");
-    Status = new QLabel("SET");
 
-    Button1 =new QPushButton("Create Set");
-    Button2 =new QPushButton("Delete Set");
-    Button3 =new QPushButton("Clear Kalk");
-    Button4 =new QPushButton("Save Result");
-    Button5 =new QPushButton("Insert Number");
-    Button6 =new QPushButton("Delete Number");
-    Button7 =new QPushButton("Union");
-    Button8 =new QPushButton("Intercetion");
-    Button9 =new QPushButton("Difference");
-    Button10 =new QPushButton("Complement");
-    Button11 =new QPushButton("SymmetricalDif.");
-    Button12 =new QPushButton("CartesianProd");
-    Button13 =new QPushButton("PowerSet()");
-    Button14 =new QPushButton("=");
-
-    InputsignalMapper = new QSignalMapper (this) ;
-
-    connect (Button1, SIGNAL(clicked()), InputsignalMapper, SLOT(map()));
-    connect (Button2, SIGNAL(clicked()), InputsignalMapper, SLOT(map()));
-    connect (Button5, SIGNAL(clicked()), InputsignalMapper, SLOT(map()));
-    connect (Button6, SIGNAL(clicked()), InputsignalMapper, SLOT(map()));
-
-    InputsignalMapper -> setMapping (Button1, 0);
-    InputsignalMapper -> setMapping (Button2, 1);
-    InputsignalMapper -> setMapping (Button5, 2);
-    InputsignalMapper -> setMapping (Button6, 3);
-
-    connect(InputsignalMapper, SIGNAL(mapped(int)), this, SIGNAL(input(int))) ;
-
-    SingleOperationsignalMapper = new QSignalMapper (this) ;
-
-    connect (Button13, SIGNAL(clicked()), SingleOperationsignalMapper, SLOT(map())) ;
-    connect (Button10, SIGNAL(clicked()), SingleOperationsignalMapper, SLOT(map())) ;
-
-    SingleOperationsignalMapper -> setMapping (Button13, "powerset") ;
-    SingleOperationsignalMapper -> setMapping (Button10, "complement") ;
-
-    connect(InputsignalMapper, SIGNAL(mapped(QString)), this, SIGNAL(singleOperation(QString))) ;
-
+    std::vector<QString> multiName =getMultiOperationkeyboard();
     MultiOperationsignalMapper = new QSignalMapper (this) ;
 
-    connect (Button7, SIGNAL(clicked()), MultiOperationsignalMapper, SLOT(map())) ;
-    connect (Button8, SIGNAL(clicked()), MultiOperationsignalMapper, SLOT(map())) ;
-    connect (Button9, SIGNAL(clicked()), MultiOperationsignalMapper, SLOT(map())) ;
-    connect (Button11, SIGNAL(clicked()), MultiOperationsignalMapper, SLOT(map())) ;
-    connect (Button12, SIGNAL(clicked()), MultiOperationsignalMapper, SLOT(map())) ;
+    for(unsigned int i=0; i<multiName.size();i++){
+        Operationkeyboard.push_back(new QPushButton(multiName[i]));
+        connect (Operationkeyboard[i], SIGNAL(clicked()), MultiOperationsignalMapper, SLOT(map())) ;
+        MultiOperationsignalMapper -> setMapping (Operationkeyboard[i], i) ;
+    }
 
-    MultiOperationsignalMapper -> setMapping (Button7, "union") ;
-    MultiOperationsignalMapper -> setMapping (Button8, "intercetion") ;
-    MultiOperationsignalMapper -> setMapping (Button9, "difference") ;
-    MultiOperationsignalMapper -> setMapping (Button11, "symmetricaldifference") ;
-    MultiOperationsignalMapper -> setMapping (Button12, "cartesianproduct") ;
+    connect(MultiOperationsignalMapper, SIGNAL(mapped(int)), this, SIGNAL(operation(int))) ;
 
-    connect(InputsignalMapper, SIGNAL(mapped(QString)), this, SIGNAL(operation(QString))) ;
+    std::vector<QString> singleName =getSingleOperationkeyboard();
+    SingleOperationsignalMapper = new QSignalMapper (this) ;
+
+    for(unsigned int i=0; i<singleName.size();i++){
+        Operationkeyboard.push_back(new QPushButton(singleName[i]));
+        connect (Operationkeyboard[i], SIGNAL(clicked()), SingleOperationsignalMapper, SLOT(map())) ;
+        SingleOperationsignalMapper -> setMapping (Operationkeyboard[i], i) ;
+    }
+
+    connect(SingleOperationsignalMapper, SIGNAL(mapped(int)), this, SIGNAL(singleOperation(int)));
+
+    std::vector<QString> extraName =getExtraOperationkeyboard();
+    ExtraOperationsignalMapper = new QSignalMapper (this) ;
+
+    for(unsigned int i=0; i<extraName.size();i++){
+        Operationkeyboard.push_back(new QPushButton(extraName[i]));
+        connect (Operationkeyboard[i], SIGNAL(clicked()), ExtraOperationsignalMapper, SLOT(map())) ;
+        ExtraOperationsignalMapper -> setMapping (Operationkeyboard[i], i) ;
+    }
+
+    connect(ExtraOperationsignalMapper, SIGNAL(mapped(int)), this, SIGNAL(extraoperation(int))) ;
+
+    QPushButton* result= new QPushButton("=");
+    connect(result,SIGNAL(clicked(bool)),this,SIGNAL(result()));
+    Operationkeyboard.push_back(result);
 
     buttonLayout= new QGridLayout();
 
-    buttonLayout->addWidget(Button1,1,1);
-    buttonLayout->addWidget(Button2,1,2);
-    buttonLayout->addWidget(Button3,1,3);
-    buttonLayout->addWidget(Button4,1,4);
-    buttonLayout->addWidget(Button5,2,1);
-    buttonLayout->addWidget(Button6,2,2);
-    buttonLayout->addWidget(Button7,2,3);
-    buttonLayout->addWidget(Button8,2,4);
-    buttonLayout->addWidget(Button9,3,1);
-    buttonLayout->addWidget(Button10,3,2);
-    buttonLayout->addWidget(Button11,3,3);
-    buttonLayout->addWidget(Button12,3,4);
-    buttonLayout->addWidget(Button13,4,1);
-    buttonLayout->addWidget(Button14,4,2);
-    buttonLayout->addWidget(typestatus,4,3);
-    buttonLayout->addWidget(Status,4,4);
+    unsigned int row=1;
+    for(unsigned int button=0; button<Operationkeyboard.size();button++){
+        if(button == row*4){row++;}
+        buttonLayout->addWidget(Operationkeyboard[button],row,(button%4)+1);
+    }
 
     buttonLayout->setAlignment(Qt::AlignTop);
     setLayout(buttonLayout);
 }
 SetView::~SetView(){}
 
-/*
-void KalkMainWindow::openExtraPanel(QString q){
-    extrapanel* panel=new extrapanel(this,q);
-    panel->show();
+std::vector<QString> SetView::getSingleOperationkeyboard(){
+    std::vector<QString> VofButtonName;
+    VofButtonName.push_back("Complement");
+    VofButtonName.push_back("PowerSet()");
+    return VofButtonName;
 }
 
-void KalkMainWindow::add_set(const numbers& s){
-    uni->add_set(s);
-}
-void KalkMainWindow::sub_set(const std::string s){
-    uni->sub_set(s);
-    this->refresh();
-    Barra->clear();
-    errori->clear();
-}
-void KalkMainWindow::add_elements(const std::string name, const std::list<int>& l)const{
-    uni->add_elements(name,l);
+std::vector<QString> SetView::getMultiOperationkeyboard(){
+    std::vector<QString> VofButtonName;
+    VofButtonName.push_back("Union");
+    VofButtonName.push_back("Intercetion");
+    VofButtonName.push_back("Difference");
+    VofButtonName.push_back("SymmetricalDif.");
+    VofButtonName.push_back("CartesianProd");
+    return VofButtonName;
 }
 
-void KalkMainWindow::sub_elements(const std::string name, const std::list<int>& l)const{
-    uni->sub_elements(name,l);
+std::vector<QString> SetView::getExtraOperationkeyboard(){
+    std::vector<QString> VofButtonName;
+    VofButtonName.push_back("Save");
+    return VofButtonName;
 }
-
-void KalkMainWindow::selectoperand(QListWidgetItem* item){
-    QString Stditem=item->text();
-    QString q;
-    try{
-        std::string s =uni->SetValue(Stditem.toStdString());
-        q=QString::fromStdString(s);
-        Barra->clear();
-        errori->clear();
-        Barra->setText(q);
-    }
-    catch(std::string ex){
-        q=QString::fromStdString(ex);
-        Barra->clear();
-        Barra->setText(q);
-        errori->clear();
-        errori->insert("ERRORE : non puoi fare operazioni con l'insieme U");
-    }
-}
-void KalkMainWindow::SetOperation(QString q){
-    try{
-        uni->SetOperation(q.toStdString());
-        errori->clear();
-    }
-    catch(std::string ex){
-        errori->clear();
-        QString qst = QString::fromStdString(ex);
-        errori->insert(qst);
-    }
-}
-std::list<std::string> KalkMainWindow::getListOfSet()const{
-    return uni->ListNumbers();
-}
-
-QString KalkMainWindow::status()const{
-    return QString::fromStdString(uni->getStatus());
-}
-
-void KalkMainWindow::clearElenco(){
-    uni->clear();
-    errori->clear();
-    Barra->clear();
-    Barra->setText("Pulizia eseguita con successo!");
-    this->refresh();
-}
-
-void KalkMainWindow::multiOperation(){
-    try{
-        QString q =QString::fromStdString(uni->multiOperation());
-        Barra->clear();
-        errori->clear();
-        Barra->setText(q);
-    }
-    catch(std::string ex){
-        QString Qex =QString::fromStdString(ex);
-        Barra->clear();
-        errori->clear();
-        errori->insert(Qex);
-    }
-}
-
-void KalkMainWindow::singleOperation(QString q){
-    try{
-        this->SetOperation(q);
-        QString q =QString::fromStdString(uni->singleOperation());
-        Barra->clear();
-        errori->clear();
-        Barra->setText(q);
-    }
-    catch(std::string ex){
-        QString Qex =QString::fromStdString(ex);
-        Barra->clear();
-        errori->clear();
-        errori->insert(Qex);
-    }
-}
-
-void KalkMainWindow::save(){
-    try{
-        uni->SaveResult();
-        this->refresh();
-    }
-    catch(std::string ex){
-        QString Qex =QString::fromStdString(ex);
-        Barra->clear();
-        errori->clear();
-        errori->insert(Qex);
-    }
-}
-
-dataset* KalkMainWindow::getDataset(std::string name) const{
-    return uni->getDataset(name);
-}
-
-
-std::string KalkMainWindow::vuoto()const{
-    return uni->getVoidNumbers();
-}
-
-*/
