@@ -41,7 +41,6 @@ void Input::configureExtrapanel(){
 }
 void Input::ifExistClose(){
     if(isUsed){
-        Disconnect();
         input_view->close();
         delete input_view;
         input_view=0;
@@ -49,14 +48,8 @@ void Input::ifExistClose(){
     }
 }
 void Input::unlock(){
-    Disconnect();
     input_view=0;
     isUsed=false;
-}
-
-void Input::Disconnect(){
-    disconnect(input_view,SIGNAL(destroyed()),this,SLOT(unlock()));
-    disconnect(input_view,SIGNAL(DataInput(QString,QString)),this,SLOT(SendDataInput(QString,QString)));
 }
 
 void Input::SendDataInput(QString name, QString elements){

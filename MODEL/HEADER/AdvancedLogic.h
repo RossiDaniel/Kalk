@@ -18,11 +18,12 @@ public:
     ~AdvancedLogic();
 
     //Override BasicLogic
-    numbers* getObjectLogicClass(std::string,std::list<int>);
+    advanced* getObjectLogicClass(std::string,std::list<int>);
 
     //Overidde Parser
     bool condition()const;
     void results();
+    void extraoperation(int);
 
 
 };

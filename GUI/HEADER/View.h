@@ -2,10 +2,10 @@
 #define VIEW_H
 
 #include <QWidget>
-#include <GUI/HEADER/kalkmainwindow.h>
-#include <GUI/HEADER/setview.h>
-#include <GUI/HEADER/datasetview.h>
-#include <GUI/HEADER/advancedview.h>
+#include <GUI/HEADER/Keyboard.h>
+#include <GUI/HEADER/SetKeyboard.h>
+#include <GUI/HEADER/DatasetKeyboard.h>
+#include <GUI/HEADER/AdvancedKeyboard.h>
 #include <QWidget>
 #include <QPushButton>
 #include <QGridLayout>
@@ -25,32 +25,12 @@ class View: public QWidget{
 private:
     int currentStatus;
     QPalette* pal;
-    QPushButton* CE;
-    QPushButton* clearKalk;
-    QGridLayout* inputButtonGrid;
-
     QTextEdit* Barra;
     QLineEdit* errori;
     QListWidget* elenco;
-    QGridLayout* bottom;
-    QGridLayout* right;
-    QGridLayout* left;
-    QHBoxLayout* all;
-
-    QStackedWidget* operationArea;
     QHBoxLayout* kalk;
-    QGridLayout* status;
-
     std::vector<QPushButton*> statusButton;
-    std::vector<QPushButton*> inputButton;
-
-    QSignalMapper* StatusSignalMapper;
-    QSignalMapper* InputSignalMapper;
-
-    SetView* set;
-    DatasetView* dataset;
-    AdvancedView* advanced;
-    std::vector<KalkMainWindow*> views;
+    std::vector<Keyboard*> views;
 public:
     View(std::vector<QString>);
     ~View();
@@ -58,7 +38,7 @@ public:
     std::vector<QString> getBasicOperation()const;
 public slots:
     void refresh(std::list<QString>);
-    void setCE();
+    void setAC();
     void setBarra(QString);
     void setError(QString);
     void changePallet(int);
@@ -69,9 +49,8 @@ signals:
     void selectOperand(QListWidgetItem*);
     void changelogic(int);
     void cancel();
-    void operation(int);
+    void multioperation(int);
     void singleOperation(int);
-    void result();
     void clearKalkElements();
     void CloseIfExist();
     void extraoperation(int);

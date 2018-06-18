@@ -8,11 +8,11 @@ AdvancedLogic::AdvancedLogic(std::list<const numbers*>* l): BasicLogic(QString("
 }
 
 AdvancedLogic::~AdvancedLogic(){
-    CE();
+    AC();
     delete commonOperation;
 }
 
-numbers* AdvancedLogic::getObjectLogicClass(std::string name,std::list<int> data){
+advanced *AdvancedLogic::getObjectLogicClass(std::string name,std::list<int> data){
     return new advanced(name,data);
 }
 
@@ -60,8 +60,28 @@ void AdvancedLogic::results(){
         default:
             emit setError(QString("ERROR: operation is not available."));
     }
-    }catch(std::string q){
-        emit setError(QString(q.c_str()));
+    }catch(QString q){
+        emit setError(q);
     }
-    CE();
+    catch(std::string str){
+        emit setError(QString(str.c_str()));
+    }
+    AC();
+}
+
+void AdvancedLogic::extraoperation(int index){
+    try{
+    switch (index) {
+        case 0:
+            results();
+             break;
+        default:
+            emit setBarra(QString("ERROR: no extraoperation with that index."));
+    }
+    }catch(QString q){
+        emit setErrorInput(q);
+    }
+    catch(std::string str){
+        emit setError(QString(str.c_str()));
+    }
 }

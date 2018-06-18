@@ -16,13 +16,9 @@ SOURCES += \
     MODEL/IMPLEMENTATION/advanced.cpp\
     GUI/IMPLEMENTATION/qcustomplot.cpp\
     MODEL/IMPLEMENTATION/numbers.cpp \
-    GUI/IMPLEMENTATION/setview.cpp \
-    GUI/IMPLEMENTATION/datasetview.cpp \
-    GUI/IMPLEMENTATION/advancedview.cpp \
     MODEL/IMPLEMENTATION/SetLogic.cpp \
     MODEL/IMPLEMENTATION/DatasetLogic.cpp\
     MODEL/IMPLEMENTATION/AdvancedLogic.cpp \
-    GUI/IMPLEMENTATION/kalkmainwindow.cpp \
     GUI/IMPLEMENTATION/View.cpp \
     MODEL/IMPLEMENTATION/AppKalk.cpp \
     MODEL/IMPLEMENTATION/Logic.cpp \
@@ -31,20 +27,20 @@ SOURCES += \
     MODEL/IMPLEMENTATION/basiclogic.cpp \
     MODEL/IMPLEMENTATION/SetCommonOperation.cpp \
     MODEL/IMPLEMENTATION/AdvancedCommonOperation.cpp \
-    MODEL/IMPLEMENTATION/DatasetCommonOperation.cpp
+    MODEL/IMPLEMENTATION/DatasetCommonOperation.cpp \
+    GUI/IMPLEMENTATION/Keyboard.cpp \
+    GUI/IMPLEMENTATION/SetKeyboard.cpp \
+    GUI/IMPLEMENTATION/DatasetKeyboard.cpp \
+    GUI/IMPLEMENTATION/AdvancedKeyboard.cpp
 
 
 HEADERS += \
     MODEL/HEADER/Dataset.h \
     MODEL/HEADER/Set.h \
-    GUI/HEADER/kalkmainwindow.h \
     MODEL/HEADER/numbers.h \
     GUI/HEADER/extrapanel.h \
     GUI/HEADER/qcustomplot.h\
-    GUI/HEADER/setview.h\
     MODEL/HEADER/SetLogic.h\
-    GUI/HEADER/datasetview.h \
-    GUI/HEADER/advancedview.h \
     MODEL/HEADER/DatasetLogic.h \
     MODEL/HEADER/AdvancedLogic.h \
     GUI/HEADER/View.h \
@@ -56,4 +52,8 @@ HEADERS += \
     MODEL/HEADER/basiclogic.h \
     MODEL/HEADER/SetCommonOperation.h \
     MODEL/HEADER/DatasetCommonOperation.h \
-    MODEL/HEADER/AdvancedCommonOperation.h
+    MODEL/HEADER/AdvancedCommonOperation.h \
+    GUI/HEADER/Keyboard.h \
+    GUI/HEADER/SetKeyboard.h \
+    GUI/HEADER/DatasetKeyboard.h \
+    GUI/HEADER/AdvancedKeyboard.h

@@ -59,7 +59,7 @@ void dataset::add_list(const std::list<int>& l){
     }
     else{
         for(std::list<int>::const_iterator cit=l.begin(); cit!=l.end(); cit++){
-            element.push_back(*cit);
+            this->add_value(*cit);
         }
     }
 }

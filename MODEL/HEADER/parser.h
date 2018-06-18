@@ -15,13 +15,17 @@ protected:
     int k;
     int segno;
     long int somma;
+    unsigned int emptyName;
 
 public:
     Parser();
     virtual ~Parser()=0;
-    std::list<int> parser(QString);
+    std::list<int> parserData(QString);
+    std::string parserName(QString);
     virtual bool condition()const=0;
     void restoreDefault();
+    virtual QString getNameType()=0;
+
 };
 
 

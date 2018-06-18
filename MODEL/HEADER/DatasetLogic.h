@@ -20,7 +20,7 @@ public:
 
     //Override BasicLogic
     void singleOperation(int);
-    numbers* getObjectLogicClass(std::string,std::list<int>);
+    dataset* getObjectLogicClass(std::string,std::list<int>);
 
     //Overidde Parser
     bool condition()const;

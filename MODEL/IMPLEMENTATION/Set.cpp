@@ -69,15 +69,26 @@ void set::sub_list(const std::list<int>& l){
 	}
 }
 bool set::operator==(const set& s){
-    if(this->get_name() == s.get_name() && element.size() == s.element.size() && element == s.element){
+    if(this->get_name() == s.get_name() && element.size() == s.element.size()){
+        for ( std::list<int>::const_iterator cit =s.element.begin(); cit != s.element.end(); cit++){
+            ris* x =s.in_const(*cit);
+            if(!x->is){return false;}
+            delete x;
+        }
 		return true;
 	}
 	return false;
 }
 
 bool set::operator!=(const set& s){
-    if(this->get_name() == s.get_name() && element.size() == s.element.size() && element == s.element){
-		return false;
+    if(this->get_name() == s.get_name() && element.size() == s.element.size()){
+        bool sent=true;
+        for ( std::list<int>::const_iterator cit =s.element.begin(); cit != s.element.end() && sent; cit++){
+            ris* x =s.in_const(*cit);
+            if(!x->is){sent=false;}
+            delete x;
+        }
+        return sent;
 	}
 	return true;
 }

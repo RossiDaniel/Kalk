@@ -1,5 +1,5 @@
 #include "MODEL/HEADER/parser.h"
-Parser::Parser(){
+Parser::Parser():emptyName(0){
     restoreDefault();
 }
 
@@ -13,7 +13,17 @@ void Parser::restoreDefault(){
     segno=1;
     somma=0;
 }
-std::list<int> Parser::parser(QString data){
+
+std::string Parser::parserName(QString name){
+    std::string nm=name.toStdString();
+    if(nm == ""){
+        nm=getNameType().toStdString()+std::to_string(emptyName);
+        emptyName++;
+    }
+    return nm;
+}
+
+std::list<int> Parser::parserData(QString data){
     restoreDefault();
     QChar blank=QChar(' ');
     QChar virgola=QChar(',');

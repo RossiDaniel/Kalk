@@ -14,7 +14,6 @@ public:
     Input();
     ~Input();
     void configureExtrapanel();
-    void Disconnect();
 public slots:
     void manageInput(int);
     void unlock();

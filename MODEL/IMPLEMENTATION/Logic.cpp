@@ -15,11 +15,6 @@ Logic::Logic(){
 Logic::~Logic(){
     delete Uset;
     for(unsigned int i=0; i<logics.size();i++){
-        disconnect(logics[i],SIGNAL(listOfElements(std::list<QString>)),this,SIGNAL(listOfElements(std::list<QString>)));
-        disconnect(logics[i],SIGNAL(setBarra(QString)),this,SIGNAL(setBarra(QString)));
-        disconnect(logics[i],SIGNAL(setError(QString)),this,SIGNAL(setError(QString)));
-        disconnect(logics[i],SIGNAL(setErrorInput(QString)),this,SIGNAL(setErrorInput(QString)));
-        disconnect(logics[i],SIGNAL(closeInputWindow()),this,SIGNAL(closeInputWindow()));
         delete logics[i];
     }
 }
@@ -30,13 +25,12 @@ void Logic::setLogics(){
     logics.push_back(new AdvancedLogic(Uset));
 }
 
-void Logic::CE(){
-    uni->CE();
+void Logic::AC(){
+    uni->AC();
 }
 
-void Logic::SetOperation(int index){
-    std::cout<<index;
-    uni->SetOperation(index);
+void Logic::multioperation(int index){
+    uni->multioperation(index);
 }
 
 void Logic::singleOperation(int index){
@@ -81,14 +75,6 @@ void Logic::executeOperation(int index,QString name,QString elements){
     }
 }
 
-void Logic::result(){
-    try{
-        uni->results();
-    }
-    catch(QString q){
-        emit setError(q);
-    }
-}
 
 std::vector<QString> Logic::nameType()const{
     std::vector<QString> v;
@@ -103,14 +89,5 @@ void Logic::clearKalkElements(){
 }
 
 void Logic::extraoperation(int index){
-    try{
-    switch (index) {
-        case 0:
-            uni->BasicLogic::results();
-            break;
-        default:
-            emit setBarra(QString("ERROR: no extraoperation with that index."));
-    }
-    }catch(QString q){
-        emit setErrorInput(q);
-    }}
+    uni->extraoperation(index);
+}

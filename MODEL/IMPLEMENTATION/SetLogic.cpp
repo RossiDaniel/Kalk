@@ -11,11 +11,11 @@ SetLogic::SetLogic(std::list<const numbers*>* l): BasicLogic(QString("SET"),"set
 
 SetLogic::~SetLogic(){
     if(result){delete result;result=0;}
-    CE();
+    AC();
     delete commonOperation;
 }
 
-numbers* SetLogic::getObjectLogicClass(std::string name,std::list<int> data){
+set* SetLogic::getObjectLogicClass(std::string name,std::list<int> data){
     return new set(name,data);
 }
 
@@ -51,9 +51,12 @@ void SetLogic::singleOperation(int index){
 
     }
     }catch(QString q){
-        emit setErrorInput(q);
+        emit setError(q);
     }
-    CE();
+    catch(std::string str){
+        emit setError(QString(str.c_str()));
+    }
+    AC();
 }
 
 void SetLogic::add_set(QString name,QString data){
@@ -65,11 +68,12 @@ void SetLogic::add_set(QString name,QString data){
         }
     }
     if(!sent){
-        set* s=new set(name.toStdString(),parser(data));
+        set* s=const_cast<set*>(static_cast<const set*>(getObjectLogicClass(parserName(name),parserData(data))));
         elements->push_back(s->clone());
         set* n=const_cast<set*>(static_cast<const set*>(*(elements->begin())));
         *n =commonOperation->Union(*n,*s);
         ((const_cast<numbers*>(*elements->begin())))->change_name("U");
+        delete s;
     }
     update();
 }
@@ -103,7 +107,7 @@ void SetLogic::sub_elements(QString name,QString data){
         std::list<const numbers*>::const_iterator cit= elements->begin();
         for(; cit!=elements->end(); cit++){
             if(dynamic_cast<const set*>(*cit)){
-                (const_cast<numbers*>(*cit))->sub_list(parser(data));
+                (const_cast<numbers*>(*cit))->sub_list(parserData(data));
             }
         }
     }
@@ -112,7 +116,7 @@ void SetLogic::sub_elements(QString name,QString data){
         for(; cit!=elements->end() && !sent; cit++){
             if((*cit)->get_name() == name.toStdString() && dynamic_cast<const set*>(*cit)){
                 sent =true;
-                std::list<int> l=parser(data);
+                std::list<int> l=parserData(data);
                 std::list<int>::const_iterator lcit= l.begin();
                 for(;lcit!=l.end(); lcit++){
                     bool found=this->in(*lcit,name.toStdString());
@@ -131,7 +135,7 @@ void SetLogic::add_elements(QString name,QString data){
     for(; cit!=elements->end() && !sent; cit++){
         if((*cit)->get_name() == name.toStdString() && dynamic_cast<const set*>(*cit)){
             sent =true;
-            std::list<int> number=parser(data);
+            std::list<int> number=parserData(data);
             if(name.toStdString() != "U"){(const_cast<numbers*>(*cit))->add_list(number);}
             (const_cast<numbers*>(*elements->begin()))->add_list(number);
         }
@@ -191,9 +195,12 @@ void SetLogic::results(){
             emit setError(QString("ERROR: operation not available."));
     }
     }catch(QString q){
-        emit setErrorInput(q);
+        emit setError(q);
     }
-    CE();
+    catch(std::string str){
+        emit setError(QString(str.c_str()));
+    }
+    AC();
 }
 
 void SetLogic::clearKalkElements(){
@@ -207,6 +214,26 @@ void SetLogic::clearKalkElements(){
             cit--;
         }
     }
+    emptyName=0;
     getElements();
 }
 
+void SetLogic::extraoperation(int index){
+    try{
+    switch (index) {
+        case 0:
+           BasicLogic::results();
+            break;
+        case 1:
+            results();
+             break;
+        default:
+            emit setBarra(QString("ERROR: no extraoperation with that index."));
+    }
+    }catch(QString q){
+        emit setErrorInput(q);
+    }
+    catch(std::string str){
+        emit setError(QString(str.c_str()));
+    }
+}

@@ -1,7 +1,9 @@
-#include "GUI/HEADER/advancedview.h"
+﻿    #include "GUI/HEADER/Keyboard.h"
+Keyboard::~Keyboard(){
+    delete buttonLayout;
+}
 
-AdvancedView::AdvancedView(){
-
+void Keyboard::configure(){
     std::vector<QString> multiName =getMultiOperationkeyboard();
     MultiOperationsignalMapper = new QSignalMapper (this) ;
 
@@ -11,7 +13,7 @@ AdvancedView::AdvancedView(){
         MultiOperationsignalMapper -> setMapping (Operationkeyboard.back(), i) ;
     }
 
-    connect(MultiOperationsignalMapper, SIGNAL(mapped(int)), this, SIGNAL(operation(int))) ;
+    connect(MultiOperationsignalMapper, SIGNAL(mapped(int)), this, SIGNAL(multioperation(int))) ;
 
     std::vector<QString> singleName =getSingleOperationkeyboard();
     SingleOperationsignalMapper = new QSignalMapper (this) ;
@@ -35,10 +37,6 @@ AdvancedView::AdvancedView(){
 
     connect(ExtraOperationsignalMapper, SIGNAL(mapped(int)), this, SIGNAL(extraoperation(int))) ;
 
-    QPushButton* result= new QPushButton("=");
-    connect(result,SIGNAL(clicked(bool)),this,SIGNAL(result()));
-    Operationkeyboard.push_back(result);
-
     buttonLayout= new QGridLayout();
 
     unsigned int row=1;
@@ -49,33 +47,4 @@ AdvancedView::AdvancedView(){
 
     buttonLayout->setAlignment(Qt::AlignTop);
     setLayout(buttonLayout);
-}
-
-AdvancedView::~AdvancedView(){
-
-}
-
-std::vector<QString> AdvancedView::getSingleOperationkeyboard(){
-    std::vector<QString> VofButtonName;
-    return VofButtonName;
-}
-
-std::vector<QString> AdvancedView::getMultiOperationkeyboard(){
-    std::vector<QString> VofButtonName;
-    VofButtonName.push_back("All Info");
-    VofButtonName.push_back("Coscarto");
-    VofButtonName.push_back("Codevianza");
-    VofButtonName.push_back("Covarianza");
-    VofButtonName.push_back("Correlazione");
-    VofButtonName.push_back("Coef. Determ.");
-    VofButtonName.push_back("Regressione");
-    VofButtonName.push_back("Intercetta");
-    VofButtonName.push_back("Retta");
-    VofButtonName.push_back("Grafic");
-    return VofButtonName;
-}
-
-std::vector<QString> AdvancedView::getExtraOperationkeyboard(){
-    std::vector<QString> VofButtonName;
-    return VofButtonName;
 }

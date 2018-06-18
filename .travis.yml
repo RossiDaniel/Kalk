@@ -5,3 +5,7 @@ script:
     qmake -project
     qmake kalk.pro
     make
+
+
+
+    

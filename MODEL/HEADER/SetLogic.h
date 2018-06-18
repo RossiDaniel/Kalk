@@ -24,9 +24,10 @@ public:
     void sub_elements(QString,QString);
     bool condition()const;
     bool in(const int,std::string)const;
-    numbers* getObjectLogicClass(std::string,std::list<int>);
+    set* getObjectLogicClass(std::string,std::list<int>);
     void results();
     void clearKalkElements();
+    void extraoperation(int);
 };
 
 #endif // SETLOGIC_H

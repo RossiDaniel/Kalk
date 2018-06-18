@@ -8,11 +8,11 @@ DatasetLogic::DatasetLogic(std::list<const numbers*>* l): BasicLogic(QString("DA
 }
 
 DatasetLogic::~DatasetLogic(){
-    CE();
+    AC();
     delete commonOperation;
 }
 
-numbers* DatasetLogic::getObjectLogicClass(std::string name,std::list<int> data){
+dataset *DatasetLogic::getObjectLogicClass(std::string name,std::list<int> data){
     return new dataset(name,data);
 }
 
@@ -52,9 +52,13 @@ void DatasetLogic::singleOperation(int index){
             BasicLogic::singleOperation(index);
     }
     }catch(QString q){
-        emit setErrorInput(q);
+        emit setError(q);
     }
-    CE();
+    catch(std::string str){
+        emit setError(QString(str.c_str()));
+    }
+
+    AC();
 }
 
 bool DatasetLogic::condition()const{

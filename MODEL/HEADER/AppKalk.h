@@ -6,17 +6,17 @@
 #include<string>
 #include<typeinfo>
 #include"numbers.h"
-#include "GUI/HEADER/kalkmainwindow.h"
+#include "GUI/HEADER/Keyboard.h"
 #include "MODEL/HEADER/Logic.h"
 #include "MODEL/HEADER/SetLogic.h"
-#include "GUI/HEADER/setview.h"
+#include "GUI/HEADER/SetKeyboard.h"
 #include "MODEL/HEADER/Set.h"
 #include "MODEL/HEADER/DatasetLogic.h"
-#include "GUI/HEADER/datasetview.h"
+#include "GUI/HEADER/DatasetKeyboard.h"
 #include "MODEL/HEADER/Dataset.h"
 #include <QWidget>
 #include <QObject>
-#include <GUI/HEADER/kalkmainwindow.h>
+#include <GUI/HEADER/Keyboard.h>
 #include <QWidget>
 #include <QPushButton>
 #include <QGridLayout>

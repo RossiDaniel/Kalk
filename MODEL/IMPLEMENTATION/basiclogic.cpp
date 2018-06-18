@@ -15,7 +15,7 @@ void BasicLogic::getElements(){
     emit listOfElements(l);
 }
 
-void BasicLogic::CE(){
+void BasicLogic::AC(){
     if(operand1){
         delete operand1;operand1=0;
     }
@@ -61,7 +61,7 @@ void BasicLogic::SetOperand(std::string name, std::string op){
     emit setBarra(QString::fromUtf8(str.c_str()));
 }
 
-void BasicLogic::SetOperation(int index){
+void BasicLogic::multioperation(int index){
     if(!operand1){emit setError(QString("ERROR : an operand must be chosen before an operation is selected."));}
     if(operation==-1){operation=-1;operation=0;delete operand2;operand2=0;}
     operation =index;
@@ -73,7 +73,7 @@ void BasicLogic::add_set(QString name,QString data){
             throw QString("ERROR: an element named '"+ name +"' already exists in the universe.");
         }
     }
-    elements->push_back(getObjectLogicClass(name.toStdString(),parser(data)));
+    elements->push_back(getObjectLogicClass(parserName(name),parserData(data)));
     update();
 }
 
@@ -83,7 +83,7 @@ void BasicLogic::sub_elements(QString name,QString data){
     for(; cit!=elements->end() && !sent; cit++){
         if(checkType((*cit)->name()) && (*cit)->get_name() == name.toStdString()){
             sent =true;
-            (const_cast<numbers*>(*cit))->sub_list(parser(data));
+            (const_cast<numbers*>(*cit))->sub_list(parserData(data));
         }
     }
     if(!sent){throw QString("ERROR: The element you want to add doesn't exist.");}
@@ -109,7 +109,7 @@ void BasicLogic::add_elements(QString name, QString data){
     for(; cit!=elements->end() && !sent; cit++){
         if(checkType((*cit)->name()) && (*cit)->get_name() == name.toStdString()){
             sent =true;
-            (const_cast<numbers*>(*cit))->add_list(parser(data));
+            (const_cast<numbers*>(*cit))->add_list(parserData(data));
         }
     }
     if(!sent){throw QString("ERROR: The element you want to add doesn't exist.");}
@@ -134,7 +134,7 @@ void BasicLogic::results(){
     elements->push_back(result->clone());
     delete result;
     result=0;
-    CE();
+    AC();
     getElements();
 }
 
@@ -150,6 +150,11 @@ void BasicLogic::clearKalkElements(){
             cit=elements->erase(cit);
             cit--;
         }
+        emptyName=0;
     }
     getElements();
+}
+
+void BasicLogic::extraoperation(int index){
+    emit setError(QString("ERROR: there are not extraoperation available"+index));
 }

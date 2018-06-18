@@ -17,13 +17,12 @@ public:
     void setLogics();
     std::vector<QString> nameType()const;
 public slots:
-    void CE();
-    void SetOperation(int);
+    void AC();
+    void multioperation(int);
     void singleOperation(int);
     void selectOperand(QListWidgetItem*);
     void changeLogic(int);
     void executeOperation(int,QString,QString);
-    void result();
     void clearKalkElements();
     void extraoperation(int);
 

@@ -2,30 +2,31 @@
 
 View::View(std::vector<QString> v){
 
-    setFixedSize(800,320);
+    setFixedSize(900,400);
     currentStatus=0;
 
-    CE = new QPushButton("CE");
-    clearKalk = new QPushButton("ClearKalk");
-    all=new QHBoxLayout();
-    inputButtonGrid=new QGridLayout();
-    bottom = new QGridLayout();
-    right= new QGridLayout();
-    left= new QGridLayout();
+    QPushButton* AC = new QPushButton("AC");
+    QPushButton* clearKalk = new QPushButton("ClearKalk");
+    QHBoxLayout* all=new QHBoxLayout();
+    QGridLayout* inputButtonGrid=new QGridLayout();
+    QGridLayout* right= new QGridLayout();
+    QGridLayout* left= new QGridLayout();
     Barra= new QTextEdit();
     errori= new QLineEdit();
     elenco= new QListWidget();
-    operationArea=new QStackedWidget();
-    status=new QGridLayout();
-    StatusSignalMapper = new QSignalMapper();
-    InputSignalMapper = new QSignalMapper();
+    QStackedWidget* operationArea=new QStackedWidget();
+    QGridLayout* status=new QGridLayout();
+    QSignalMapper* StatusSignalMapper = new QSignalMapper();
+    QSignalMapper* InputSignalMapper = new QSignalMapper();
     std::vector<QString> inputButtonName=getBasicOperation();
+    std::vector<QPushButton*> inputButton;
+
     pal = new QPalette();
     kalk=new QHBoxLayout();
 
     elenco->setFixedWidth(200);
 
-    connect (CE, SIGNAL(clicked()), this, SLOT(setCE())) ;
+    connect (AC, SIGNAL(clicked()), this, SLOT(setAC())) ;
     connect (clearKalk, SIGNAL(clicked()), this, SIGNAL(clearKalkElements())) ;
     connect (clearKalk, SIGNAL(clicked()), this, SLOT(clear())) ;
     connect (elenco, SIGNAL(itemClicked(QListWidgetItem*)), this, SIGNAL(selectOperand(QListWidgetItem*)));
@@ -63,16 +64,14 @@ View::View(std::vector<QString> v){
     setViews();
     for(unsigned int i=0; i< views.size(); i++){
         operationArea->addWidget(views[i]);
-        connect(views[i],SIGNAL(operation(int)),this,SIGNAL(operation(int)));
+        connect(views[i],SIGNAL(multioperation(int)),this,SIGNAL(multioperation(int)));
         connect(views[i],SIGNAL(singleOperation(int)),this,SIGNAL(singleOperation(int)));
-        connect(views[i],SIGNAL(input(int)),this,SIGNAL(input(int)));
-        connect(views[i],SIGNAL(result()),this,SIGNAL(result()));
         connect(views[i],SIGNAL(extraoperation(int)),this,SIGNAL(extraoperation(int)));
     }
 
     //barra sulla destra
     right->addWidget(Barra,0,0);
-    right->addWidget(CE,1,0);
+    right->addWidget(AC,1,0);
     right->addWidget(clearKalk,2,0);
     right->addLayout(inputButtonGrid,3,0);
     right->addWidget(operationArea,4,0);
@@ -105,7 +104,7 @@ void View::refresh(std::list<QString> l){
 }
 
 
-void View::setCE(){
+void View::setAC(){
     emit cancel();
     clear();
 }
@@ -121,9 +120,9 @@ void View::setError(QString text){
 }
 
 void View::setViews(){
-    views.push_back(new SetView());
-    views.push_back(new DatasetView());
-    views.push_back(new AdvancedView());
+    views.push_back(new SetKeyboard());
+    views.push_back(new DatasetKeyboard());
+    views.push_back(new AdvancedKeyboard());
 
 }
 

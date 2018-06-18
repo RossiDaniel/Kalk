@@ -25,12 +25,13 @@ public:
     virtual ~BasicLogic()=0;
     QString getNameType();
     bool checkType(std::string)const;
-    void CE();
+    void AC();
     virtual void clearKalkElements();
     virtual void SetOperand(std::string, std::string );
-    virtual void SetOperation(int);
+    virtual void multioperation(int);
     virtual void selectOperand(QListWidgetItem*);
     virtual void singleOperation(int);
+    virtual void extraoperation(int);
 
     virtual void add_set(QString,QString);
     virtual void sub_set(QString);
