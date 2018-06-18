@@ -36,71 +36,48 @@
 	\subsubsection{Class Numbers}
 	La classe astratta Numbers rappresenta un’ipotetica sequenza di numeri interi. Numbers ha un campo dati di tipo stringa che identifica ciascuna sequenza di numeri, definisce inoltre diversi metodi virtuali puri con i seguenti contratti:
 	\begin{itemize}
-		\item \textbf{ris* in\_const(const int) const}: ricerca nella lista di interi dell'oggetto \textit{Numbers} un match restituendo un oggetto \textit{Ris*}, marcata \textit{const} in quanto è invocata da funzioni \textit{const};
-	 	\item \textbf{ris* in(const int)}: ricerca nella lista di interi dell'oggetto \textit{Numbers} un match restituendo un oggetto \textit{Ris*};
 	 	\item \textbf{numbers\* clone() const}: resistuisce una copia dell'oggetto di invocazione;
 		\item \textbf{std::string name() const}: restituisce il una stringa contenente il tipo di dato in formato testuale;
 		\item \textbf{operator std::string()}: overoloading dell'operatore di conversione da \textit{Numbers} verso \textit{std::string};
-		\item \textbf{void clear()}: svuota la lista di interi;
 		\item \textbf{void add\_value(const int)}: aggiunge un intero all'oggetto \textit{Numbers};
 		\item \textbf{void sub\_value(const int)}: sottrae un intero all'oggetto \textit{Numbers};
 		\item \textbf{void add\_list(const std::list<int>\&)}: aggiunge un lista di interi all'oggetto \textit{Numbers};
 		\item \textbf{void sub\_list(const std::list<int>\&)}: sottrae una lista di interi all'oggetto \textit{Numbers};
-		\item \textbf{~numbers()}: distruttore virtuale puro della classe \textit{Numbers}.
 	\end{itemize}
-    Inoltre definisce i seguenti metodi:
-    \begin{itemize}
-        \item \textbf{std::string get\_name() const}: restituisce il nome dell'oggetto \textit{Numbers};
-        \item \textbf{void change\_name(std::string)}: modifica il nome dell'oggetto \textit{Numbers}.
-    \end{itemize}
+    Inoltre definisce i seguenti metodi per la lettura e scrittura del nome del \textit{Numbers}.
     La classe \textit{Numbers} una classe annidata protetta \textit{Ris}, utilizzata per operazioni di ricerca sempre dalle classi derivate.
     
     \subsubsection{Class Set}
     La classe concreta \textit{Set}, derivata dalla classe astratta \textit{Numbers}, rappresenta un insieme numerico di interi univoci dove l’ordine con cui vengono inseriti non ha alcuna importanza. 
     Implementa i metodi virtuali della classe \textit{Numbers}:
 	\begin{itemize}
-		\item \textbf{ris* in\_const(const int) const}: ricerca nella lista di interi dell'oggetto \textit{Set} un match restituendo un oggetto \textit{Ris*}, marcata \textit{const} in quanto è invocata da funzioni \textit{const};
-		\item \textbf{ris* in(const int)}: ricerca nella lista di interi dell'oggetto \textit{Set} un match restituendo un oggetto \textit{Ris*};
         \item \textbf{set* clone() const}: resistuisce una copia dell'oggetto di invocazione \textit{Set};
 		\item \textbf{std::string name() const}: restituisce la stringa \textit{set};
-		\item \textbf{void clear()}: svuota la lista di interi;
         \item \textbf{void add\_value(const int)}: aggiunge un intero all'oggetto \textit{Set} se non è già presente;
 		\item \textbf{void sub\_value(const int)}: sottrae un intero all'oggetto \textit{Set};
 		\item \textbf{void add\_list(const std::list<int>\&)}: aggiunge un lista di interi all'oggetto \textit{Set} se non sono già presenti;
         \item \textbf{void sub\_list(const std::list<int>\&)}: sottrae una lista di interi all'oggetto \textit{Set};
     \end{itemize}
-    Dispone dei seguenti metodi propri:
-    \begin{itemize}
-        \item \textbf{bool search(const int n)const}: resistuisce \textit{text}{true} se l'intero n è presente nel'insieme altrimenti \textit{false};
-        \item \textbf{void add\_value\_without\_control(const int n)}: aggiunge un intero all'oggetto \textit{Set} senza controllare che non sia già presente un duplicato;
-        \item \textbf{void add\_list\_without\_control(const std::list<int>\&)}: aggiunge un lista di interi all'oggetto \textit{Set} senza verificare che non siano già presenti duplicati;
-        \item \textbf{std::string partition()const}: ritorna una stringa con tutti i possibili sottoinsiemi \textit{Set};
-        \item \textbf{std::string combination(int, int, std::vector<int>\&)const}: ritorna una stringa con tutti i possibili sottoinsieme contenenti un certo numero di elementi;
-        \item \textbf{std::list<int> get\_element() const}: ritorna la lista di interi del \textit{Set};
-
-    \end{itemize}
+    Dispone di metodi propri per la lettura e scrittura della lista di interi, inoltre viene fatto l'overloading  degli operatori:
     Esegue l'overloading dei seguenti metodi propri:
     \begin{itemize}
-        \item \textbf{operator std::string()}: overoloading dell'operatore di conversione da \textit{Set} verso \textit{std::string};
-        \item \textbf{bool operator==(const set\&)}: ritorna \textit{true} se il nome dei due \textit{Set} è uguale e se contengono gli stessi interi ordinati non per forza alla stessa maniera altrimenti ritorna \textit{false};
-        \item \textbf{bool operator!=(const set\&)}: ritorna \textit{true} se il nome dei due \textit{Set} è diverso o se non contengono gli stessi interi ordinati non per forza alla stessa maniera altrimenti ritorna \textit{false};
-        \item \textbf{set\& operator=(const set*)}: ritorna un oggetto \textit{Set} distruggendo eventualmente l'oggetto di invocazione onde evitare garbage;
-        \item \textbf{set\& operator+(const set\&) const}: ritorna un oggetto \textit{Set} unendo le liste di interi dell'oggetto di invocazione edi quello passato per riferimento controllando non vi siano duplicati;
-        \item \textbf{set\& operator-(const set\&) const}: ritorna un oggetto \textit{Set} unendo le liste di interi dell'oggetto di invocazione edi quello passato per riferimento controllando non vi siano duplicati;
-        \item \textbf{set\& operator/(const set\&) const}: ritorna un oggetto \textit{Set} la cui lista di interi è formata dagli interi comuni alla lista di interi dell'oggetto di invocazione e da quella dell'oggetto passato per riferimento;
-        \item \textbf{set\& operator\%(const set\&) const}: ritorna un oggetto \textit{Set} la cui lista di interi è formata dagli interi non comuni alla lista di interi dell'oggetto di invocazione e da quella dell'oggetto passato per riferimento;
-        \item \textbf{std::string operator*(const set\&) const}: ritorna una stringa contentente il prodotto cartesiano tra la lista di interi dell'oggetto di invocazione e quella dell'oggetto passato per riferimento.
+        \item operator std::string()
+        \item bool operator==(const set\&)
+        \item bool operator!=(const set\&)
+        \item set\& operator=(const set*)
+        \item set\& operator+(const set\&) const
+        \item set\& operator-(const set\&) const
+        \item set\& operator/(const set\&) const
+        \item set\& operator\%(const set\&) const}
+        \item std::string operator*(const set\&) const
     \end{itemize}
 
     \subsubsection{Class Dataset}
     La classe concreta \textit{Dataset}, derivata dalla classe astratta \textit{Numbers}. \textit{Dataset} rappresenta un insieme campionario di misurazioni intere ed è caratterizzato da una sequenza di valori anche ripetuti di cui non ha alcuna importanza l’ordine. Il \textit{Dataset} non può avere meno di due valori nell’insieme campionario, se si crea un \textit{Dataset} vuoto o incompleto a questo verranno aggiunti tanti 0 quanti ne serviranno per ottenere una dimensione minima di 2 valori, stessa cosa accade se si sottrae successivamente elementi.
     Implementa i metodi virtuali della classe \textit{Numbers}:
 	\begin{itemize}
-		\item \textbf{ris* in\_const(const int) const}: ricerca nella lista di interi dell'oggetto \textit{Dataset} il match più a sinistra restituendo un oggetto \textit{Ris*}, marcata \textit{const} in quanto è invocata da funzioni \textit{const};
-		\item \textbf{ris* in(const int)}: ricerca nella lista di interi dell'oggetto \textit{Dataset} il match più a sinistra restituendo un oggetto \textit{Ris*};
         \item \textbf{set* clone() const}: resistuisce una copia dell'oggetto di invocazione \textit{Dataset};
 		\item \textbf{std::string name() const}: restituisce la stringa \textit{dataset};
-		\item \textbf{void clear()}: svuota la lista di interi;
         \item \textbf{void add\_value(const int)}: aggiunge un intero all'oggetto \textit{Dataset} in coda;
 		\item \textbf{void sub\_value(const int)}: sottrae un intero all'oggetto \textit{Dataset};
 		\item \textbf{void add\_list(const std::list<int>\&)}: aggiunge un lista di interi all'oggetto \textit{Dataset} in coda;
@@ -122,10 +99,10 @@
     \end{itemize}
     Esegue l'overloading dei seguenti metodi propri:
     \begin{itemize}
-        \item \textbf{operator std::string()}: overoloading dell'operatore di conversione da \textit{Dataset} verso \textit{std::string};
-        \item \textbf{bool operator!=(const dataset\&)}: ritorna \textit{true} se il nome dei due \textit{Dataset} è diverso o se non contengono gli stessi interi ordinati alla stessa maniera altrimenti ritorna \textit{false};
-        \item \textbf{dataset\& operator=(const dataset*)}: ritorna un oggetto \textit{Set} distruggendo eventualmente l'oggetto di invocazione onde evitare garbage;
-        \item \textbf{std::list<int> operator*(const dataset\&) const}: ritorna una lista di interi contentente il prodotto tra la lista di interi dell'oggetto di invocazione e quella dell'oggetto passato per riferimento.
+        \item operator std::string();
+        \item bool operator!=(const dataset\&);
+        \item dataset\& operator=(const dataset*);
+        \item std::list<int> operator*(const dataset\&) const.
     \end{itemize}
 
     \subsubsection{Class Advanced}
@@ -134,7 +111,6 @@
 	\begin{itemize}
         \item \textbf{advanced* clone() const}: resistuisce una copia dell'oggetto di invocazione \textit{Advanced};
 		\item \textbf{std::string name() const}: restituisce la stringa \textit{advanced};
-        \item \textbf{void clear()}: richiama lo stesso metodo della classe \textit{Dataset} e poi invoca il metodo \textit{void update()};
 		\item \textbf{void add\_list(const std::list<int>\&)}: richiama lo stesso metodo della classe \textit{Dataset} e poi invoca il metodo \textit{void update()};
         \item \textbf{void sub\_list(const std::list<int>\&)}: richiama lo stesso metodo della classe \textit{Dataset} e poi invoca il metodo \textit{void update()};
     \end{itemize}
