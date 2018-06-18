@@ -285,12 +285,26 @@
             \item \textbf{void configureExtrapanel()}: permette di configurare il tastierino secondo l'operazione richiesta;   .       
         \end{itemize}
 
+        \section{Descrizione del codice polimorfo}
+        Nelle diverse classi precedentemente descritte sono presenti non pochi metodi che eseguono chiamate polimorfe.
+        Per fare esempi di chiamate polimorfe ogni chiamata fatta dalla classe \textit{AppKalk} sul campo dati \textit{uni} è polimorfa, il tipo statico del puntatore è di tipo \textit{BasicLogic} mentre l'oggetto puntato potrebbe essere di tipo \textit{SetLogic},\textit{DatasetLogic} o \textit{AdvancedLogic}.
+        Altri esempi di chiamate polimorfe possono essere individuati nella classe \textit{BasicLogic} nelle operazioni di input, dopo vengono chiamati i metodi \textit{add\_list} ed altri.
+
+        \se
 
         \section{Manuale utente}
-        All’avvio dell’applicazione Kalk questa si troverà nella scheda Set. La calcolatrice è divisa in tre aree principali: nell’area sulla sinistra è presente una lista che in base al tipo di dato su cui si sta lavorando mostra tutti gli insiemi creati fino a quel momento, la seconda parte è a sua volta divisa in altre tre parti: nella parte superiore è presente un campo di output su cui vengono visualizzati gli insiemi selezionati e i risultati delle operazioni, nella parte centrale è presente un tastierino con una quindicina di pulsanti sui quali viene riportata una etichetta con l’operazione corrispondente; inoltre è presente una scritta che riporta lo status corrente. Infine nella parte inferiore è presente una barra di output dove verranno mostrati eventuali errori dovuti a operazioni non disponibili o a irregolarità nella costruzione di un insieme numerico.
-        Nella terza ed ultima parte, a destra della calcolatrice, sono presenti tre pulsanti con i quali è possibile cambiare lo status, premendo uno dei pulsanti la scheda verrà aggiornata al tipo selezionato. La dinamica di selezione di operandi e operazioni è la stessa che in una normale calcolatrice: per effettuare operazioni tra due insiemi, si seleziona il primo insieme e successivamente l’operazione. Da questo momento non sarà più possibile cambiare il primo operando se non premendo il pulsante AC, che resetterà l’operazione corrente. Scelta l’operazione si procede scegliendo il secondo operando e premendo il pulsante =, verrà quindi stampato a schermo il risultato indicando anche l’operazione corrispondente. Nel caso di errori o irregolarità verrà riportato l’errore corrispondente nella barra inferiore.
-        Per operazioni di calcolo su singolo insieme, basta selezionare l’insieme su cui si vuole fare l’operazione e subito dopo l’operazione corrispondente; restituirà il risultato nella barra superiore e lascerà l’operando precedentemente selezionato inserito, cosicché se premiamo nuovamente su un’operazione singola questa verrà eseguita sullo stesso operando precedentemente scelto.
-        Per operazioni di manipolazione di insiemi: creazione o eliminazione di insiemi, modifica dei valori di un insieme, selezionare il pulsante corrispondente e seguire la procedura indicata nella finestra che comparirà.
+        All’avvio dell’applicazione Kalk questa si troverà nella scheda Set. 
+        La calcolatrice è divisa in tre aree principali: nell’area sulla sinistra è presente una lista che in base al tipo di dato su cui si sta lavorando mostra tutti gli insiemi creati fino a quel momento, la seconda parte è a sua volta divisa in altre quattro parti: nella parte superiore è presente un campo di output su cui vengono visualizzati gli insiemi selezionati e i risultati delle operazioni, nella parte immediatamente inferiore sono presenti due pulsanti, uno etichettato \textit{ClearKalk} per il reset della calcolatrice per quel tipo di dato, uno etichettato \textit{AC} per desettare gli operandi e l'operazione selezionata, nella parte centrale è presente un tastierino con quattro tasti con le operazioni di input, immediatamente sotto sono presenti una serie di pulsanti sui quali viene riportata una etichetta con l’operazione corrispondente.
+
+        Infine nella parte inferiore è presente una barra di output dove verranno mostrati eventuali errori dovuti a operazioni non disponibili o a irregolarità nella costruzione di un insieme numerico.
+        Il tipo di dato corrente della calcolatrice è indicato in alto a destra dal pulsante di colore più scuro.
+        Nella terza ed ultima parte, a destra della calcolatrice, sono presenti tre pulsanti con i quali è possibile cambiare lo status, premendo uno dei pulsanti la scheda verrà aggiornata al tipo selezionato. La dinamica di selezione di operandi e operazioni è la stessa che in una normale calcolatrice: 
+        \begin{itemize}
+            \item per effettuare operazioni tra due insiemi, si seleziona il primo insieme e successivamente l’operazione. Da questo momento non sarà più possibile cambiare il primo operando se non premendo il pulsante AC, che resetterà l’operazione corrente. Scelta l’operazione si procede scegliendo il secondo operando e premendo il pulsante =, verrà quindi stampato a schermo il risultato indicando anche l’operazione corrispondente. Nel caso di errori o irregolarità verrà riportato l’errore corrispondente nella barra inferiore;
+            \item Per operazioni di calcolo su singolo insieme, basta selezionare l’insieme su cui si vuole fare l’operazione e subito dopo l’operazione corrispondente; restituirà il risultato nella barra superiore;
+            \item Per operazioni di manipolazione di insiemi: creazione o eliminazione di insiemi, modifica dei valori di un insieme, selezionare il pulsante corrispondente e seguire la procedura indicata nella finestra che comparirà.
+
+        \end{itemize}
 
         **La scheda Set rende disponibile fin da subito un set chiamato “U”, questo è l’insieme universo dove sarà possibile vedere tutti gli elementi inseriti in ogni Set della scheda. Non è possibile eseguire operazioni su questo insieme se non quelle di inserimento o rimozione di valori, se si inserisce un valore questo resterà “spaiato”, se si elimina un valore dall’universo verrà rimosso da tutti i Set in
         cui compariva.
@@ -298,20 +312,7 @@
         nella barra sulla sinistra e la rende disponibile per ulteriori operazioni.
 
         \section{Ore utilizzate}
-        \subsection{Ore prima consegna}
-        Sono state utilizzate le seguenti ore alla prima consegna:
-        \begin{itemize}
-            \item \textbf{Progettazione}: 5 ore;
-            \item \textbf{Scrittura codice gerarchia tipi}: 10 ore;
-            \item \textbf{Scrittura codice logica di controllo}: 5 ore;
-            \item \textbf{Scrittura codice parte grafica}: 30 ore;
-            \item \textbf{Scrittura relazione}: 2 ore;
-            \item \textbf{Test}: 2 ore;
-            \item \textbf{Traduzione gerarchia tipi in Java}: 2 ore.
-
-        \end{itemize}
-        \subsection{Ore seconda consegna}
-        Sono state utilizzate le seguenti ore alla seconda consegna:
+        Sono state utilizzate le seguenti ore alla consegna:
         \begin{itemize}
             \item \textbf{Progettazione}: 2 ore;
             \item \textbf{Scrittura codice gerarchia tipi}: 0.30 ore;
