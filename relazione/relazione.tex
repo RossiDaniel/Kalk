@@ -290,17 +290,50 @@
         Per fare esempi di chiamate polimorfe ogni chiamata fatta dalla classe \textit{AppKalk} sul campo dati \textit{uni} è polimorfa, il tipo statico del puntatore è di tipo \textit{BasicLogic} mentre l'oggetto puntato potrebbe essere di tipo \textit{SetLogic},\textit{DatasetLogic} o \textit{AdvancedLogic}.
         Altri esempi di chiamate polimorfe possono essere individuati nella classe \textit{BasicLogic} nelle operazioni di input, dopo vengono chiamati i metodi \textit{add\_list} ed altri.
 
-        \se
+        \section{Estensibilità}
+        \subsection{Prerequisiti}
+        Questa sezione si propone di essere una guida all'estensione della calcolatrice con ulteriori tipi di dato, per prima cosa diciamo che il nuovo tipo di dato deve estendere la classe \textit{Numbers}, implementando i suoi metodi virtuali puri.
+        Il nuovo tipo di dato può anche estendere una delle classi già disponibili eseguendo l'override dei metodi disponibili.
+        Il nuovo tipo di dato potrà essere una sequenza di numeri interi.
+        \subsection{Simmetria View\-Logic}
+        Quando si inserisce il tastierino e l'unità logica nei rispettivi vettori assicurarsi che si trovino allo stesso indice assoluto.
+        \subsection{View}
+        La view del nuovo tipo di dato consisterà nel creare una classe derivata dalla classe \texit{Keyboard} implementando i tre metodi virtuali puri:
+        \begin{itemize}
+            \item std::vector<QString> getSingleOperationkeyboard()const: inserire qui i nomi delle operazioni singole;
+            \item std::vector<QString> getSingleOperationkeyboard()const: inserire qui i nomi delle operazioni multiple;
+            \item std::vector<QString> getSingleOperationkeyboard()const: inserire qui i nomi delle operazioni extra.
+        \end{itemize}
+        Per ciascuno di questi metodi si inizializzerà un vettore contenente QString, si procederà a \textit{pushare} al suo interno i nomi delle operazioni, l'ordine con cui verranno inserite sarà l'ordine in cui verranno chiamate nella parte logica. Da questo momento tutti i pulsanti sono già connessi nella parte logica, \\
+        Ora spostiamoci nella classe \textit{View}, nel metodo \textit{void setViews()}, pushate in coda il nuovo tastierino appena creato.
+        \subsection{Logica}
+        Per indrodurre il nuovo tipo di dato nella calcolatrice dovrà essere creata una classe derivata dalla classe \textit{BasicLogic}, che dovrà estendere almeno i metodi virtuali puri:
+        \begin{itemize}
+            \item \textbf{numbers* getObjectLogicClass(QString,QString)}: ritornare un dato costruito con i parametri del tipo di dato che si gestisce; 
+            \item \textbf{QString getNameType()}: il nome del tipo di dato che si gestisce;
+            \item \textbf{bool condition()const}: condizioni personalizzazione del parsing;
+        \end{itemize}
+        Se si volesse inserire delle operazioni multiple, singole o extra, si dovrà procede all'override dei seguenti metodi:
+        \begin{itemize}
+            \item \textbf{void singleOperation(int index)}: operazione per i tipi di dato singoli;
+            \item \textbf{void results()}: operazione per i tipi di dato multipli;
+            \item \textbf{void extraOperation(int index)}: operazione per i tipi di dato singoli, vanno inserite le operazioni in ordine 
+        \end{itemize}
+        Le operazioni vanno inserite nello stesso ordine con cui sono stati inseriti i pulsanti nel tastierino.
 
         \section{Manuale utente}
-        All’avvio dell’applicazione Kalk questa si troverà nella scheda Set. 
-        La calcolatrice è divisa in tre aree principali: nell’area sulla sinistra è presente una lista che in base al tipo di dato su cui si sta lavorando mostra tutti gli insiemi creati fino a quel momento, la seconda parte è a sua volta divisa in altre quattro parti: nella parte superiore è presente un campo di output su cui vengono visualizzati gli insiemi selezionati e i risultati delle operazioni, nella parte immediatamente inferiore sono presenti due pulsanti, uno etichettato \textit{ClearKalk} per il reset della calcolatrice per quel tipo di dato, uno etichettato \textit{AC} per desettare gli operandi e l'operazione selezionata, nella parte centrale è presente un tastierino con quattro tasti con le operazioni di input, immediatamente sotto sono presenti una serie di pulsanti sui quali viene riportata una etichetta con l’operazione corrispondente.
-
+        \subsection{Avvio}
+        All’avvio dell’applicazione Kalk questa si troverà nella scheda \textit{Set}, per gli altri tipi di dato basterà premere i tasti in alto a destra cambiando così tipo di dato.
+        \subsection{Struttura}
+        La calcolatrice è divisa in tre aree principali: nell’area sulla sinistra è presente una lista che in base al tipo di dato su cui si sta lavorando mostra tutti gli insiemi creati fino a quel momento, la seconda parte è a sua volta divisa in altre quattro parti: nella parte superiore è presente un campo di output su cui vengono visualizzati gli insiemi selezionati e i risultati delle operazioni, nella parte immediatamente inferiore sono presenti due pulsanti, uno etichettato \textit{ClearKalk} per il reset della calcolatrice per quel tipo di dato, uno etichettato \textit{AC} per desettare gli operandi e l'operazione selezionata, nella parte centrale è presente un tastierino con quattro tasti con le operazioni di input, immediatamente sotto sono presenti una serie di pulsanti sui quali viene riportata una etichetta con l’operazione corrispondente.\\
         Infine nella parte inferiore è presente una barra di output dove verranno mostrati eventuali errori dovuti a operazioni non disponibili o a irregolarità nella costruzione di un insieme numerico.
+        \subsection{Tipo dato corrente}
         Il tipo di dato corrente della calcolatrice è indicato in alto a destra dal pulsante di colore più scuro.
-        Nella terza ed ultima parte, a destra della calcolatrice, sono presenti tre pulsanti con i quali è possibile cambiare lo status, premendo uno dei pulsanti la scheda verrà aggiornata al tipo selezionato. La dinamica di selezione di operandi e operazioni è la stessa che in una normale calcolatrice: 
+        Nella terza ed ultima parte, a destra della calcolatrice, sono presenti tre pulsanti con i quali è possibile cambiare lo status, premendo uno dei pulsanti la scheda verrà aggiornata al tipo selezionato. 
+        \subsection{Dinamica operazioni}
+        La dinamica di selezione di operandi e operazioni è la stessa che in una normale calcolatrice: 
         \begin{itemize}
-            \item per effettuare operazioni tra due insiemi, si seleziona il primo insieme e successivamente l’operazione. Da questo momento non sarà più possibile cambiare il primo operando se non premendo il pulsante AC, che resetterà l’operazione corrente. Scelta l’operazione si procede scegliendo il secondo operando e premendo il pulsante =, verrà quindi stampato a schermo il risultato indicando anche l’operazione corrispondente. Nel caso di errori o irregolarità verrà riportato l’errore corrispondente nella barra inferiore;
+            \item per effettuare operazioni tra due insiemi, si seleziona il primo insieme e successivamente l’operazione. Da questo momento non sarà più possibile cambiare il primo operando se non premendo il pulsante AC, che resetterà l’operazione corrente. Scelta l’operazione si procede scegliendo il secondo operando e premendo il pulsante "=", verrà quindi stampato a schermo il risultato indicando anche l’operazione corrispondente. Nel caso di errori o irregolarità verrà riportato l’errore corrispondente nella barra inferiore;
             \item Per operazioni di calcolo su singolo insieme, basta selezionare l’insieme su cui si vuole fare l’operazione e subito dopo l’operazione corrispondente; restituirà il risultato nella barra superiore;
             \item Per operazioni di manipolazione di insiemi: creazione o eliminazione di insiemi, modifica dei valori di un insieme, selezionare il pulsante corrispondente e seguire la procedura indicata nella finestra che comparirà.
 
