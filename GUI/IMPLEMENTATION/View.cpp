@@ -132,15 +132,26 @@ void View::clear(){
 }
 
 void View::changePallet(int index){
-    //statusButton[currentStatus]->setPalette(statusButton[currentStatus]->style()->standardPalette());
-    //statusButton[currentStatus]->setDown(false);
-    //statusButton[index]->setAutoFillBackground(true);
-    //statusButton[index]->setPalette(pal);
-    //statusButton[index]->setDown(true);
-    //statusButton[index]->update();
+    /*
+     * LASCIO INSERITO QUESTA PARTE DI CODICE IN QUANTO NEL MIO PC VERSIONE: Using Qt version 4.8.7 in /usr/lib/x86_64-linux-gnu
+     * RISULTA NON FUNZIONANTE NEI PC DEI LABORATORI CON VERSIONE: Using Qt version 5.5.1 in /usr/lib/x86_64-linux-gnu
+     * HO SOSTITUITO TALE CODICE LASCIANDO PREMUTO IL PULSANTE DELLO STATUS CORRENTE
+     *
+     * MODO 1
+        statusButton[currentStatus]->setPalette(statusButton[currentStatus]->style()->standardPalette());
+        statusButton[currentStatus]->setDown(false);
+        statusButton[index]->setAutoFillBackground(true);
+        statusButton[index]->setPalette(pal);
+        statusButton[index]->setDown(true);
+        statusButton[index]->update();
 
-    statusButton[currentStatus]->setStyleSheet(styleSheet());
-    statusButton[index]->setStyleSheet("background-color:gray");
+     *MODO 2
+        statusButton[currentStatus]->setStyleSheet(styleSheet());
+        statusButton[index]->setStyleSheet("background-color:gray");
+    */
+
+    statusButton[currentStatus]->setDown(false);
+    statusButton[index]->setDown(true);
 
     currentStatus=index;
     clear();
