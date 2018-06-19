@@ -79,7 +79,7 @@ void AdvancedLogic::extraoperation(int index){
             emit setBarra(QString("ERROR: no extraoperation with that index."));
     }
     }catch(QString q){
-        emit setErrorInput(q);
+        emit setError(q);
     }
     catch(std::string str){
         emit setError(QString(str.c_str()));
