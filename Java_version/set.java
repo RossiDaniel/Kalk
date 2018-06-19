@@ -102,7 +102,8 @@ public class set extends numbers{
 	
 	@Override
 	public String name(){
-		return String("set");
+		String name ="set";
+		return name;
 	}
 
 	@Override

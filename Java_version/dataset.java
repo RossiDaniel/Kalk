@@ -53,7 +53,8 @@ public class dataset extends numbers{
 	
 	@Override
 	public String name(){
-		return String("dataset");
+		String name ="dataset";
+		return name;
 	}
 
 	@Override

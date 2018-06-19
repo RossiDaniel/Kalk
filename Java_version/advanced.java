@@ -27,7 +27,8 @@ public class advanced extends dataset{
 
 	@Override
 	public String name(){
-		return String("advanced");
+		String name ="advanced";
+		return name;
 	}
 
     @Override 
