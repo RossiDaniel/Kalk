@@ -18,6 +18,7 @@
 #include<QLabel>
 #include<QSignalMapper>
 #include<QStackedWidget>
+#include<QColorDialog>
 
 class View: public QWidget{
     Q_OBJECT

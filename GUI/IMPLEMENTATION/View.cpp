@@ -56,7 +56,7 @@ View::View(std::vector<QString> v){
 
     connect(InputSignalMapper,SIGNAL(mapped(int)),this,SIGNAL(input(int)));
 
-    pal->setColor(QPalette::Button, QColor(Qt::gray));
+    pal->setColor(QPalette::Button, Qt::gray);
 
     Barra->setReadOnly(true);
     errori->setReadOnly(true);
@@ -136,7 +136,6 @@ void View::changePallet(int index){
     statusButton[index]->setAutoFillBackground(true);
     statusButton[index]->setPalette(*pal);
     statusButton[index]->update();
-    statusButton[index]->setAutoFillBackground(false);
     currentStatus=index;
     clear();
     Barra->setText(QString("Change type done."));
