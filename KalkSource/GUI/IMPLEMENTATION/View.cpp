@@ -150,9 +150,14 @@ void View::changePalette(int index){
         statusButton[index]->setStyleSheet("background-color:gray");
     */
 
-    statusButton[currentStatus]->setDown(false);
-    statusButton[index]->setDown(true);
+    if(currentStatus == index){
+        statusButton[currentStatus]->setEnabled(false);
+    }
+    else{
+        statusButton[currentStatus]->setEnabled(true);
+        statusButton[index]->setEnabled(false);
 
+    }
     currentStatus=index;
     clear();
     Barra->setText(QString("Change type done."));
