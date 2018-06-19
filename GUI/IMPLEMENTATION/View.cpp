@@ -21,7 +21,7 @@ View::View(std::vector<QString> v){
     std::vector<QString> inputButtonName=getBasicOperation();
     std::vector<QPushButton*> inputButton;
 
-    pal = new QPalette();
+    pal = palette();
     kalk=new QHBoxLayout();
 
     elenco->setFixedWidth(200);
@@ -56,7 +56,7 @@ View::View(std::vector<QString> v){
 
     connect(InputSignalMapper,SIGNAL(mapped(int)),this,SIGNAL(input(int)));
 
-    pal->setColor(QPalette::Button, Qt::gray);
+    pal.setColor(QPalette::Button, Qt::gray);
 
     Barra->setReadOnly(true);
     errori->setReadOnly(true);
@@ -132,12 +132,14 @@ void View::clear(){
 }
 
 void View::changePallet(int index){
-    /*statusButton[currentStatus]->setPalette(statusButton[currentStatus]->style()->standardPalette());
-    statusButton[index]->setAutoFillBackground(true);
-    statusButton[index]->setPalette(*pal);
-    statusButton[index]->update();*/
+    //statusButton[currentStatus]->setPalette(statusButton[currentStatus]->style()->standardPalette());
+    statusButton[currentStatus]->setDown(false);
+    //statusButton[index]->setAutoFillBackground(true);
+    //statusButton[index]->setPalette(pal);
+    statusButton[index]->setDown(true);
+    statusButton[index]->update();
 
-    statusButton[currentStatus]->setStyleSheet("background-color:black");
+    //statusButton[currentStatus]->setStyleSheet("background-color:black");
 
     currentStatus=index;
     clear();

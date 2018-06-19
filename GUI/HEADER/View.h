@@ -25,7 +25,7 @@ class View: public QWidget{
 
 private:
     int currentStatus;
-    QPalette* pal;
+    QPalette pal;
     QTextEdit* Barra;
     QLineEdit* errori;
     QListWidget* elenco;
