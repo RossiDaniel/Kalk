@@ -34,16 +34,7 @@
 	\section{Gerarchie utilizzate}
 	\subsection{Gerarchia dei tipi di dato}
 	\subsubsection{Class Numbers}
-	La classe astratta Numbers rappresenta un’ipotetica sequenza di numeri interi. Numbers ha un campo dati di tipo stringa che identifica ciascuna sequenza di numeri, definisce inoltre diversi metodi virtuali puri con i seguenti contratti:
-	\begin{itemize}
-	 	\item \textbf{numbers\* clone() const}: resistuisce una copia dell'oggetto di invocazione;
-		\item \textbf{std::string name() const}: restituisce il una stringa contenente il tipo di dato in formato testuale;
-		\item \textbf{operator std::string()}: overoloading dell'operatore di conversione da \textit{Numbers} verso \textit{std::string};
-		\item \textbf{void add\_value(const int)}: aggiunge un intero all'oggetto \textit{Numbers};
-		\item \textbf{void sub\_value(const int)}: sottrae un intero all'oggetto \textit{Numbers};
-		\item \textbf{void add\_list(const std::list<int>\&)}: aggiunge un lista di interi all'oggetto \textit{Numbers};
-		\item \textbf{void sub\_list(const std::list<int>\&)}: sottrae una lista di interi all'oggetto \textit{Numbers};
-	\end{itemize}
+	La classe astratta Numbers rappresenta un’ipotetica sequenza di numeri interi. Numbers ha un campo dati di tipo stringa che identifica ciascuna sequenza di numeri, definisce inoltre diversi metodi virtuali puri di clonazione e di aggiunta e rimozione di interi dalle liste.
     Inoltre definisce i seguenti metodi per la lettura e scrittura del nome del \textit{Numbers}.
     La classe \textit{Numbers} una classe annidata protetta \textit{Ris}, utilizzata per operazioni di ricerca sempre dalle classi derivate.
     
@@ -59,17 +50,17 @@
         \item \textbf{void sub\_list(const std::list<int>\&)}: sottrae una lista di interi all'oggetto \textit{Set};
     \end{itemize}
     Dispone di metodi propri per la lettura e scrittura della lista di interi, inoltre viene fatto l'overloading  degli operatori:
-    Esegue l'overloading dei seguenti metodi propri:
+    Esegue l'overloading dei seguenti metodi propri tra cui  quelli più importanti:
     \begin{itemize}
         \item operator std::string()
-        \item bool operator==(const set\&)
-        \item bool operator!=(const set\&)
-        \item set\& operator=(const set*)
         \item set\& operator+(const set\&) const
         \item set\& operator-(const set\&) const
         \item set\& operator/(const set\&) const
+<<<<<<< HEAD
+=======
         \item set\& operator\%(const set\&) const
         \item std::string operator*(const set\&) const
+>>>>>>> master
     \end{itemize}
 
     \subsubsection{Class Dataset}
@@ -83,20 +74,7 @@
 		\item \textbf{void add\_list(const std::list<int>\&)}: aggiunge un lista di interi all'oggetto \textit{Dataset} in coda;
         \item \textbf{void sub\_list(const std::list<int>\&)}: sottrae una lista di interi all'oggetto \textit{Dataset} dalla sinistra;
     \end{itemize}
-    Dispone dei seguenti metodi propri:
-    \begin{itemize}
-        \item \textbf{std::list<int> get\_element() const}: ritorna la lista di interi del \textit{Dataset};
-        \item \textbf{int somme()const}: ritorna la somma degli interi contenuti nella lista dell'oggetto di inviocazione;
-        \item \textbf{int size() const}: ritorna il numero di interi contenuti nella lista dell'oggetto di inviocazione;
-        \item \textbf{double average()const}: ritorna la media degli interi contenuti nella lista dell'oggetto di inviocazione;
-        \item \textbf{int GL()const}: ritorna i gradi di libertà della lista dell'oggetto di inviocazione;
-        \item \textbf{double variance()const}: ritorna la varianza degli interi contenuti nella lista dell'oggetto di inviocazione;
-        \item \textbf{double DS()const}: ritorna la deviazione standard degli interi contenuti nella lista dell'oggetto di inviocazione;
-        \item \textbf{double deviance()const}: ritorna la devianza degli interi contenuti nella lista dell'oggetto di inviocazione;
-        \item \textbf{std::list<double> deviation()const}: ritorna una lista contenente la deviazione degli interi contenuti nella lista dell'oggetto di inviocazione;
-        \item \textbf{std::list<double> power2\_deviation()const}: ritorna una lista contenente la $deviazione^{2}$ degli interi contenuti nella lista dell'oggetto di inviocazione;
-        \item \textbf{void checkpoint(const dataset\& s)const}: lancia una eccezione al verificarsi di alcune condizioni;
-    \end{itemize}
+    Dispone dei seguenti metodi propri utilizzati per estrapolare informazioni dai \textit{Dataset}.
     Esegue l'overloading dei seguenti metodi propri:
     \begin{itemize}
         \item operator std::string();
@@ -114,17 +92,7 @@
 		\item \textbf{void add\_list(const std::list<int>\&)}: richiama lo stesso metodo della classe \textit{Dataset} e poi invoca il metodo \textit{void update()};
         \item \textbf{void sub\_list(const std::list<int>\&)}: richiama lo stesso metodo della classe \textit{Dataset} e poi invoca il metodo \textit{void update()};
     \end{itemize}
-    Dispone dei seguenti metodi propri:
-    \begin{itemize}
-        \item \textbf{void update()}: aggiorna i campi dati successivamente ad una modifica richiamando alcuni metodi della classe \textit{Dataset};
-        \item \textbf{std::list<double> coscarto(const advanced\&)const}: ritorna una lista di interi contente lo scarto tra la lista di interi dell'oggetto di invocazione e l'oggetto passato per riferimento;
-        \item \textbf{double codevianza(const advanced\&)const}: ritorna la codevianza tra la lista di interi dell'oggetto di invocazione e l'oggetto passato per riferimento;
-        \item \textbf{double covarianza(const advanced\&)const}: ritorna la covarianza tra la lista di interi dell'oggetto di invocazione e l'oggetto passato per riferimento;
-        \item \textbf{double correlazione(const advanced\&)const}: ritorna la correlazione tra la lista di interi dell'oggetto di invocazione e l'oggetto passato per riferimento;
-        \item \textbf{double coeff\_determinazione(const advanced\&)const}: ritorna il coefficiente di determinazione tra la lista di interi dell'oggetto di invocazione e l'oggetto passato per riferimento;
-        \item \textbf{double regressione(const advanced\&)const}: ritorna la regressione tra la lista di interi dell'oggetto di invocazione e l'oggetto passato per riferimento;
-        \item \textbf{double intercetta(const advanced\&)const}: ritorna l'intersezione tra la lista di interi dell'oggetto di invocazione e l'oggetto passato per riferimento;
-    \end{itemize}
+    Dispone dei seguenti metodi propri per l'interazione tra oggetti \textit{Advanced}.
 
     \subsection{Gerarchia della vista}
     \begin{figure}[!h]
@@ -152,73 +120,14 @@
             \item \textbf{void extraoperation(int)}: segnale che invia l'indice dell'operazione da eseguire;
         \end{itemize}
 
-    \subsubsection{Classe SetKeyboard}
-    La classe \textit{SetKeyboard} è utilizzata per definire quali operazioni per il tipo di dato \textit{Set} sia possibile eseguire.
+    \subsubsection{Classe SetKeyboard,DatasetKeboard,AdvancedKeboard}
+    Le classi \textit{SetKeyboard},\textit{DatasetKeyboard} e \textit{AdvancedKeyboard} sono utilizzate per definire quali operazioni per il tipo di dato rispettivamente \textit{Set},\textit{Dataset} e \textit{Advanced} sia possibile eseguire.
     Vengono definite tre tipi di operazioni principali, i cui nomi vengono definiti all'interno di questi metodi:
     \begin{itemize}
-        \item \textbf{std::vector<QString> getSingleOperationkeyboard()const}: ritorna un vettore contenente i nomi delle operazioni che utilizzano un solo operando, le operazioni disponibili sono:
-        \begin{enumerate}
-            \item \textit{Complement}: complementare di  un set \textit{Set} rispetto l'insieme universo \textit{U} definito nella parte logica
-            \item \textit{PowerSet()}: insieme delle parti di un \textit{Set}
-        \end{enumerate}
-        \item \textbf{std::vector<QString> getMultiOperationkeyboard()const}: ritorna un vettore contenente i nomi delle operazioni che utilizzano due operandi, le operazioni disponibili sono:
-        \begin{enumerate}
-            \item \textit{Union}: unione tra due \textit{Set}
-            \item \textit{Intercetion}: intersezione tra due \textit{Set}
-            \item \textit{Difference}: unione tra due \textit{Set}
-            \item \textit{SymmetricalDif}: differenza simmetrica tra due \textit{Set}
-            \item \textit{CartesianProd}: prodotto cartesiano tra due \textit{Set}
-        \end{enumerate}
-        \item \textbf{std::vector<QString> getExtraOperationkeyboard()const}: ritorna un vettore contenente i nomi delle operazioni che non ricadono nelle precedenti due famiglie, sono disponibili le seguenti operazioni:
-        \begin{enumerate}
-            \item \textit{Save}: il risultato dell'ultima operazione che ha restituito un oggetto \textit{Set} viene inserito nella lista generale dei \textit{Set} disponibili
-            \item \textit{=}: richiesta di esecuzione di un'operazione multipla
-        \end{enumerate}
-    \end{itemize}
-
-    \subsubsection{Classe DatasetKeyboard}
-    La classe \textit{DatasetKeyboard} è utilizzata per definire quali operazioni per il tipo di dato \textit{Dataset} sia possibile eseguire.
-    Vengono definite tre tipi di operazioni principali, i cui nomi vengono definiti all'interno di questi metodi:
-    \begin{itemize}
-        \item \textbf{std::vector<QString> getSingleOperationkeyboard()const}: ritorna un vettore contenente i nomi delle operazioni che utilizzano un solo operando, le operazioni disponibili sono:
-        \begin{enumerate}
-            \item \textit{Somme}: somma degli interi contenuti nel \textit{Dataset}
-            \item \textit{Size}: numero degli interi contenuti nel \textit{Dataset}
-            \item \textit{Average}: media degli interi contenuti nel \textit{Dataset}
-            \item \textit{GL}: gradi di libertà degli interi contenuti nel \textit{Dataset}
-            \item \textit{Variance}: varianza degli interi contenuti nel \textit{Dataset}
-            \item \textit{DS}: deviazione standard degli interi contenuti nel \textit{Dataset}
-            \item \textit{Deviance}: devianza degli interi contenuti nel \textit{Dataset}
-            \item \textit{Deviation}: deviazione degli interi contenuti nel \textit{Dataset}
-            \item \textit{Deviation$^2$}: $deviazione^{2}$ degli interi contenuti nel \textit{Dataset}
-        \end{enumerate}
-        \item \textbf{std::vector<QString> getMultiOperationkeyboard()const}: ritorna un vettore contenente i nomi delle operazioni che utilizzano due operandi, al momento nessuna funzione di questo tipo è disponibile;
-        \item \textbf{std::vector<QString> getExtraOperationkeyboard()const}: ritorna un vettore contenente i nomi delle operazioni che non ricadono nelle precedenti due famiglie, sono disponibili le seguenti operazioni:
-        due operandi, al momento nessuna funzione di questo tipo è disponibile;
-    \end{itemize}
-
-    \subsubsection{Classe AdvancedKeyboard}
-    La classe \textit{AdvancedKeyboard} è utilizzata per definire quali operazioni per il tipo di dato \textit{Advanced} sia possibile eseguire.
-    Vengono definite tre tipi di operazioni principali, i cui nomi vengono definiti all'interno di questi metodi:
-    \begin{itemize}
-        \item \textbf{std::vector<QString> getSingleOperationkeyboard()const}: ritorna un vettore contenente i nomi delle operazioni che utilizzano un solo operando, al momento nessuna funzione di questo tipo è disponibile;
-        \item \textbf{std::vector<QString> getMultiOperationkeyboard()const}: ritorna un vettore contenente i nomi delle operazioni che utilizzano due operandi, le operazioni disponibili sono:
-        \begin{enumerate}
-            \item \textit{AllInfo}: resitutisce tutte le informazioni successive in un'unica volta
-            \item \textit{Coscarto}: coscarto tra due \textit{Advanced}
-            \item \textit{Codevianza}: codevianza tra due \textit{Advanced}
-            \item \textit{Covarianza}: covarianza tra due \textit{Advanced}
-            \item \textit{Correlazione}: collerazione tra due \textit{Advanced}
-            \item \textit{Coef. Determ.}: coefficiente di determinazione tra due \textit{Advanced}
-            \item \textit{Regressione}: coefficiente angolare della retta risultante tra i due \textit{Advanced}
-            \item \textit{Intercetta}: punto di intersezione con l'asse delle y della retta risultante tra i due \textit{Advanced}
-            \item \textit{Retta}: retta risultante tra i due \textit{Advanced}
-            \item \textit{Grafic}: grafico della retta risultante tra i due \textit{Advanced}, con punti annessi.
-        \end{enumerate}
-        \item \textbf{std::vector<QString> getExtraOperationkeyboard()const}: ritorna un vettore contenente i nomi delle operazioni che non ricadono nelle precedenti due famiglie, sono disponibili le seguenti operazioni:
-        \begin{enumerate}
-            \item \textit{=}: richiesta di esecuzione di un'operazione multipla
-        \end{enumerate}
+        \item \textbf{std::vector<QString> getSingleOperationkeyboard()const}: ritorna un vettore contenente i nomi delle operazioni che utilizzano un solo operando;
+        \item \textbf{std::vector<QString> getMultiOperationkeyboard()const}: ritorna un vettore contenente i nomi delle operazioni che utilizzano due operandi;
+        \item \textbf{std::vector<QString> getExtraOperationkeyboard()const}: ritorna un vettore contenente i nomi delle operazioni che non ricadono nelle precedenti due famiglie;
+        
     \end{itemize}
 
     \subsection{Gerarchia della logica}
@@ -271,41 +180,19 @@
             \item \textbf{void getElements()}: emette un segnale con cui invia una \textit{std::list<QString>} con i nomi dei tipi di dato per cui checkType(...) ritorna \textit{true};
             \item \textbf{void update()}: metodo richiamato quando avviene un cambio di tipo di dato, aggiorna la lista di oggetti disponibili, chiude eventuali finestre di input aperte;
         \end{itemize}
-        Dispone dei seguenti segnali:
-        \begin{itemize}
-            \item \textbf{listOfElements(std::list<QString>)}: lista di oggetti con tipo dinamico uguale a quello dato da \textit{getNameType()};
-            \item \textbf{void setBarra(QString)}: setta la barra principale con il messaggio passato come parametro;
-            \item \textbf{void setError(QString)}: setta la barra degli errori con il messaggio passato come parametro;
-            \item \textbf{void setErrorInput(QString)}: invia un segnale errore alla gestione dell'input;
-            \item \textbf{void setErrorInput(QString)}: invia un segnale di errore alla gestione dell'input;
-            \item \textbf{void closeInputWindow()}: invia un segnale con cui si autorizza a chiudere la schermata di input corrente;
-        \end{itemize}
+        Dispone anche di segnali con i quali notificare o inviare richieste di informazioni o di modifica.
 
         \subsubsection{Classe SetLogic}
-        La classe \textit{SetLogic} permette di eseguire le operazioni riguardanti il tipo di dato \textit{Set}, dispone dei seguenti metodi:
+        La classe \textit{SetLogic} permette di eseguire le operazioni riguardanti il tipo di dato \textit{Set}, dispone principalmente dei seguenti metodi:
         \begin{itemize}
             \item \textbf{void singleOperation(int)}: esegue l'operazione data dal parametro int;
-            \item \textbf{void selectOperand(QListWidgetItem*)}: mostra il parametro selezionato e richiama setOperand() se il nome del \textit{Set} richiesto non è "U";
             \item \textbf{void add\_set(QString,QString)}: crea un nuovo oggetto se non ne esiste già uno con nome uguale e aggiunge la sua lista di interi al \textit{Set} "U";
             \item \textbf{void sub\_set(QString)}: Elimina l'oggetto \textit{Set} dalla lista di oggetti e sottrae il contenuto da "U" se non è contenuto in nessun'altro \textit{Set}, verifica ciò grazie alla funzione \textit{bool in(const int,std::string)const};
             \item \textbf{void add\_elements(QString,QString)}: aggiugne la lista di interi al \textit{Set} con nome ricercato e al \textit{Set} "U";
             \item \textbf{void sub\_elements(QString,QString)}: sottrae la lista di interi al \textit{Set} con nome ricercato e al \textit{Set} "U";
-            \item \textbf{bool condition()const;}: condizione con cui si personalizza il parsing;
-            \item \textbf{bool in(const int,std::string)const}: ritorna \textit{true} se l'intero non è presente negli altri insiemi altrimenti \textit{false};
             \item \textbf{set* getObjectLogicClass(std::string,std::list<int>)}: ritorna un \textit{Set} costruito con i parametri;
             \item \textbf{void results()}: esegue l'operazione data dal parametro dagli operandi e dall'operazione precedentemente fissati;
-            \item \textbf{void clearKalkElements()}: elimina ogni occorrenza di oggetti di tipo \textit{Set} dalla lista generale di tipo \textit{Numbers};
             \item \textbf{void extraoperation(int)}: esegue l'operazione data dal parametro int;
-        \end{itemize}
-
-        Dispone dei seguenti segnali:
-        \begin{itemize}
-            \item \textbf{listOfElements(std::list<QString>)}: lista di oggetti con tipo dinamico uguale a quello dato da \textit{getNameType()};
-            \item \textbf{void setBarra(QString)}: setta la barra principale con il messaggio passato come parametro;
-            \item \textbf{void setError(QString)}: setta la barra degli errori con il messaggio passato come parametro;
-            \item \textbf{void setErrorInput(QString)}: invia un segnale errore alla gestione dell'input;
-            \item \textbf{void setErrorInput(QString)}: invia un segnale di errore alla gestione dell'input;
-            \item \textbf{void closeInputWindow()}: invia un segnale con cui si autorizza a chiudere la schermata di input corrente;
         \end{itemize}
 
         \subsubsection{Classe DatasetLogic}
@@ -380,18 +267,6 @@
             \item \textbf{void setViews()}: popola \textit{logics} inserendo i tastierini;
             \item \textbf{std::vector<QString> getBasicOperation()const}: restituisce un vettore contenente \textit{QString} le etichette per i pulsanti di operazione di input;
         \end{itemize}
-        Definisce anche i seguenti segnali:
-        \begin{itemize}
-            \item \textbf{void input(int)}: segnale che trasmette la necessità di aprire un pannello di input e inizializarlo col parametro passato;
-            \item \textbf{void selectOperand(QListWidgetItem*)}: richiede la selezione del parametro come operando;
-            \item \textbf{void changelogic(int)}: segnale per cambiare l'unità logica;
-            \item \textbf{void cancel()}: segnale per cancellare operandi e l'operazione;
-            \item \textbf{void multioperation(int)}: segnale trasmette indice per operazione multi insieme;
-            \item \textbf{void singleOperation(int)}: segnale trasmette indice per operazione multi insieme;
-            \item \textbf{void clearKalkElements()}: richiede di eliminare tutti gli oggeti con tipo uguale a quello corrente;
-            \item \textbf{void CloseIfExist()}: emette un segnale con cui si chiede di chiudere eventuali pannelli di input ancora aperti;
-            \item \textbf{void extraoperation(int)}: segnale trasmette indice per operazione extra insieme;
-        \end{itemize}
 
         \subsection{Classe Input}
         La classe \textit{Input} permette lo di eseguire l'input delle informazioni con cui costruire gli oggetti utilizzati poi dalla calcolatrice.
@@ -414,17 +289,63 @@
         \begin{itemize}
             \item \textbf{void configureExtrapanel()}: permette di configurare il tastierino secondo l'operazione richiesta;   .       
         \end{itemize}
-        Definisce anche i seguenti segnali:
+
+        \section{Descrizione del codice polimorfo}
+        Nelle diverse classi precedentemente descritte sono presenti non pochi metodi che eseguono chiamate polimorfe.
+        Per fare esempi di chiamate polimorfe ogni chiamata fatta dalla classe \textit{AppKalk} sul campo dati \textit{uni} è polimorfa, il tipo statico del puntatore è di tipo \textit{BasicLogic} mentre l'oggetto puntato potrebbe essere di tipo \textit{SetLogic},\textit{DatasetLogic} o \textit{AdvancedLogic}.
+        Altri esempi di chiamate polimorfe possono essere individuati nella classe \textit{BasicLogic} nelle operazioni di input, dopo vengono chiamati i metodi \textit{add\_list} ed altri.
+
+        \section{Estensibilità}
+        \subsection{Prerequisiti}
+        Questa sezione si propone di essere una guida all'estensione della calcolatrice con ulteriori tipi di dato, per prima cosa diciamo che il nuovo tipo di dato deve estendere la classe \textit{Numbers}, implementando i suoi metodi virtuali puri.
+        Il nuovo tipo di dato può anche estendere una delle classi già disponibili eseguendo l'override dei metodi disponibili.
+        Il nuovo tipo di dato potrà essere una sequenza di numeri interi.
+        \subsection{Simmetria View\-Logic}
+        Quando si inserisce il tastierino e l'unità logica nei rispettivi vettori assicurarsi che si trovino allo stesso indice assoluto.
+        \subsection{View}
+        La view del nuovo tipo di dato consisterà nel creare una classe derivata dalla classe \texit{Keyboard} implementando i tre metodi virtuali puri:
         \begin{itemize}
-            \item \textbf{void executeOperation(int,QString,QString)}: segnale che trasmette verso la logica l'operazione di input eseguita e i dati ottenuti.
+            \item std::vector<QString> getSingleOperationkeyboard()const: inserire qui i nomi delle operazioni singole;
+            \item std::vector<QString> getSingleOperationkeyboard()const: inserire qui i nomi delle operazioni multiple;
+            \item std::vector<QString> getSingleOperationkeyboard()const: inserire qui i nomi delle operazioni extra.
         \end{itemize}
-
-
+        Per ciascuno di questi metodi si inizializzerà un vettore contenente QString, si procederà a \textit{pushare} al suo interno i nomi delle operazioni, l'ordine con cui verranno inserite sarà l'ordine in cui verranno chiamate nella parte logica. Da questo momento tutti i pulsanti sono già connessi nella parte logica, \\
+        Ora spostiamoci nella classe \textit{View}, nel metodo \textit{void setViews()}, pushate in coda il nuovo tastierino appena creato.
+        \subsection{Logica}
+        Per indrodurre il nuovo tipo di dato nella calcolatrice dovrà essere creata una classe derivata dalla classe \textit{BasicLogic}, che dovrà estendere almeno i metodi virtuali puri:
+        \begin{itemize}
+            \item \textbf{numbers* getObjectLogicClass(QString,QString)}: ritornare un dato costruito con i parametri del tipo di dato che si gestisce; 
+            \item \textbf{QString getNameType()}: il nome del tipo di dato che si gestisce;
+            \item \textbf{bool condition()const}: condizioni personalizzazione del parsing;
+        \end{itemize}
+        Se si volesse inserire delle operazioni multiple, singole o extra, si dovrà procede all'override dei seguenti metodi:
+        \begin{itemize}
+            \item \textbf{void singleOperation(int index)}: operazione per i tipi di dato singoli;
+            \item \textbf{void results()}: operazione per i tipi di dato multipli;
+            \item \textbf{void extraOperation(int index)}: operazione per i tipi di dato singoli, vanno inserite le operazioni in ordine 
+        \end{itemize}
+        Le operazioni vanno inserite nello stesso ordine con cui sono stati inseriti i pulsanti nel tastierino.
+        Questa classe dovrà essere inserita all'interno del metodo \textit{void setLogics()} della classe \textit{Logic}
+        \subsection{Simmetria}
+        Risulta essere di incredibile importanza la simmetria tra vista e logica, infatti affinchè le chiamate risultino sensate la vista deve operare con il tipo di dato corretto, per questo motivo i due nuovi oggetti dovranno essere inseriti in posizioni corrispondenti.
+        
         \section{Manuale utente}
-        All’avvio dell’applicazione Kalk questa si troverà nella scheda Set. La calcolatrice è divisa in tre aree principali: nell’area sulla sinistra è presente una lista che in base al tipo di dato su cui si sta lavorando mostra tutti gli insiemi creati fino a quel momento, la seconda parte è a sua volta divisa in altre tre parti: nella parte superiore è presente un campo di output su cui vengono visualizzati gli insiemi selezionati e i risultati delle operazioni, nella parte centrale è presente un tastierino con una quindicina di pulsanti sui quali viene riportata una etichetta con l’operazione corrispondente; inoltre è presente una scritta che riporta lo status corrente. Infine nella parte inferiore è presente una barra di output dove verranno mostrati eventuali errori dovuti a operazioni non disponibili o a irregolarità nella costruzione di un insieme numerico.
-        Nella terza ed ultima parte, a destra della calcolatrice, sono presenti tre pulsanti con i quali è possibile cambiare lo status, premendo uno dei pulsanti la scheda verrà aggiornata al tipo selezionato. La dinamica di selezione di operandi e operazioni è la stessa che in una normale calcolatrice: per effettuare operazioni tra due insiemi, si seleziona il primo insieme e successivamente l’operazione. Da questo momento non sarà più possibile cambiare il primo operando se non premendo il pulsante AC, che resetterà l’operazione corrente. Scelta l’operazione si procede scegliendo il secondo operando e premendo il pulsante =, verrà quindi stampato a schermo il risultato indicando anche l’operazione corrispondente. Nel caso di errori o irregolarità verrà riportato l’errore corrispondente nella barra inferiore.
-        Per operazioni di calcolo su singolo insieme, basta selezionare l’insieme su cui si vuole fare l’operazione e subito dopo l’operazione corrispondente; restituirà il risultato nella barra superiore e lascerà l’operando precedentemente selezionato inserito, cosicché se premiamo nuovamente su un’operazione singola questa verrà eseguita sullo stesso operando precedentemente scelto.
-        Per operazioni di manipolazione di insiemi: creazione o eliminazione di insiemi, modifica dei valori di un insieme, selezionare il pulsante corrispondente e seguire la procedura indicata nella finestra che comparirà.
+        \subsection{Avvio}
+        All’avvio dell’applicazione Kalk questa si troverà nella scheda \textit{Set}, per gli altri tipi di dato basterà premere i tasti in alto a destra cambiando così tipo di dato.
+        \subsection{Struttura}
+        La calcolatrice è divisa in tre aree principali: nell’area sulla sinistra è presente una lista che in base al tipo di dato su cui si sta lavorando mostra tutti gli insiemi creati fino a quel momento, la seconda parte è a sua volta divisa in altre quattro parti: nella parte superiore è presente un campo di output su cui vengono visualizzati gli insiemi selezionati e i risultati delle operazioni, nella parte immediatamente inferiore sono presenti due pulsanti, uno etichettato \textit{ClearKalk} per il reset della calcolatrice per quel tipo di dato, uno etichettato \textit{AC} per desettare gli operandi e l'operazione selezionata, nella parte centrale è presente un tastierino con quattro tasti con le operazioni di input, immediatamente sotto sono presenti una serie di pulsanti sui quali viene riportata una etichetta con l’operazione corrispondente.\\
+        Infine nella parte inferiore è presente una barra di output dove verranno mostrati eventuali errori dovuti a operazioni non disponibili o a irregolarità nella costruzione di un insieme numerico.
+        \subsection{Tipo dato corrente}
+        Il tipo di dato corrente della calcolatrice è indicato in alto a destra dal pulsante di colore più scuro.
+        Nella terza ed ultima parte, a destra della calcolatrice, sono presenti tre pulsanti con i quali è possibile cambiare lo status, premendo uno dei pulsanti la scheda verrà aggiornata al tipo selezionato. 
+        \subsection{Dinamica operazioni}
+        La dinamica di selezione di operandi e operazioni è la stessa che in una normale calcolatrice: 
+        \begin{itemize}
+            \item per effettuare operazioni tra due insiemi, si seleziona il primo insieme e successivamente l’operazione. Da questo momento non sarà più possibile cambiare il primo operando se non premendo il pulsante AC, che resetterà l’operazione corrente. Scelta l’operazione si procede scegliendo il secondo operando e premendo il pulsante "=", verrà quindi stampato a schermo il risultato indicando anche l’operazione corrispondente. Nel caso di errori o irregolarità verrà riportato l’errore corrispondente nella barra inferiore;
+            \item Per operazioni di calcolo su singolo insieme, basta selezionare l’insieme su cui si vuole fare l’operazione e subito dopo l’operazione corrispondente; restituirà il risultato nella barra superiore;
+            \item Per operazioni di manipolazione di insiemi: creazione o eliminazione di insiemi, modifica dei valori di un insieme, selezionare il pulsante corrispondente e seguire la procedura indicata nella finestra che comparirà.
+
+        \end{itemize}
 
         **La scheda Set rende disponibile fin da subito un set chiamato “U”, questo è l’insieme universo dove sarà possibile vedere tutti gli elementi inseriti in ogni Set della scheda. Non è possibile eseguire operazioni su questo insieme se non quelle di inserimento o rimozione di valori, se si inserisce un valore questo resterà “spaiato”, se si elimina un valore dall’universo verrà rimosso da tutti i Set in
         cui compariva.
@@ -432,20 +353,7 @@
         nella barra sulla sinistra e la rende disponibile per ulteriori operazioni.
 
         \section{Ore utilizzate}
-        \subsection{Ore prima consegna}
-        Sono state utilizzate le seguenti ore alla prima consegna:
-        \begin{itemize}
-            \item \textbf{Progettazione}: 5 ore;
-            \item \textbf{Scrittura codice gerarchia tipi}: 10 ore;
-            \item \textbf{Scrittura codice logica di controllo}: 5 ore;
-            \item \textbf{Scrittura codice parte grafica}: 30 ore;
-            \item \textbf{Scrittura relazione}: 2 ore;
-            \item \textbf{Test}: 2 ore;
-            \item \textbf{Traduzione gerarchia tipi in Java}: 2 ore.
-
-        \end{itemize}
-        \subsection{Ore seconda consegna}
-        Sono state utilizzate le seguenti ore alla seconda consegna:
+        Sono state utilizzate le seguenti ore alla consegna:
         \begin{itemize}
             \item \textbf{Progettazione}: 2 ore;
             \item \textbf{Scrittura codice gerarchia tipi}: 0.30 ore;
