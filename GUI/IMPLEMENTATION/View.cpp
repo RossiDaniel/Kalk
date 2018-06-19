@@ -133,13 +133,14 @@ void View::clear(){
 
 void View::changePallet(int index){
     //statusButton[currentStatus]->setPalette(statusButton[currentStatus]->style()->standardPalette());
-    statusButton[currentStatus]->setDown(false);
+    //statusButton[currentStatus]->setDown(false);
     //statusButton[index]->setAutoFillBackground(true);
     //statusButton[index]->setPalette(pal);
-    statusButton[index]->setDown(true);
-    statusButton[index]->update();
+    //statusButton[index]->setDown(true);
+    //statusButton[index]->update();
 
-    //statusButton[currentStatus]->setStyleSheet("background-color:black");
+    statusButton[currentStatus]->setStyleSheet(styleSheet());
+    statusButton[index]->setStyleSheet("background-color:gray");
 
     currentStatus=index;
     clear();
