@@ -36,7 +36,7 @@ AppKalk::~AppKalk(){
 
 void AppKalk::configure(){
     logic->changeLogic(0);
-    container_view->changePallet(0);
+    container_view->changePalette(0);
     container_view->show();
 }
 
