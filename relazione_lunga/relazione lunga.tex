@@ -408,9 +408,10 @@
             \item \textbf{void setBarra(QString)}: setta la Barra con il parametro \textit{QString};
             \item \textbf{void setError(QString)}: setta la barra degli errori con il parametro \textit{QString};
             \item \textbf{void changeLogic(int)}: emette un segnale con cui cambia l'unità logica e cambia anche il tastierino;
-            \item \textbf{void changePallet(int)}: resetta il pulsante con la QPalette standard e setta con Pal il pulsante corrispondente al nuovo tipo corrente;
+            \item \textbf{void changePalette(int)}: resetta il pulsante con la QPalette standard e setta con Pal il pulsante corrispondente al nuovo tipo corrente;
             \item \textbf{void clear()}: ripulsice Barra e barra degli errori;
         \end{itemize}
+        Per il metodo \textit{changePalette()} sono presenti tre versioni che producono risultati estetici simili, ossia quello di rendere il pulsante dello status corente di un colore diverso rispetto agli altri, tutte e tre risultano funzionanti nella mia macchina, mentre nei laboratori solo quella decommentata risulta funzionare correttamente.
         Definisce anche i seguenti metodi:
         \begin{itemize}
             \item \textbf{void setViews()}: popola \textit{logics} inserendo i tastierini;

@@ -41,7 +41,7 @@ public slots:
     void setAC();
     void setBarra(QString);
     void setError(QString);
-    void changePallet(int);
+    void changePalette(int);
     void clear();
 
 signals:

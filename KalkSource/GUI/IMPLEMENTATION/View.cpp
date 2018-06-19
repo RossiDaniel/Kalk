@@ -41,7 +41,7 @@ View::View(std::vector<QString> v){
 
     connect (StatusSignalMapper, SIGNAL(mapped(int)), operationArea, SLOT(setCurrentIndex(int)));
     connect (StatusSignalMapper, SIGNAL(mapped(int)), this, SIGNAL(changelogic(int)));
-    connect (StatusSignalMapper, SIGNAL(mapped(int)), this, SLOT(changePallet(int)));
+    connect (StatusSignalMapper, SIGNAL(mapped(int)), this, SLOT(changePalette(int)));
 
     for(unsigned int i=0; i<inputButtonName.size(); i++){
         inputButton.push_back(new QPushButton(inputButtonName[i]));
@@ -131,7 +131,7 @@ void View::clear(){
     errori->clear();
 }
 
-void View::changePallet(int index){
+void View::changePalette(int index){
     /*
      * LASCIO INSERITO QUESTA PARTE DI CODICE IN QUANTO NEL MIO PC VERSIONE: Using Qt version 4.8.7 in /usr/lib/x86_64-linux-gnu
      * RISULTA NON FUNZIONANTE NEI PC DEI LABORATORI CON VERSIONE: Using Qt version 5.5.1 in /usr/lib/x86_64-linux-gnu
