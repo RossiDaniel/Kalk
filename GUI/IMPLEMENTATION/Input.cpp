@@ -59,7 +59,7 @@ void Input::SendDataInput(QString name, QString elements){
 void Input::setErrorInput(QString text){
     MessageError= new QMessageBox();
     MessageError->setAttribute(Qt::WA_DeleteOnClose, true);
-    MessageError->setWindowTitle("non ti sei comportato bene");
+    MessageError->setWindowTitle("InputError");
     MessageError->setText(text);
     MessageError->show();
 }
