@@ -132,10 +132,13 @@ void View::clear(){
 }
 
 void View::changePallet(int index){
-    statusButton[currentStatus]->setPalette(statusButton[currentStatus]->style()->standardPalette());
+    /*statusButton[currentStatus]->setPalette(statusButton[currentStatus]->style()->standardPalette());
     statusButton[index]->setAutoFillBackground(true);
     statusButton[index]->setPalette(*pal);
-    statusButton[index]->update();
+    statusButton[index]->update();*/
+
+    statusButton[currentStatus]->setStyleSheet("background-color:black");
+
     currentStatus=index;
     clear();
     Barra->setText(QString("Change type done."));
